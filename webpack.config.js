@@ -20,17 +20,19 @@ var config = {
    module: {
       rules: [
          {
-            test: /\.jsx?$/,
+            test: /\.js?$/,
             exclude: /node_modules/,
             loader: 'babel-loader'
          },
          {
             test: /\.scss$/,
-            use: [
-                "style-loader", // creates style nodes from JS strings
-                "css-loader", // translates CSS into CommonJS
-                "sass-loader" // compiles Sass to CSS
-            ]
+            use: [{
+              loader: "style-loader"
+            }, {
+              loader: "css-loader"
+            }, {
+              loader: "sass-loader"
+            }]
         }
       ]
    },

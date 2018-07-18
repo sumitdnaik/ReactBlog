@@ -1,0 +1,13 @@
+@mixin transform($property) {
+  -webkit-border-radius: $property;
+     -moz-border-radius: $property;
+      -ms-border-radius: $property;
+          border-radius: $property;
+}
+
+.tooltip-wrapper {
+  padding: 20px;
+  width: auto;
+  max-width: 300px;
+  border: 1px solid #dbdbdb;
+}
