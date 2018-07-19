@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import Tooltip from './components/elements/tooltip';
+import Button from './components/elements/button';
 
 class App extends Component {
     render() {
@@ -9,6 +10,7 @@ class App extends Component {
             <div>
                 <h2>Hello World!</h2>
                 <Tooltip/>
+                <Button/>
             </div>
         )
     }
