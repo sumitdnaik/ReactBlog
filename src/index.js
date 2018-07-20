@@ -10,7 +10,7 @@ class App extends Component {
             <div>
                 <h2>Hello World!</h2>
                 <Tooltip/>
-                <Button onClick={} type="link"/>
+                <Button type="link" href="http://google.com"/>
             </div>
         )
     }
