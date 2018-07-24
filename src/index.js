@@ -34,7 +34,7 @@ class App extends Component {
             <div>
                 <h2>Hello World!</h2>
                 <div>
-                    <a href="javascript:void(0)" onClick={this.clickOpen} ref={(value) => this.tooltipOpener = value}>Open</a>
+                    <a href="javascript:void(0)" onClick={this.clickOpen} ref={(value) => this.tooltipOpener = value} style={{marginLeft: "40px"}}>Open</a>
                     <Tooltip isOpen={this.state.isTooltipOpen} content={tooltipContent} opener={this.tooltipOpener}/>
                 </div>
                 <Button type="link" href="http://google.com"/>

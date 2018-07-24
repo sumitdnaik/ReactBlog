@@ -5,6 +5,14 @@ import "./style.scss";
 
 class Tooltip extends Component {
 
+  constructor(props){
+    super(props);
+    this.onBodyClick = this.onBodyClick.bind(this);
+    this.state = {
+      opened: this.props.isOpen
+    }
+  }
+
   getPosition(opener){
     let rect = opener.getBoundingClientRect();
     return ({
@@ -13,9 +21,31 @@ class Tooltip extends Component {
     });
   }
 
+  componentDidMount() {
+    document.body.addEventListener('click', this.onBodyClick);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.onBodyClick);
+  }
+
+  onBodyClick(e) {
+      if(e.target.hasAttribute && e.target.hasAttribute("tooltipopener")) {
+        console.log(this.props.isOpen);
+        this.setState({
+          opened: this.props.isOpen
+        });
+      }
+      else {
+        this.setState({
+          opened: false
+        });
+      }
+  }
+
   render(){
     return(
-        <div className={"arrow-box " + (this.props.isOpen ? "show" : "hide")} style={ this.props.isOpen ? this.getPosition(this.props.opener) : null } >
+        <div className={"arrow-box " + (this.state.opened ? "show" : "hide")} style={ this.props.isOpen ? this.getPosition(this.props.opener) : null } >
             <div className="arrow-up"></div>
             <div className="tooltip-content-wrapper">{this.props.content}</div>
         </div>
