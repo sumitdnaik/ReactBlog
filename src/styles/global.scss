@@ -46,3 +46,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/*End Reset CSS*/
+@font-face {
+    font-family: Roboto;
+    src: url('./fonts/Roboto-Regular.ttf');
+}
+
+body {
+  font-family: Roboto;
+  font-size: 100%;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+}

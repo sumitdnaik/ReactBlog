@@ -36,7 +36,7 @@ class Tooltip extends Component {
   }
 
   onBodyClick(e) {
-      if(e.target.hasAttribute && e.target.hasAttribute("tooltipopener")) {
+      if(e.target == this.props.opener) {
         return;
       }
       else {

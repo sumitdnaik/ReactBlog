@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
-import './styles/reset.css';
+import './styles/global.scss';
 
 class App extends Component {
 
@@ -56,7 +56,10 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            //Header here - 100% width
+
+            //Main Content Layout
+            <div className="main-container">
                 <h2>Hello World!</h2>
                 <div>
                     <a href="javascript:void(0)" onClick={this.clickOpen} ref={(value) => this.link = value}>Open</a>
@@ -68,6 +71,8 @@ class App extends Component {
 
                 <Button type="link" href="http://google.com"/>
             </div>
+
+            //Footer here - 100% width
         )
     }
 }
