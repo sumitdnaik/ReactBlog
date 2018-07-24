@@ -29,12 +29,15 @@ class Tooltip extends Component {
     document.body.removeEventListener('click', this.onBodyClick);
   }
 
+  componentWillReceiveProps(props){
+    this.setState({
+      opened: props.isOpen
+    });
+  }
+
   onBodyClick(e) {
       if(e.target.hasAttribute && e.target.hasAttribute("tooltipopener")) {
-        console.log(this.props.isOpen);
-        this.setState({
-          opened: this.props.isOpen
-        });
+        return;
       }
       else {
         this.setState({
