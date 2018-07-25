@@ -1,5 +1,4 @@
 import React , { Component } from 'react';
-//import validator from 'validator';
 
 import './style.scss';
 

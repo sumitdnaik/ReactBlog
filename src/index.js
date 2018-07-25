@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
+import Inout from './components/elements/input'
 import './styles/global.scss';
 
 class App extends Component {
