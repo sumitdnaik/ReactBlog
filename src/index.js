@@ -16,7 +16,10 @@ class App extends Component {
     this.state = {
       isTooltipOpen: false,
       tooltipContent: <div></div>,
-      tooltipOpener: {}
+      tooltipOpener: {},
+      emailValidator : /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/ ,
+      emailValidatinMessage : 'Please enter a valid email',
+      placeholder:'Email'
     }
   }
 
@@ -70,6 +73,12 @@ class App extends Component {
                 </div>
 
                 <Button type="link" href="http://google.com"/>
+                <Input  
+                    type="text"  
+                    validate={this.state.emailValidator}  
+                    validationMessage = {this.state.emailValidatinMessage}
+                    placeholder = {this.state.placeholder}
+                />
             </div>
 
             //Footer here - 100% width
