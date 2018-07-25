@@ -1,0 +1,24 @@
+
+
+@mixin btn-theme {
+    
+}
+
+ .btn-container {
+    margin-top:20px;
+  }
+
+ .btn {
+    padding:10px;
+    border-radius:5px;
+    border: 1px solid #007bff;
+    cursor:pointer;
+    color:#007bff;
+    text-decoration: none;
+    &:hover {
+        background-color: #007bff;
+        color:#fff;
+        text-decoration: none;
+    }
+ } 
+ 
