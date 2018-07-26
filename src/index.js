@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
-import Inout from './components/elements/input'
+import Input from './components/elements/input'
 import './styles/global.scss';
 
 class App extends Component {
@@ -18,8 +18,9 @@ class App extends Component {
       isTooltipOpen: false,
       tooltipContent: <div></div>,
       tooltipOpener: {},
-      emailValidator : /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/ ,
-      emailValidatinMessage : 'Please enter a valid email',
+      errorTooltip: true,
+      emailValidator : /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
+      emailValidationMessage : 'Please enter a valid email',
       placeholder:'Email'
     }
   }
@@ -68,16 +69,19 @@ class App extends Component {
                 <div>
                     <a href="javascript:void(0)" onClick={this.clickOpen} ref={(value) => this.link = value}>Open</a>
 
-                    <input type="text" onFocus={this.focusInput} onBlur={this.blurInput} ref={(value) => this.input = value} />
-
-                    <Tooltip isOpen={this.state.isTooltipOpen} content={this.state.tooltipContent} opener={this.state.tooltipOpener}/>
+                    <Tooltip
+                      isOpen={this.state.isTooltipOpen}
+                      content={this.state.tooltipContent}
+                      opener={this.state.tooltipOpener}
+                      error={this.state.errorTooltip}
+                    />
                 </div>
 
                 <Button type="link" href="http://google.com"/>
-                <Input  
-                    type="text"  
-                    validate={this.state.emailValidator}  
-                    validationMessage = {this.state.emailValidatinMessage}
+                <Input
+                    type="text"
+                    validate={this.state.emailValidator}
+                    validationMessage = {this.state.emailValidationMessage}
                     placeholder = {this.state.placeholder}
                 />
             </div>

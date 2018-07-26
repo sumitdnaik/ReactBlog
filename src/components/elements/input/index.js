@@ -1,11 +1,13 @@
 import React , { Component } from 'react';
-
+import Tooltip from '../tooltip';
 import './style.scss';
 
 class Input extends Component{
 constructor(props) {
       super(props);
-		
+
+      this.node = null;
+
       this.state = {
          inputValue:'',
          isValid : true,
@@ -34,7 +36,7 @@ constructor(props) {
                 }
             );
         }
-          
+
     };
 
     render(){
@@ -48,23 +50,23 @@ constructor(props) {
 
         /* if invalid, add appropriate status */
          !this.state.isValid ? classList.push('input_error') : classList.push('input');
-
         return(
-            <div className="input_wrapper">
-                <input className={classList.join(' ')} required={this.props.required} 
-                    type= {this.props.type}
-                    onBlur={this.checkValidity.bind(this)}
-                    disabled={this.props.disabled}
-                    placeholder = {this.props.placeholder}
-                />
-                 {!this.state.isValid &&
-                    <div className="errorMessage">
-                        {/* use tooltip component here */}
-                        <div message={this.props.errorMessage} variant="danger">
-                           {this.state.errorMessage}
-                        </div>
-                    </div>
-                 }
+            <div>
+              <div className="input_wrapper">
+                  <input className={classList.join(' ')} required={this.props.required}
+                      type= {this.props.type}
+                      onBlur={this.checkValidity.bind(this)}
+                      disabled={this.props.disabled}
+                      placeholder = {this.props.placeholder}
+                      ref={(value) => this.node = value}
+                  />
+              </div>
+              <Tooltip
+                isOpen={!this.state.isValid}
+                content={this.props.validationMessage}
+                opener={this.node}
+                error={!this.state.isValid}
+              />
             </div>
         )
     }
