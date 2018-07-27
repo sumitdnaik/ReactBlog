@@ -63,7 +63,7 @@ constructor(props) {
               </div>
               <Tooltip
                 isOpen={!this.state.isValid}
-                content={this.props.validationMessage}
+                content={this.state.errorMessage}
                 opener={this.node}
                 error={!this.state.isValid}
               />
