@@ -52,13 +52,13 @@ table {
     src: url('./fonts/Roboto-Regular.ttf');
 }
 
-body {
+body, input {
   font-family: Roboto;
   font-size: 100%;
 }
 
-.main-container {
+.width-container {
   width: 100%;
   max-width: 1200px;
-  margin: 30px auto;
+  margin: 0 auto;
 }

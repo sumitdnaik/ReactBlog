@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
-import Input from './components/elements/input'
+import Input from './components/elements/input';
+import HeaderPreLogin from './components/modules/headerPreLogin';
 import './styles/global.scss';
 
 class App extends Component {
@@ -61,10 +62,11 @@ class App extends Component {
 
     render() {
         return (
-            //Header here - 100% width
 
-            //Main Content Layout
-            <div className="main-container">
+        <div>
+            <HeaderPreLogin/>
+
+            <div className="width-container">
                 <h2>Hello World!</h2>
                 <div>
                     <a href="javascript:void(0)" onClick={this.clickOpen} ref={(value) => this.link = value}>Open</a>
@@ -77,7 +79,7 @@ class App extends Component {
                     />
                 </div>
 
-                <Button type="link" href="http://google.com"/>
+                <Button type="link" href="http://google.com">Google</Button>
                 <Input
                     type="text"
                     validate={this.state.emailValidator}
@@ -86,7 +88,7 @@ class App extends Component {
                 />
             </div>
 
-            //Footer here - 100% width
+          </div>
         )
     }
 }
