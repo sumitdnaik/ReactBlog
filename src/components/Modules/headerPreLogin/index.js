@@ -4,7 +4,7 @@ import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 
 import constants from '../../../constants/global';
 import Button from '../../elements/button';
-// import './style.scss';
+import './style.scss';
 
 function HeaderPreLogin() {
     return(

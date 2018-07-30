@@ -1,0 +1,37 @@
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.header-wrapper {
+  padding: 20px 0;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 72%, #e5e5e5 86%);
+  background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
+  background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+
+  .width-container {
+      @include display-flex();
+      align-items: center;
+      justify-content: center;
+      position: relative;
+  }
+
+  .logo {
+    font-size: 18px;
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  .right-wrapper {
+      position: absolute;
+      right: 0;
+  }
+
+}
