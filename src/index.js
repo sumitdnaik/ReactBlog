@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 
+import './styles/global.scss';
+
 import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
 import Input from './components/elements/input';
 import Login from './components/modules/login';
 import HeaderPreLogin from './components/modules/headerPreLogin';
-import './styles/global.scss';
 
 class App extends Component {
 

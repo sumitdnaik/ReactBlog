@@ -47,6 +47,13 @@ table {
 	border-spacing: 0;
 }
 /*End Reset CSS*/
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 @font-face {
     font-family: Roboto;
     src: url('./fonts/Roboto-Regular.ttf');
