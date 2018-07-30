@@ -7,7 +7,7 @@
 }
 
 .header-wrapper {
-  padding: 10px 0;
+  padding: 20px 0;
   background: #ffffff;
   background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 72%, #e5e5e5 86%);
   background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
@@ -16,6 +16,9 @@
 
   .width-container {
       @include display-flex();
+      align-items: center;
+      justify-content: center;
+      position: relative;
   }
 
   .logo {
@@ -25,4 +28,10 @@
       text-decoration: none;
     }
   }
+
+  .right-wrapper {
+      position: absolute;
+      right: 0;
+  }
+
 }
