@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 
 import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
-import Input from './components/elements/input'
+import Input from './components/elements/input';
+import Login from './components/modules/login';
 import './styles/global.scss';
 
 class App extends Component {
@@ -61,7 +63,10 @@ class App extends Component {
 
     render() {
         return (
-            //Header here - 100% width
+            
+            <Router>
+              <div>
+              //Header here - 100% width
 
             //Main Content Layout
             <div className="main-container">
@@ -78,15 +83,22 @@ class App extends Component {
                 </div>
 
                 <Button type="link" href="http://google.com"/>
-                <Input
-                    type="text"
-                    validate={this.state.emailValidator}
-                    validationMessage = {this.state.emailValidationMessage}
-                    placeholder = {this.state.placeholder}
-                />
+                
+                <div>
+                  <ul>
+                    <li><Link to="/">Login</Link></li>
+                    <li><Link to="/Register">Register</Link></li>
+                  </ul>
+                </div>
+            </div>
+            <div>
+              <Route path="/" component={Login} ></Route>
+              {/* <Route path="/Register" component={Register}></Route> */}
             </div>
 
-            //Footer here - 100% width
+            {/* Footer here - 100% width */}
+            </div>
+            </Router>
         )
     }
 }
