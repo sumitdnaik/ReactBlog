@@ -7,10 +7,15 @@ $loginInputColor:'#f0e8e891';
 
 .submit{
     margin-left: 20px;
+    .link{
+        display:inline;
+        float:left;
+        margin:10px;
+    }
 }
 
 .inputField{
-    margin : 10px;
+    margin : 30px;
     
     .input{
         width:70%;
@@ -21,4 +26,5 @@ $loginInputColor:'#f0e8e891';
         border:1px solid lightgrey;
         padding-left: 10px;
     }
+    
 }

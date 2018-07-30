@@ -6,6 +6,7 @@ import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
 import Input from './components/elements/input';
 import Login from './components/modules/login';
+import HeaderPreLogin from './components/modules/headerPreLogin';
 import './styles/global.scss';
 
 class App extends Component {
@@ -63,41 +64,23 @@ class App extends Component {
 
     render() {
         return (
-            
+
             <Router>
               <div>
-              //Header here - 100% width
+              <div>
+             <HeaderPreLogin /> 
 
-            //Main Content Layout
-            <div className="main-container">
-                <h2>Hello World!</h2>
-                <div>
-                    <a href="javascript:void(0)" onClick={this.clickOpen} ref={(value) => this.link = value}>Open</a>
 
-                    <Tooltip
-                      isOpen={this.state.isTooltipOpen}
-                      content={this.state.tooltipContent}
-                      opener={this.state.tooltipOpener}
-                      error={this.state.errorTooltip}
-                    />
-                </div>
-
-                <Button type="link" href="http://google.com"/>
-                
-                <div>
-                  <ul>
-                    <li><Link to="/">Login</Link></li>
-                    <li><Link to="/Register">Register</Link></li>
-                  </ul>
-                </div>
-            </div>
             <div>
               <Route path="/" component={Login} ></Route>
               {/* <Route path="/Register" component={Register}></Route> */}
             </div>
 
+           
             {/* Footer here - 100% width */}
             </div>
+
+          </div>
             </Router>
         )
     }

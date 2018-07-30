@@ -1,5 +1,6 @@
 import React , { Component } from 'react'; 
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 
 import Input from '../../elements/input';
 import Button from '../../elements/button';
@@ -34,10 +35,10 @@ class Login extends Component{
                 </div>
                 <div className="submit">
                     <div className="link">
-                    <Button type="submit" />
+                    <span><Link to="/Register">Create Account</Link></span>
                     </div>
                     <div className="submitBtn">
-                    <Button type="submit" />
+                    <Button type="submit" children="Login" />
                     </div>
                 </div>
             </div>
