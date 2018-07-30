@@ -1,7 +1,9 @@
 
-
-@mixin btn-theme {
-
+@mixin transition($property){
+	-webkit-transition: $property;
+		 -moz-transition: $property;
+			 -o-transition: $property;
+			 		transition: $property;
 }
 
  .btn {
@@ -12,6 +14,7 @@
     cursor:pointer;
     color:#007bff;
     text-decoration: none;
+    @include transition(all 0.3s);
     &:hover {
         background-color: #007bff;
         color:#fff;

@@ -11,14 +11,14 @@ function HeaderPreLogin() {
       <header role='banner'>
         <div className="header-wrapper">
           <div className="width-container">
-            <p className="logo"><a href="javascript: void(0)">{constants.logo}</a></p>
-            <div className="right-wrapper">
-              <Button type="link" href="javascript: void(0)">Sign Up</Button>
+            <div className="logo">
+              <a href="javascript: void(0)">{constants.logo}</a>
             </div>
-            <ul>
-                <li><Link to="/">Login</Link></li>
-                <li><Link to="/Register">Register</Link></li>
-            </ul>
+            <div className="right-wrapper">
+              <Link to="/" className="btn">Login</Link>
+              <Link to="/signUp" className="btn">Sign Up</Link>
+            </div>
+            <div className="clearfix"></div>
           </div>
         </div>
       </header>
