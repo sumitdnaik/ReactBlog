@@ -6,34 +6,23 @@ import constants from '../../../constants/global';
 import Button from '../../elements/button';
 import './style.scss';
 
-class HeaderPreLogin extends Component {
-  constructor(props){
-    super(props);
-  }
-
-
-    signUp(event) {
-        event.preventDefault();
-        console.log('clicked');
-        this.props.history.push('/register');
-        this.context.router.transitionTo('/register');
-        //Router.transitionTo('/register');
-    };
-    render(){
-      return(
-        <header role='banner'>
-          <div className="header-wrapper">
-            <div className="width-container">
-              <p className="logo"><a href="javascript: void(0)">{constants.logo}</a></p>
-              <div className="right-wrapper">
-                <Button click={this.signUp.bind(this)} type="link" href="javascript: void(0)">Sign Up</Button>
-              </div>
-            
+function HeaderPreLogin() {
+    return(
+      <header role='banner'>
+        <div className="header-wrapper">
+          <div className="width-container">
+            <div className="logo">
+              <a href="javascript: void(0)">{constants.logo}</a>
             </div>
+            <div className="right-wrapper">
+              <Link to="/" className="btn">Login</Link>
+              <Link to="/signUp" className="btn">Sign Up</Link>
+            </div>
+            <div className="clearfix"></div>
           </div>
-        </header>
-      );
-    }
+        </div>
+      </header>
+    );
 }
 
 export default HeaderPreLogin;
