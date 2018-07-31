@@ -69,8 +69,7 @@ class App extends Component {
             <Router>
               <div>
               <div>
-             <HeaderPreLogin /> 
-
+             <HeaderPreLogin prop="data" /> 
 
             <div>
               <Route path="/" component={Login} ></Route>
