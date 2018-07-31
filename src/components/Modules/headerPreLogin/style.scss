@@ -7,31 +7,44 @@
 }
 
 .header-wrapper {
-  padding: 20px 0;
+  padding: 15px 0;
   background: #ffffff;
   background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 72%, #e5e5e5 86%);
   background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
   background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
+     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
+          box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
 
   .width-container {
-      @include display-flex();
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
   }
 
   .logo {
-    font-size: 18px;
+    width: 200px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
     a {
       color: black;
+      font-size: 18px;
       text-decoration: none;
     }
   }
 
   .right-wrapper {
-      position: absolute;
-      right: 0;
+    float: right;
+    .btn {
+      margin-left: 20px;
+    }
   }
 
 }
