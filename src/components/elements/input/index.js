@@ -27,7 +27,7 @@ constructor(props) {
                     isValid : false,
                 }
             )
-        }else{
+        }else if(this.props.validate){
             let isInputValid = this.props.validate.test(e.target.value);
             this.setState(
                 {

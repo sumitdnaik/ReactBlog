@@ -19,7 +19,7 @@ class Login extends Component{
 
     Login() {
         console.log('clicked');
-    this.props.history.push('/register');
+    this.props.history.push('/login');
    }
 
     render(){
@@ -40,7 +40,7 @@ class Login extends Component{
                 </div>
                 <div className="submit">
                     <div className="link">
-                    <span><Link to="/Register">Create Account</Link></span>
+                    <span><Link to="/signUp">Create Account</Link></span>
                     </div>
                     <div className="submitBtn">
                     <Button click={this.Login.bind(this)} type="submit" children="Login" />

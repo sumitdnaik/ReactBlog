@@ -73,3 +73,13 @@ body, input {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.preLogin{
+	background: #525252; 
+	background: -webkit-linear-gradient(to right, #3d72b4, #525252); 
+	background: linear-gradient(to right, #3d72b4, #525252);
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	height: 600px;
+}

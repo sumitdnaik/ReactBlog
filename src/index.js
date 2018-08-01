@@ -69,9 +69,9 @@ class App extends Component {
             <Router>
               <div>
               <div>
-             <HeaderPreLogin prop="data" /> 
+             <HeaderPreLogin /> 
 
-            <div>
+            <div className="preLogin">
               <Route path="/" component={Login} ></Route>
               {/* <Route path="/Register" component={Register}></Route> */}
             </div>

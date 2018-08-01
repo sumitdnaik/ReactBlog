@@ -4,8 +4,7 @@ $errorBorder : 2px solid red;
     position:relative;
   .input{
     display: block;
-    margin:10px 0 0 10px;
-    width:30%;
+    width:100%;
     .input_valid{
       @extend .input;
     }
