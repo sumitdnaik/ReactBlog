@@ -6,6 +6,12 @@
   display: flex;
 }
 
+@mixin box-shadow($property){
+  -webkit-box-shadow: $property;
+     -moz-box-shadow: $property;
+          box-shadow: $property;
+}
+
 .header-wrapper {
   padding: 15px 0;
   background: #ffffff;
@@ -13,9 +19,7 @@
   background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
   background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
-  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
-     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
-          box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.55);
+  @include box-shadow(0px 0px 15px 0px rgba(0,0,0,0.55));
 
   .width-container {
     text-align: center;

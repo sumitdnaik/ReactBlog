@@ -67,6 +67,18 @@ body, input {
 .clearfix {
 	clear: both;
 }
+a {
+		text-decoration: none;
+		color: #2477ab;
+		&:focus, &:hover {
+			text-decoration: underline;
+		}
+}
+a, input, button {
+	&:focus {
+		outline: 1px solid #4d90fe;
+	}
+}
 
 .width-container {
   width: 100%;
@@ -74,12 +86,11 @@ body, input {
   margin: 0 auto;
 }
 
-.preLogin{
-	background: #525252; 
-	background: -webkit-linear-gradient(to right, #3d72b4, #525252); 
+.pre-login{
+	background: #525252;
+	background: -webkit-linear-gradient(to right, #3d72b4, #525252);
 	background: linear-gradient(to right, #3d72b4, #525252);
 	display:flex;
 	align-items: center;
 	justify-content: center;
-	height: 600px;
 }

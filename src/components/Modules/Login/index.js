@@ -39,12 +39,10 @@ class Login extends Component{
 
                 </div>
                 <div className="submit">
-                    <div className="link">
-                    <span><Link to="/signUp">Create Account</Link></span>
-                    </div>
-                    <div className="submitBtn">
+                  <div className="submitBtn">
                     <Button onClick={this.Login.bind(this)} type="submit" children="Login" />
-                    </div>
+                  </div>
+                  <Link to="/signUp">Create Account</Link>
                 </div>
             </div>
         )

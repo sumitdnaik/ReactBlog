@@ -64,19 +64,20 @@ class App extends Component {
   }
 
     render() {
+      const headerHeight = 68;
         return (
 
             <Router>
               <div>
               <div>
-             <HeaderPreLogin /> 
+             <HeaderPreLogin />
 
-            <div className="preLogin">
+            <div className="pre-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
               <Route path="/" component={Login} ></Route>
               {/* <Route path="/Register" component={Register}></Route> */}
             </div>
 
-           
+
             {/* Footer here - 100% width */}
             </div>
 
