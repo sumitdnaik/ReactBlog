@@ -1,17 +1,16 @@
 
 $errorBorder : 2px solid red;
 .input_wrapper{
-    position:relative;
+  padding: 10px;
   .input{
-    display: block;
-    width:100%;
+
     .input_valid{
       @extend .input;
     }
     &:focus &:hover{
       border: 2px solid purple
     }
-  }  
+  }
   .input_error{
     @extend .input;
     border : $errorBorder;
@@ -20,4 +19,3 @@ $errorBorder : 2px solid red;
     color:red;
   }
 }
-

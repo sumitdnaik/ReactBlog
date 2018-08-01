@@ -1,4 +1,4 @@
-import React , { Component } from 'react'; 
+import React , { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 
@@ -36,14 +36,14 @@ class Login extends Component{
                         type="text"
                         placeholder={this.state.pwdPlaceholder}
                     />
-                    
+
                 </div>
                 <div className="submit">
                     <div className="link">
                     <span><Link to="/signUp">Create Account</Link></span>
                     </div>
                     <div className="submitBtn">
-                    <Button click={this.Login.bind(this)} type="submit" children="Login" />
+                    <Button onClick={this.Login.bind(this)} type="submit" children="Login" />
                     </div>
                 </div>
             </div>

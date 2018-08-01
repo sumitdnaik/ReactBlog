@@ -8,8 +8,8 @@ $loginInputColor:'#f0e8e891';
     background: linear-gradient($color1 0%, $color2 72%, $color3 86%);
 }
 .loginContainer{
-    width:500px; 
-    padding:10px; 
+    width:500px;
+    padding:10px;
     margin:auto;
     @include backgroundColor(#ffffff,#e5e5e5,#e5e5e5);
 
@@ -19,7 +19,7 @@ $loginInputColor:'#f0e8e891';
     margin: 30px;
     display: flex;
     justify-content: center;
-    
+
     .link{
         text-align: center;
         margin: 10px;
@@ -39,8 +39,4 @@ $loginInputColor:'#f0e8e891';
         width: 100%;
     }
 
-    div{
-        margin-top: 10px
-    }
-    
 }
