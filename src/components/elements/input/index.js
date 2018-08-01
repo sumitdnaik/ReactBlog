@@ -11,11 +11,15 @@ constructor(props) {
       this.state = {
          inputValue:'',
          isValid : true,
-         errorMessage:''
+         errorMessage:'',
+         showError: false
       }
    }
     setValue(e){
-        this.setState(inputValue:e.target.value);
+        this.setState({
+            inputValue:e.target.value,
+            showError:false
+        });
     }
 
     /** on blur or submit, check input validity */
@@ -24,7 +28,7 @@ constructor(props) {
             this.setState(
                 {
                     errorMessage:'This is required field',
-                    isValid : false,
+                    isValid : false
                 }
             )
         }else if(this.props.validate){
@@ -37,7 +41,16 @@ constructor(props) {
             );
         }
 
+        this.setState({showError:false})
+
     };
+
+    showError(){
+        this.setState({
+            showError: !this.state.isValid
+        })
+        
+    }
 
     render(){
         const classList : Array<string> = [];
@@ -59,10 +72,11 @@ constructor(props) {
                       disabled={this.props.disabled}
                       placeholder = {this.props.placeholder}
                       ref={(value) => this.node = value}
+                      onFocus={this.showError.bind(this)}
                   />
               </div>
               <Tooltip
-                isOpen={!this.state.isValid}
+                isOpen={this.state.showError}
                 content={this.state.errorMessage}
                 opener={this.node}
                 error={!this.state.isValid}
