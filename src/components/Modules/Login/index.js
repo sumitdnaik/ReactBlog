@@ -10,17 +10,10 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            pwdPlaceholder:'Password',
-            emailPlaceholder:'Email',
             emailValidationMessage:'Please enter valid email',
             emailValidator:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
         }
     }
-
-    Login() {
-        console.log('clicked');
-    this.props.history.push('/login');
-   }
 
     render(){
         return(
@@ -30,19 +23,19 @@ class Login extends Component{
                         type="text"
                         validate={this.state.emailValidator}
                         validationMessage={this.state.emailValidationMessage}
-                        placeholder={this.state.emailPlaceholder}
+                        placeholder='Email'
                     />
                     <Input
                         type="text"
-                        placeholder={this.state.pwdPlaceholder}
+                        placeholder='Password'
                     />
 
                 </div>
                 <div className="submit">
                   <div className="submitBtn">
-                    <Button onClick={this.Login.bind(this)} type="submit" children="Login" />
+                    <Button type="submit">Login</Button>
                   </div>
-                  <Link to="/signUp">Create Account</Link>
+                  <Link to="/SignUp">Create Account</Link>
                 </div>
             </div>
         )

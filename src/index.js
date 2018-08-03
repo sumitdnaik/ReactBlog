@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
+import { BrowserRouter as Router , Route , Link, Switch } from 'react-router-dom';
 
 import './styles/global.scss';
 
@@ -8,8 +8,8 @@ import Tooltip from './components/elements/tooltip';
 import Button from './components/elements/button';
 import Input from './components/elements/input';
 import Login from './components/modules/login';
-import HeaderPreLogin from './components/modules/headerPreLogin';
-
+import Header from './components/modules/header';
+import SignUp from './components/modules/signUp';
 class App extends Component {
 
   constructor(props){
@@ -66,24 +66,19 @@ class App extends Component {
     render() {
       const headerHeight = 68;
         return (
-
-            <Router>
-              <div>
-              <div>
-             <HeaderPreLogin />
-
-            <div className="pre-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
-              <Route path="/" component={Login} ></Route>
-              {/* <Route path="/Register" component={Register}></Route> */}
+          <Router>
+            <div>
+              <Header/>
+              <h1 className="sr-only">ReactBlog: Awesome reads, great articles</h1>
+              <div className="pre-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+                <Switch>
+                  <Route exact path="/" component={Login} ></Route>
+                  <Route exact path="/SignUp" component={SignUp}></Route>
+                </Switch>
+              </div>
             </div>
-
-
-            {/* Footer here - 100% width */}
-            </div>
-
-          </div>
-            </Router>
-        )
+          </Router>
+        );
     }
 }
 

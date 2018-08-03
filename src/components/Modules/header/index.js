@@ -6,7 +6,7 @@ import constants from '../../../constants/global';
 import Button from '../../elements/button';
 import './style.scss';
 
-function HeaderPreLogin() {
+function Header() {
     return(
       <header role='banner'>
         <div className="header-wrapper">
@@ -25,4 +25,4 @@ function HeaderPreLogin() {
     );
 }
 
-export default HeaderPreLogin;
+export default Header;
