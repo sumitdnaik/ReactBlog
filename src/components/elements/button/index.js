@@ -8,10 +8,6 @@ function Button(props) {
         let {type, ...otherProps} = props;
         console.log(otherProps);
 
-        // clickHandler(props) {
-        //     console.log('clicked in child');
-        // }
-
         if(type == 'link') {
             element = <a className="btn" {...otherProps}>{props.children}</a>;
 
@@ -21,7 +17,6 @@ function Button(props) {
         }
         else if(type == 'submit') {
            element = <button type="submit" className="btn" {...otherProps}>{props.children}</button>;
-
         }
         return(
             element

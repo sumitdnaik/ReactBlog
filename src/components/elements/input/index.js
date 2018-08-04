@@ -42,7 +42,7 @@ constructor(props) {
         }
 
         this.setState({showError:false})
-
+        this.props.getValue(e);
     };
 
     showError(){
