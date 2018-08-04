@@ -59,6 +59,9 @@ table {
     src: url('./fonts/Roboto-Regular.ttf');
 }
 
+body {
+	color: #293033;
+}
 body, input {
   font-family: Roboto;
   font-size: 100%;
@@ -74,9 +77,10 @@ a {
 			text-decoration: underline;
 		}
 }
-a, input, button {
+
+a, button {
 	&:focus {
-		outline: 1px solid #4d90fe;
+		outline: 1px solid #42699b;
 	}
 }
 
@@ -89,6 +93,11 @@ a, input, button {
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: 0;
+}
+
+h2 {
+	font-size: 1.125em;
+	padding: 10px;
 }
 
 .width-container {

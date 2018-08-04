@@ -55,22 +55,27 @@ constructor(props) {
     render(){
         const classList : Array<string> = [];
 
+        //Default class
+        classList.push('input');
+
         /** if no label, add correct styles */
-        if (this.props.placeholder) classList.push('input_no_padding');
+        //if (this.props.placeholder) classList.push('input-no-padding');
 
         /* add appropriate status for input value */
-        if (this.state.isEmpty && !this.props.value) classList.push('input_empty');
+        //if (this.state.isEmpty && !this.props.value) classList.push('input-empty');
 
         /* if invalid, add appropriate status */
-         !this.state.isValid ? classList.push('input_error') : classList.push('input');
+        if(!this.state.isValid) classList.push('input-error');
+
+        let { validate, validationMessage, getValue, ...otherProps } = this.props;
+
         return(
             <div>
-              <div className="input_wrapper">
-                  <input className={classList.join(' ')} required={this.props.required}
-                      type= {this.props.type}
+              <div className="input-wrapper">
+                  <input
+                      {...otherProps}
+                      className={classList.join(' ')}
                       onBlur={this.checkValidity.bind(this)}
-                      disabled={this.props.disabled}
-                      placeholder = {this.props.placeholder}
                       ref={(value) => this.node = value}
                       onFocus={this.showError.bind(this)}
                   />

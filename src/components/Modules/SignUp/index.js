@@ -14,9 +14,9 @@ class SignUp extends Component {
 
     render(){
         return(
-            <div className="loginContainer">
 
-              <h2>Sign up to access millions of awesome articles and start exploring instantly.</h2>
+          <form noValidate>
+            <div className="loginContainer">
 
                 <div>
                     <Input
@@ -44,11 +44,13 @@ class SignUp extends Component {
 
                 <div className="submit">
                   <div className="submitBtn">
-                    <Button type="submit" children="Login" />
+                    <Button type="button">Sign Up</Button>
                   </div>
-                  <Link to="/signUp">Create Account</Link>
+                  <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
                 </div>
             </div>
+
+          </form>
         );
     }
 }

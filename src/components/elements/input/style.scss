@@ -1,27 +1,31 @@
 
 $errorBorder : 2px solid #be4b49;
-.input_wrapper{
-  padding: 10px 0 20px 0;
-  .input{
 
+.input-wrapper {
+  padding: 10px 0 20px 0;
+  .input {
     height: 40px;
     border:1px solid lightgrey;
     padding: 10px;
     width: 100%;
 
-    .input_valid{
-      @extend .input;
+    &:focus {
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(24, 39, 50, 0.6);
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(24, 39, 50, 0.6);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(24, 39, 50, 0.6);
     }
-    &:focus &:hover{
-      border: 2px solid purple
+
+  }
+  .input-error {
+    border: $errorBorder;
+    &:focus {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
     }
   }
-  .input_error{
-    @extend .input;
-    border : $errorBorder;
-  }
-  .errorMessage{
-    color:red;
+  .error-message{
+    color: red;
   }
 
 }

@@ -20,7 +20,7 @@ $loginInputColor:'#f0e8e891';
           border-radius: $property;
 }
 
-.loginContainer{
+.login-container{
     width:400px;
     padding:30px 20px;
     margin:auto;
@@ -31,7 +31,7 @@ $loginInputColor:'#f0e8e891';
 
 .submit{
     text-align: center;
-    .submitBtn {
+    .submit-btn {
       margin-bottom: 20px;
     }
 }

@@ -17,7 +17,7 @@
     @include transition(all 0.3s);
 		font-size: 1em;
     @include transition('box-shadow .08s linear,min-width .15s cubic-bezier(0.4,0.0,0.2,1)');
-    &:hover {
+    &:hover, &:focus {
         background-color: #42699b;
         color:#fff;
         text-decoration: none;
