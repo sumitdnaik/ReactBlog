@@ -41,8 +41,9 @@ constructor(props) {
             );
         }
 
-        this.setState({showError:false})
-        this.props.getValue(e);
+        this.setState({showError:false});
+
+        this.props.getValue ? this.props.getValue(e): "";
     };
 
     showError(){

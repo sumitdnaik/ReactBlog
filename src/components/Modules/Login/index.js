@@ -10,6 +10,7 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
+            loginStatus:true,
             email : '',
             Password:'',
             emailValidationMessage:'Please enter valid email',
@@ -19,10 +20,12 @@ class Login extends Component{
 
     submit(){
         let apiUrl = 'http://127.0.0.1:8000/login/'+this.state.email
-        console.log('caling api');
-        fetch(apiUrl).then(function(result){
+        fetch(apiUrl).then((result) => {
             console.log('data received');
             console.log(result);
+            this.setState({
+                loginStatus : result.status === 200 ? true : false
+            })
         })
     }
 
@@ -52,12 +55,17 @@ class Login extends Component{
                         required='true'
                     />
                     <Input
-                        type="text"
+                        type="password"
                         placeholder='Password'
                         getValue={this.getValue.bind(this)}
                         required='true'
                     />
                 </div>
+                { !this.state.loginStatus &&
+                    <div className="loginError">
+                        <span>Invalid Credentials</span>
+                    </div>
+                }
                 <div className="submit">
                   <div className="submit-btn">
                     <Button onClick={this.submit.bind(this)} type="button">Login</Button>
