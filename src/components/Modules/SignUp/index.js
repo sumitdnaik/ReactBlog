@@ -11,15 +11,21 @@ class SignUp extends Component {
     constructor(props){
         super(props);
         this.signUp = this.signUp.bind(this);
+        this.getValue = this.getValue.bind(this);
+        this.state = {
+          name: "",
+          email: "",
+          password: ""
+        };
     }
 
     signUp(){
       var postObj = {
-        fullname: "Sumit Naik",
-        email: "sumitnaik@test.com",
-        password: "testing"
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
       };
-      fetch("http://127.0.0.1:8000/signup", {
+      fetch("http://127.0.0.1:8000/api/signup", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -30,6 +36,12 @@ class SignUp extends Component {
         response.json().then(function(data){
           console.log(data);
         });
+      });
+    }
+
+    getValue(e){
+      this.setState({
+        [e.target.name]: e.target.value
       });
     }
 
@@ -45,20 +57,30 @@ class SignUp extends Component {
                         placeholder='Your Full Name'
                         validate={/^[A-Za-z]+$/}
                         validationMessage='Only alphabets are allowed'
+                        name='name'
+                        getValue={this.getValue}
+                        required='true'
                     />
                     <Input
                         type="text"
                         placeholder='Your Email'
                         validate={/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/}
                         validationMessage='Please enter a valid email'
+                        name='email'
+                        getValue={this.getValue}
+                        required='true'
                     />
                     <Input
                         type="password"
                         placeholder='Password'
+                        required='true'
                     />
                     <Input
                         type="password"
                         placeholder='Confirm Password'
+                        name='password'
+                        getValue={this.getValue}
+                        required='true'
                     />
 
                 </div>

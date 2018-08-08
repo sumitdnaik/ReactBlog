@@ -10,35 +10,47 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            loginStatus:true,
+            loginStatus: "none",
             email : '',
-            Password:'',
+            password:'',
             emailValidationMessage:'Please enter valid email',
             emailValidator:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
         }
     }
 
     submit(){
-        let apiUrl = 'http://127.0.0.1:8000/login/'+this.state.email
-        fetch(apiUrl).then((result) => {
+        let apiUrl = 'http://127.0.0.1:8000/api/login/';
+
+        let postObj = {
+          email: this.state.email,
+          password: this.state.password
+        };
+
+        let that = this;
+
+        fetch("http://127.0.0.1:8000/api/login", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(postObj)
+        }).then(function(response) {
             console.log('data received');
-            console.log(result);
-            this.setState({
-                loginStatus : result.status === 200 ? true : false
-            })
-        })
+            console.log(that);
+            response.json().then(function(data){
+              console.log(data);
+              that.setState({
+                  loginStatus : data.loggedIn ? "loggedin" : "invalid"
+              });
+            });
+        });
     }
 
     getValue(e){
-        if(e.target.placeholder == 'Password'){
-            this.setState({
-                Password : e.target.value
-            });
-        }else{
-            this.setState({
-                email : e.target.value
-            });
-        }
+      this.setState({
+        [e.target.name]: e.target.value
+      });
     }
 
     render(){
@@ -52,19 +64,29 @@ class Login extends Component{
                         validationMessage={this.state.emailValidationMessage}
                         placeholder='Email'
                         getValue={this.getValue.bind(this)}
+                        name='email'
                         required='true'
                     />
                     <Input
                         type="password"
                         placeholder='Password'
                         getValue={this.getValue.bind(this)}
+                        name='password'
                         required='true'
                     />
                 </div>
-                { !this.state.loginStatus &&
+                {
+                  (this.state.loginStatus == "loggedin") ?
+                  <h3>
+                      LOGGED IN
+                  </h3>
+                  : (this.state.loginStatus == "invalid") ?
                     <div className="loginError">
                         <span>Invalid Credentials</span>
                     </div>
+                  :
+                  ""
+
                 }
                 <div className="submit">
                   <div className="submit-btn">
