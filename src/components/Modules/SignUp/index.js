@@ -10,11 +10,32 @@ import './style.scss';
 class SignUp extends Component {
     constructor(props){
         super(props);
+        this.signUp = this.signUp.bind(this);
+    }
+
+    signUp(){
+      var postObj = {
+        fullname: "Sumit Naik",
+        email: "sumitnaik@test.com",
+        password: "testing"
+      };
+      fetch("http://127.0.0.1:8000/signup", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postObj)
+      }).then(function(response){
+        response.json().then(function(data){
+          console.log(data);
+        });
+      });
     }
 
     render(){
-        return(
 
+        return(
           <form noValidate>
             <div className="loginContainer">
 
@@ -44,7 +65,7 @@ class SignUp extends Component {
 
                 <div className="submit">
                   <div className="submitBtn">
-                    <Button type="button">Sign Up</Button>
+                    <Button type="button" onClick={this.signUp}>Sign Up</Button>
                   </div>
                   <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
                 </div>
