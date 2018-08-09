@@ -15,16 +15,18 @@ class SignUp extends Component {
         this.state = {
           name: "",
           email: "",
-          password: ""
+          password: "",
+          serverMsg: ""
         };
     }
 
     signUp(){
-      var postObj = {
+      let postObj = {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password
       };
+      let that = this;
       fetch("http://127.0.0.1:8000/api/signup", {
         method: "POST",
         headers: {
@@ -35,6 +37,9 @@ class SignUp extends Component {
       }).then(function(response){
         response.json().then(function(data){
           console.log(data);
+          that.setState({
+            serverMsg: data.message
+          })
         });
       });
     }
@@ -50,7 +55,7 @@ class SignUp extends Component {
         return(
           <form noValidate>
             <div className="loginContainer">
-
+                <h3>{this.state.serverMsg}</h3>
                 <div>
                     <Input
                         type="text"
