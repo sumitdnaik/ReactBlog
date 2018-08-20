@@ -2,10 +2,10 @@ import React , { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Session from '../../../Services/Session';
+import Session from '../../../../Services/Session';
 
-import Input from '../../elements/input';
-import Button from '../../elements/button';
+import Input from '../../../elements/input';
+import Button from '../../../elements/button';
 import './style.scss';
 
 class Login extends Component{
@@ -26,33 +26,7 @@ class Login extends Component{
           email: this.state.email,
           password: this.state.password
         };
-
-
         Session.login(postObj);
-
-
-        // let apiUrl = 'http://127.0.0.1:8000/api/login/';
-
-
-        // let that = this;
-
-        // fetch("http://127.0.0.1:8000/api/login", {
-        //   method: "POST",
-        //   headers: {
-        //     'Accept': 'application/json',
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify(postObj)
-        // }).then(function(response) {
-        //     console.log('data received');
-        //     console.log(that);
-        //     response.json().then(function(data){
-        //       console.log(data);
-        //       that.setState({
-        //           loginStatus : data.loggedIn ? "loggedin" : "invalid"
-        //       });
-        //     });
-        // });
     }
 
     getValue(e){
@@ -113,7 +87,6 @@ class Login extends Component{
 }
 
 function mapStateToComponent(state) {
-    debugger;
    return {
       isFetching: state.Session.isFetching
    }

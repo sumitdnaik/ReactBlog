@@ -2,8 +2,8 @@ import React , { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 
-import Input from '../../elements/input';
-import Button from '../../elements/button';
+import Input from '../../../elements/input';
+import Button from '../../../elements/button';
 
 import './style.scss';
 
