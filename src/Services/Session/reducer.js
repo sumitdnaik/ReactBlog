@@ -1,5 +1,5 @@
 
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './actions';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ,LOGOUT } from './actions';
 
 const initialState = {
     isFetching: false,
@@ -30,6 +30,11 @@ export function Session(state = initialState, action) {
                 userObj: localStorage.getItem('session'),
                 token: action.token,
             });
+
+        case LOGOUT:
+            return Object.assign({},state,{
+                userObj: null,
+            })
 
         default:
             return state;

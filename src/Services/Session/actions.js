@@ -23,6 +23,14 @@ export function loginError(errorMessage) {
     };
 }
 
+export const LOGOUT = "LOGOUT";
+export function logout(){
+    localStorage.clear();   
+    return{
+        type:LOGOUT
+    }
+}
+
 export function login(authenticationObj) {
     return (dispatch) => {
         dispatch(requestLogin());
@@ -44,3 +52,4 @@ export function login(authenticationObj) {
         });
     }
 }
+

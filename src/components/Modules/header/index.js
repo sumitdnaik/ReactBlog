@@ -24,6 +24,11 @@ function Header(props) {
                 <div className="right-wrapper">
                   <Link to="/" className="btn">Home</Link>
                   <Link to="/Article" className="btn">Read Article</Link>
+                  {props.signOut && 
+                  <span onClick={props.signOut}>
+                    <i className="btn fa fa-user">Sign Out</i>
+                  </span>   
+                  }
                 </div>
 
             }

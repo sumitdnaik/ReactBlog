@@ -16,6 +16,7 @@ class Session {
                 location.reload(true);
             });
     }
+
 }
 
 export default Session;

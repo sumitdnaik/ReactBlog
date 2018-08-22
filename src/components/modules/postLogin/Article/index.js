@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
 
+import './style.scss'
+
 class Article extends Component{
     constructor(props){
         super(props);
@@ -7,13 +9,13 @@ class Article extends Component{
     
     render(){
         return(
-            <article className="article-container">
+            <main className="article-container">
                 <h1>New Role for developers : MERN</h1>
                 <summary>M:MongoDb , E:ExpressJS , R: ReactJs, N:Nodejs</summary>
                 <section className="about-article">
 
                 </section>
-                <main className="main-article">
+                <article className="main-article">
                     <p>
                     This is the first in a series of blog posts examining the technologies that are driving the development 
                     of modern web and mobile applications, notably the MERN and MEAN stacks. The series will go on to step 
@@ -27,8 +29,8 @@ class Article extends Component{
                     scaled appropriately when needed. Fortunately, there's a (sometimes bewildering) set of enabling technologies 
                     that make all of this possible.
                     </p>
-                </main>
-            </article>
+                </article>
+            </main>
         )
     }
 }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link , Switch} from 'react-router-dom';
 
 import '../../../styles/global.scss';
+import Session from '../../../Services/Session';
 
 import Home from './Home';
 import Article from './Article';
@@ -14,14 +15,18 @@ class PostLogin extends Component{
     this.state = {
     }
   }
+
+  signOut(){
+    Session.logout();
+  } 
     render(){
         const headerHeight = 68;
         return(
             <Router>
             <div>
-              <Header/>
+              <Header signOut={this.signOut.bind(this)}/>
               <h1 className="sr-only">ReactBlog: Awesome reads, great articles</h1>
-              <div className="pre-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+              <div className="post-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
                 <Switch>
                   <Route exact path="/" component={Home} ></Route>
                   <Route exact path="/Article" component={Article}></Route>
