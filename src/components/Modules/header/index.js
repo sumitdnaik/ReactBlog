@@ -23,7 +23,7 @@ function Header(props) {
                 </div> :
                 <div className="right-wrapper">
                   <Link to="/" className="btn">Home</Link>
-                  <Link to="/Article" className="btn">Create Article</Link>
+                  <Link to="/Article" className="btn">Read Article</Link>
                 </div>
 
             }
