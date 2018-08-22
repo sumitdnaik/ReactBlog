@@ -10,13 +10,10 @@ class RootComponent extends Component {
 
   constructor(props){
     super(props);
-    this.state = {
-        isAuthenticated:false
-    }
     
   }
     render() {
-      const Session = localStorage.getItem('session');
+      const Session = this.props.userObj;
       const loggedIn = Session ? true : false;
         return (
           <div>
@@ -28,7 +25,7 @@ class RootComponent extends Component {
 
 function select(state) {
    return {
-      isAuthenticated: state.Session.isFetching
+      userObj: state.Session.userObj
    }
 }
 export default connect(select)(RootComponent);

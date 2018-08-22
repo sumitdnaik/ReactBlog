@@ -36,9 +36,8 @@ function Header(props) {
 }
 
 function mapStateToComponent(state){
-  debugger
   return {
-      isAuthenticated: state.Session.isAuthenticated
+      isAuthenticated: state.Session.userObj
    }
 }
 export default connect(mapStateToComponent)(Header);
