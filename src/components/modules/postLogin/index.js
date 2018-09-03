@@ -18,7 +18,7 @@ class PostLogin extends Component{
 
   signOut(){
     Session.logout();
-  } 
+  }
     render(){
         const headerHeight = 68;
         return(
@@ -26,7 +26,7 @@ class PostLogin extends Component{
             <div>
               <Header signOut={this.signOut.bind(this)}/>
               <h1 className="sr-only">ReactBlog: Awesome reads, great articles</h1>
-              <div className="post-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+              <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
                 <Switch>
                   <Route exact path="/" component={Home} ></Route>
                   <Route exact path="/Article" component={Article}></Route>
