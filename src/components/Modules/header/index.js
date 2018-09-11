@@ -16,23 +16,23 @@ function Header(props) {
               <a href="javascript: void(0)">{constants.logo}</a>
             </div>
             {
-              (!props.isAuthenticated) ? 
+              (!props.isAuthenticated) ?
                 <div className="right-wrapper">
                   <Link to="/" className="btn">Login</Link>
                   <Link to="/signUp" className="btn">Sign Up</Link>
                 </div> :
                 <div className="right-wrapper">
                   <Link to="/" className="btn">Home</Link>
-                  <Link to="/Article" className="btn">Read Article</Link>
-                  {props.signOut && 
-                  <span onClick={props.signOut}>
-                    <i className="btn fa fa-user">Sign Out</i>
-                  </span>   
+                  <Link to="/article" className="btn">Read Article</Link>
+                  {props.signOut &&
+                  <button className="btn" onClick={props.signOut}>
+                    Sign Out
+                  </button>
                   }
                 </div>
 
             }
-            
+
             <div className="clearfix"></div>
           </div>
         </div>

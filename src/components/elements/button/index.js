@@ -5,8 +5,7 @@ import "./style.scss";
 
 function Button(props) {
         let element;
-        let {type, ...otherProps} = props;
-        console.log(otherProps);
+        let {type, ...otherProps} = props;  
 
         if(type == 'link') {
             element = <a className="btn" {...otherProps}>{props.children}</a>;

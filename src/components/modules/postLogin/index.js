@@ -7,6 +7,7 @@ import Session from '../../../Services/Session';
 
 import Home from './Home';
 import Article from './Article';
+import CreateArticle from './createArticle';
 import Header from '../header';
 
 class PostLogin extends Component{
@@ -29,7 +30,8 @@ class PostLogin extends Component{
               <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
                 <Switch>
                   <Route exact path="/" component={Home} ></Route>
-                  <Route exact path="/Article" component={Article}></Route>
+                  <Route exact path="/article" component={Article}></Route>
+                  <Route exact path="/createArticle" component={CreateArticle}></Route>
                 </Switch>
               </div>
             </div>

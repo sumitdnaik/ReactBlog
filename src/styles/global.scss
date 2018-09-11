@@ -55,24 +55,42 @@ table {
 }
 
 @font-face {
-    font-family: Roboto;
+    font-family: "Roboto-Regular";
     src: url('./fonts/Roboto-Regular.ttf');
 }
+
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url('./fonts/Roboto-Bold.ttf');
+}
+
+$primary-blue: #42699b;
 
 body {
 	color: #293033;
 }
-body, input {
-  font-family: Roboto;
+body, input, textarea {
+  font-family: "Roboto-Regular";
   font-size: 100%;
 }
 
 .clearfix {
 	clear: both;
 }
+
+.text-bold, b, strong {
+		font-family: "Roboto-Bold";
+}
+.text-italic, i, em {
+	font-style: italic;
+}
+.text-underline {
+	text-decoration: underline;
+}
+
 a {
 		text-decoration: none;
-		color: #42699b;
+		color: $primary-blue;
 		&:focus, &:hover {
 			text-decoration: underline;
 		}
@@ -80,7 +98,7 @@ a {
 
 a, button {
 	&:focus {
-		outline: 1px solid #42699b;
+		outline: 1px solid $primary-blue;
 	}
 }
 
@@ -99,7 +117,12 @@ h2 {
 	font-size: 1.125em;
 	padding: 10px;
 }
-
+.page-heading {
+	font-size: 1.75em;
+	text-align: center;
+	margin-bottom: 20px;
+	color: $primary-blue;
+}
 .width-container {
   width: 100%;
   max-width: 1200px;
@@ -114,3 +137,28 @@ h2 {
 	align-items: center;
 	justify-content: center;
 }
+
+/*Global Editor*/
+.editor-text {
+	font-size: 1.5em;
+	line-height: 1.4;
+	border: 0;
+	width: 100%;
+	padding: 5px;
+	/*color: #5e5e5e;*/
+	&:focus {
+		outline: none;
+	}
+}
+.editor-title {
+	font-size: 1.5em;
+	font-family: "Roboto-Bold";
+}
+.editor-wrapper {
+	margin-top: 30px;
+}
+.medium-editor-element {
+	outline: none;
+	font-size: 1.25em;
+}
+/*Global Editor*/
