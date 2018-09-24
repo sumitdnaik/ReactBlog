@@ -43,8 +43,12 @@ export function login(authenticationObj) {
            body: JSON.stringify(authenticationObj)
         }).then((response) => {
             setTimeout(function(){
-                localStorage.setItem('session', JSON.stringify(response.data));
-                dispatch(loginSuccess(response.data));
+                if(response.data.loggedIn){
+                    localStorage.setItem('session', JSON.stringify(response.data));
+                    dispatch(loginSuccess(response.data));
+                }else{
+                    dispatch(loginError(response.data.message));
+                }
             },2000)
         }).catch((error) => {
             dispatch(loginError(error));

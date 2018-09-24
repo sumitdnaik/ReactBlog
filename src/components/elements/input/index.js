@@ -22,7 +22,7 @@ constructor(props) {
         });
     }
 
-    /** on blur or submit, check input validity */
+    /** on blur or submit, check input validity xdfd */
     checkValidity(e){
         if(e.target.value == undefined || e.target.value == ""){
             this.setState(

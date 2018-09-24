@@ -12,7 +12,6 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            loginStatus: "none",
             email : '',
             password:'',
             emailValidationMessage:'Please enter valid email',
@@ -47,28 +46,21 @@ class Login extends Component{
                         placeholder='Email'
                         getValue={this.getValue.bind(this)}
                         name='email'
-                        required='true'
+                        required={true}
                     />
                     <Input
                         type="password"
                         placeholder='Password'
                         getValue={this.getValue.bind(this)}
                         name='password'
-                        required='true'
+                        required = {true}
                     />
                 </div>
                 {
-                  (this.state.loginStatus == "loggedin") ?
-                  <h3>
-                      LOGGED IN
-                  </h3>
-                  : (this.state.loginStatus == "invalid") ?
-                    <div className="loginError">
-                        <span>Invalid Credentials</span>
+                  this.props.errorMessage &&
+                  <div className="loginError">
+                        <span>{this.props.errorMessage}</span>
                     </div>
-                  :
-                  ""
-
                 }
                 { this.props.isFetching &&
                         <div>loading data please wait</div>
@@ -87,8 +79,10 @@ class Login extends Component{
 }
 
 function mapStateToComponent(state) {
+    debugger
    return {
-      isFetching: state.Session.isFetching
+      isFetching: state.Session.isFetching,
+      errorMessage : state.Session.errorMessage
    }
 }
 
