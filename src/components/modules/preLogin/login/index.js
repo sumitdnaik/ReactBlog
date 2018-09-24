@@ -65,7 +65,7 @@ class Login extends Component{
                 { this.props.isFetching &&
                         <div>loading data please wait</div>
                 }
-                
+
                 <div className="submit">
                   <div className="submit-btn">
                     <Button onClick={this.submit.bind(this)} type="button">Login</Button>
@@ -79,7 +79,6 @@ class Login extends Component{
 }
 
 function mapStateToComponent(state) {
-    debugger
    return {
       isFetching: state.Session.isFetching,
       errorMessage : state.Session.errorMessage
@@ -87,4 +86,3 @@ function mapStateToComponent(state) {
 }
 
 export default connect(mapStateToComponent)(Login);
-

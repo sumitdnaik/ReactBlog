@@ -25,7 +25,7 @@ export function loginError(errorMessage) {
 
 export const LOGOUT = "LOGOUT";
 export function logout(){
-    localStorage.clear();   
+    localStorage.clear();
     return{
         type:LOGOUT
     }
@@ -34,14 +34,16 @@ export function logout(){
 export function login(authenticationObj) {
     return (dispatch) => {
         dispatch(requestLogin());
-        return axios.post('http://127.0.0.1:8000/api/login/', {
-            method:'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-           body: JSON.stringify(authenticationObj)
-        }).then((response) => {
+        axios({
+          method: "POST",
+          url: "http://127.0.0.1:8000/api/login/",
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          data: authenticationObj
+        })
+        .then((response) => {
             setTimeout(function(){
                 if(response.data.loggedIn){
                     localStorage.setItem('session', JSON.stringify(response.data));
@@ -56,4 +58,3 @@ export function login(authenticationObj) {
         });
     }
 }
-

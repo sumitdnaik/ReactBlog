@@ -23,10 +23,10 @@ function Header(props) {
                 </div> :
                 <div className="right-wrapper">
                   <Link to="/" className="btn">Home</Link>
-                  <Link to="/article" className="btn">Read Article</Link>
+                  <Link to="/createArticle" className="btn">Write a Story</Link>
                   {props.signOut &&
                   <button className="btn" onClick={props.signOut}>
-                    Sign Out
+                    User Name
                   </button>
                   }
                 </div>
