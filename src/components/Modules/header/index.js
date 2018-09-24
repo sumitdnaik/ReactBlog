@@ -26,7 +26,7 @@ function Header(props) {
                   <Link to="/createArticle" className="btn">Write a Story</Link>
                   {props.signOut &&
                   <button className="btn" onClick={props.signOut}>
-                    User Name
+                    Sign Out
                   </button>
                   }
                 </div>
