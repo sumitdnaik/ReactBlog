@@ -20,6 +20,9 @@
   background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
   @include box-shadow(0px 0px 15px 0px rgba(0,0,0,0.55));
+  @include display-flex();
+  align-items: center;
+  height: 60px;
 
   .width-container {
     text-align: center;
@@ -31,23 +34,24 @@
     width: 200px;
     display: inline-block;
     position: absolute;
-    top: 10px;
+    top: 0px;
     right: 0;
     bottom: 0;
     left: 0;
     margin: auto;
 
     a {
-      color: black;
-      font-size: 18px;
+      color: #42699b;
+      font-size: 1em;
       text-decoration: none;
     }
   }
 
   .right-wrapper {
     float: right;
-    .btn {
-      margin-left: 20px;
+    a {
+      margin-left: 30px;
+      text-decoration: none;
     }
   }
 

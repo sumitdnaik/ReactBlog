@@ -18,21 +18,18 @@ function Header(props) {
             {
               (!props.isAuthenticated) ?
                 <div className="right-wrapper">
-                  <Link to="/" className="btn">Login</Link>
-                  <Link to="/signUp" className="btn">Sign Up</Link>
+                  <Link to="/">Login</Link>
+                  <Link to="/signUp">Sign Up</Link>
                 </div> :
                 <div className="right-wrapper">
-                  <Link to="/" className="btn">Home</Link>
-                  <Link to="/createArticle" className="btn">Write a Story</Link>
+                  <Link to="/createArticle">Write a story</Link>
                   {props.signOut &&
-                  <button className="btn" onClick={props.signOut}>
+                  <a href="javascript:void(0)" onClick={props.signOut}>
                     Sign Out
-                  </button>
+                  </a>
                   }
                 </div>
-
             }
-
             <div className="clearfix"></div>
           </div>
         </div>
