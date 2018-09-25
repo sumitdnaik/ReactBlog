@@ -91,6 +91,7 @@ body, input, textarea {
 a {
 		text-decoration: none;
 		color: $primary-blue;
+		display: inline-block;
 		&:focus, &:hover {
 			text-decoration: underline;
 		}
@@ -121,7 +122,6 @@ h2 {
 	font-size: 1.75em;
 	text-align: center;
 	margin-bottom: 20px;
-	color: $primary-blue;
 }
 .width-container {
   width: 100%;
