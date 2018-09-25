@@ -25,7 +25,7 @@ class Login extends Component{
           email: this.state.email,
           password: this.state.password
         };
-        Session.login(postObj);
+        Session.login(JSON.stringify(postObj));
     }
 
     getValue(e){
@@ -79,7 +79,6 @@ class Login extends Component{
 }
 
 function mapStateToComponent(state) {
-    debugger
    return {
       isFetching: state.Session.isFetching,
       errorMessage : state.Session.errorMessage
