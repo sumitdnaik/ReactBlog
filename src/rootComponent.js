@@ -10,7 +10,7 @@ class RootComponent extends Component {
 
   constructor(props){
     super(props);
-    
+
   }
     render() {
       const Session = this.props.userObj;
@@ -25,7 +25,7 @@ class RootComponent extends Component {
 
 function select(state) {
    return {
-      userObj: state.Session.userObj
+      userObj: state.user.userObj
    }
 }
 export default connect(select)(RootComponent);

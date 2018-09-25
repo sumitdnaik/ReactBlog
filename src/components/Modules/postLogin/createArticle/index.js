@@ -1,8 +1,9 @@
 import React , { Component } from 'react';
-
+import { connect } from 'react-redux';
+import axios from 'axios';
 import './style.scss';
 import Button from '../../../elements/button';
-import './quill.bubble.css';
+//import './quill.bubble.css'; //Bubble Theme
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -18,7 +19,7 @@ const editorModules = {
   ],
   clipboard: {
     // toggle to add extra line breaks when pasting HTML:
-    matchVisual: false,
+    matchVisual: true,
   }
 }
 /*
@@ -44,7 +45,13 @@ class CreateArticle extends Component {
     }
 
     buttonClick(){
-      console.log(this.state.text);
+      let content = this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;");
+      console.log(content);
+      axios.post('http://127.0.0.1:8000/api/createStory', { content: content, user: this.props.userData.email } ).then((response) => {
+
+      }).catch((error) => {
+
+      });
     }
 
     render() {
@@ -67,4 +74,9 @@ class CreateArticle extends Component {
     }
 }
 
-export default CreateArticle;
+function mapStateToComponent(state){
+  return {
+      userData: state.user.userObj
+   }
+}
+export default connect(mapStateToComponent)(CreateArticle);

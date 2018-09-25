@@ -8,7 +8,7 @@ const initialState = {
 };
 
 
-export function Session(state = initialState, action) {
+export default function Session(state = initialState, action) {
     switch (action.type) {
 
         case LOGIN_REQUEST:
@@ -25,16 +25,12 @@ export function Session(state = initialState, action) {
             });
 
         case LOGIN_SUCCESS:
-            return Object.assign({}, state, {
-                isFetching: false,
-                userObj: localStorage.getItem('session'),
-                token: action.token,
-            });
+        return { ...state, isFetching: false, userObj: action.userData.userData };
 
         case LOGOUT:
             return Object.assign({},state,{
                 userObj: null,
-            })
+            });
 
         default:
             return state;

@@ -64,7 +64,7 @@ class SignUp extends Component {
                         validationMessage='Only alphabets are allowed'
                         name='name'
                         getValue={this.getValue}
-                        required='true'
+                        required={true}
                     />
                     <Input
                         type="text"
@@ -73,7 +73,7 @@ class SignUp extends Component {
                         validationMessage='Please enter a valid email'
                         name='email'
                         getValue={this.getValue}
-                        required='true'
+                        required={true}
                     />
                     <Input
                         type="password"
@@ -85,7 +85,7 @@ class SignUp extends Component {
                         placeholder='Confirm Password'
                         name='password'
                         getValue={this.getValue}
-                        required='true'
+                        required={true}
                     />
 
                 </div>

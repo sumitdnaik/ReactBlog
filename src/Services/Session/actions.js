@@ -8,10 +8,10 @@ export function requestLogin() {
 }
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export function loginSuccess(creds) {
+export function loginSuccess(userData) {
     return {
         type: LOGIN_SUCCESS,
-        token: creds,
+        userData: userData,
     };
 }
 
@@ -25,7 +25,7 @@ export function loginError(errorMessage) {
 
 export const LOGOUT = "LOGOUT";
 export function logout(){
-    localStorage.clear();   
+    localStorage.clear();
     return{
         type:LOGOUT
     }
@@ -48,4 +48,3 @@ export function login(authenticationObj) {
         });
     }
 }
-

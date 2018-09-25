@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import constants from '../../../constants/global';
 import Button from '../../elements/button';
@@ -39,7 +38,7 @@ function Header(props) {
 
 function mapStateToComponent(state){
   return {
-      isAuthenticated: state.Session.userObj
+      isAuthenticated: state.user.userObj
    }
 }
 export default connect(mapStateToComponent)(Header);

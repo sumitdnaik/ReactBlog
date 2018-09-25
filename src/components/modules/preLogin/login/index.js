@@ -80,8 +80,8 @@ class Login extends Component{
 
 function mapStateToComponent(state) {
    return {
-      isFetching: state.Session.isFetching,
-      errorMessage : state.Session.errorMessage
+      isFetching: state.user.isFetching,
+      errorMessage : state.user.errorMessage
    }
 }
 
