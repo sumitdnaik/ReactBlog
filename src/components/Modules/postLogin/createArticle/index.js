@@ -46,12 +46,16 @@ class CreateArticle extends Component {
 
     buttonClick(){
       let content = this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;");
-      console.log(content);
-      axios.post('http://127.0.0.1:8000/api/createStory', { content: content, user: this.props.userData.email } ).then((response) => {
-
-      }).catch((error) => {
-
-      });
+      console.log(this.props.userData);
+      let user = this.props.userData.email;
+      axios({
+          method: 'POST',
+          url: 'http://127.0.0.1:8000/api/createStory',
+          data: { content, user }
+        })
+        .then(function (response) {
+          console.log(response);
+        });
     }
 
     render() {

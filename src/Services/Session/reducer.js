@@ -3,7 +3,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ,LOGOUT } from './actions';
 
 const initialState = {
     isFetching: false,
-    userObj: localStorage.getItem('session'),
+    userObj: JSON.parse(localStorage.getItem('session')),
     errorMessage: null
 };
 
