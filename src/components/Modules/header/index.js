@@ -1,9 +1,8 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import constants from '../../../constants/global';
-import Button from '../../elements/button';
+import constants from 'constants/global';
+import Button from 'components/elements/button';
 import './style.scss';
 
 function Header(props) {

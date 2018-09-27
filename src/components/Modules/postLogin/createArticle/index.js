@@ -2,7 +2,8 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './style.scss';
-import Button from '../../../elements/button';
+import API from 'constants/APIs';
+import Button from 'components/elements/button';
 //import './quill.bubble.css'; //Bubble Theme
 
 import ReactQuill from 'react-quill';
@@ -14,7 +15,7 @@ const editorModules = {
     ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
     [{'list': 'ordered'}, {'list': 'bullet'},
      {'indent': '-1'}, {'indent': '+1'}],
-    ['link', 'image', 'video'],
+    ['link', 'video'], //['link', 'image', 'video'],
     ['clean']
   ],
   clipboard: {
@@ -50,7 +51,7 @@ class CreateArticle extends Component {
       let user = this.props.userData.email;
       axios({
           method: 'POST',
-          url: 'http://127.0.0.1:8000/api/createStory',
+          url: API.postLogin.createStory,
           data: { content, user }
         })
         .then(function (response) {

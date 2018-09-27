@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 import { connect } from 'react-redux';
 import './styles/global.scss';
-import PreLogin from './components/modules/preLogin';
-import Header from './components/modules/header';
-import PostLogin from './components/modules/postLogin';
+import PreLogin from 'components/modules/preLogin';
+import Header from 'components/modules/header';
+import PostLogin from 'components/modules/postLogin';
 class RootComponent extends Component {
 
   constructor(props){

@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import API from "constants/APIs";
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export function requestLogin() {
@@ -34,7 +35,7 @@ export function logout(){
 export function login(authenticationObj) {
     return (dispatch) => {
         dispatch(requestLogin());
-        return axios.post('http://127.0.0.1:8000/api/login/', {
+        return axios.post(API.preLogin.login, {
                 authenticationObj}).then((response) => {
                 if(response.data.loggedIn){
                     localStorage.setItem('session', JSON.stringify(response.data));
