@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link , Switch} from 'react-router-dom';
 
 import '../../../styles/global.scss';
-import Session from '../../../Services/Session';
+import Session from '../../../services/session';
 
 import Home from './Home';
 import Article from './Article';

@@ -17,40 +17,32 @@ constructor(props) {
    }
     setValue(e){
         this.setState({
-            inputValue:e.target.value,
-            showError:false
+            inputValue: e.target.value,
+            showError: false
         });
     }
 
-    /** on blur or submit, check input validity xdfd */
+    /* on blur or submit, check input validity */
     checkValidity(e){
-        if(e.target.value == undefined || e.target.value == ""){
-            this.setState(
-                {
-                    errorMessage:'This is required field',
-                    isValid : false
-                }
-            )
-        }else if(this.props.validate){
-            let isInputValid = this.props.validate.test(e.target.value);
-            this.setState(
-                {
-                    isValid : isInputValid,
-                    errorMessage:this.props.validationMessage
-                }
-            );
+      let stateObj = {};
+        if(e.target.value == undefined || e.target.value == "" || e.target.value.length == 0){
+            stateObj.errorMessage = 'This is required field';
+            stateObj.isValid = false;
+        } else if(this.props.validate) {
+            stateObj.isValid = this.props.validate.test(e.target.value);
+            stateObj.errorMessage = this.props.validationMessage;
+        } else {
+          stateObj.isValid = true;
         }
-
-        this.setState({showError:false});
-
-        this.props.getValue ? this.props.getValue(e): "";
+        stateObj.showError = false;
+        this.props.getValue ? this.props.getValue(e) : "";
+        this.setState(stateObj);
     };
 
     showError(){
         this.setState({
             showError: !this.state.isValid
-        })
-
+        });
     }
 
     render(){
@@ -58,12 +50,6 @@ constructor(props) {
 
         //Default class
         classList.push('input');
-
-        /** if no label, add correct styles */
-        //if (this.props.placeholder) classList.push('input-no-padding');
-
-        /* add appropriate status for input value */
-        //if (this.state.isEmpty && !this.props.value) classList.push('input-empty');
 
         /* if invalid, add appropriate status */
         if(!this.state.isValid) classList.push('input-error');

@@ -2,6 +2,8 @@ import React , { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 import API from 'constants/APIs';
+
+import Form from 'components/elements/formWrapper';
 import Input from 'components/elements/input';
 import Button from 'components/elements/button';
 
@@ -53,7 +55,7 @@ class SignUp extends Component {
     render(){
 
         return(
-          <form noValidate>
+          <Form>
             <div className="loginContainer">
                 <h3>{this.state.serverMsg}</h3>
                 <div>
@@ -92,13 +94,13 @@ class SignUp extends Component {
 
                 <div className="submit">
                   <div className="submitBtn">
-                    <Button type="button" onClick={this.signUp}>Sign Up</Button>
+                    <Button type="submit" onClick={this.signUp}>Sign Up</Button>
                   </div>
                   <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
                 </div>
             </div>
 
-          </form>
+          </Form>
         );
     }
 }

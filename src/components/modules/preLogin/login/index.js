@@ -2,8 +2,9 @@ import React , { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Session from 'Services/Session';
+import Session from 'services/session';
 
+import Form from 'components/elements/formWrapper';
 import Input from 'components/elements/input';
 import Button from 'components/elements/button';
 import './style.scss';
@@ -20,7 +21,6 @@ class Login extends Component{
     }
 
     submit(){
-
         let postObj = {
           email: this.state.email,
           password: this.state.password
@@ -36,7 +36,7 @@ class Login extends Component{
 
     render(){
         return(
-          <form noValidate>
+          <Form>
             <div className="login-container">
                 <div className="input-field">
                     <Input
@@ -68,12 +68,12 @@ class Login extends Component{
 
                 <div className="submit">
                   <div className="submit-btn">
-                    <Button onClick={this.submit.bind(this)} type="button">Login</Button>
+                    <Button onClick={this.submit.bind(this)} type="submit">Login</Button>
                   </div>
                   <span>No account? </span><Link to="/SignUp">Create one</Link><span>.</span>
                 </div>
             </div>
-          </form>
+          </Form>
         )
     }
 }

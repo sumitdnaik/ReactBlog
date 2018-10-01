@@ -1,7 +1,7 @@
 import { createStore ,combineReducers , applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import user from './Services/Session/reducer';
+import user from './services/session/reducer';
 
 // const reducers = Object.assign(
 //     Session
