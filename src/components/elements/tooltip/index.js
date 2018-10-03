@@ -48,14 +48,15 @@ class Tooltip extends Component {
 
   render(){
 
-    const ClassList : Array<string> = ['arrow-box'];
-    this.state.opened ? ClassList.push('show') : ClassList.push('hide');
-    if(this.props.error)  ClassList.push('error');
+    const classList : Array<string> = ['arrow-box'];
+    if(this.props.error)  classList.push('error');
     return(
-        <div className={ClassList.join(' ')} style={ this.props.isOpen ? this.getPosition(this.props.opener) : null } >
+        this.state.opened ?
+        <div className={classList.join(' ')} style={ this.props.isOpen ? this.getPosition(this.props.opener) : null } >
             <div className="arrow-up"></div>
             <div className="tooltip-content-wrapper">{this.props.content}</div>
         </div>
+        : null
     );
   }
 }

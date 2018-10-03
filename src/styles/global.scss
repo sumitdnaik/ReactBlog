@@ -55,13 +55,13 @@ table {
 }
 
 @font-face {
-    font-family: "Roboto-Regular";
-    src: url('./fonts/Roboto-Regular.ttf');
+    font-family: "Arimo-Regular";
+    src: url('./fonts/Arimo-Regular.ttf');
 }
 
 @font-face {
-    font-family: "Roboto-Bold";
-    src: url('./fonts/Roboto-Bold.ttf');
+    font-family: "Arimo-Bold";
+    src: url('./fonts/Arimo-Bold.ttf');
 }
 
 $primary-blue: #42699b;
@@ -70,8 +70,9 @@ body {
 	color: #293033;
 }
 body, input, textarea {
-  font-family: "Roboto-Regular";
+  font-family: "Arimo-Regular";
   font-size: 100%;
+	color: #293033;
 }
 
 .clearfix {
@@ -79,7 +80,7 @@ body, input, textarea {
 }
 
 .text-bold, b, strong {
-		font-family: "Roboto-Bold";
+		font-family: "Arimo-Bold";
 }
 .text-italic, i, em {
 	font-style: italic;
@@ -144,15 +145,16 @@ h2 {
 	line-height: 1.4;
 	border: 0;
 	width: 100%;
-	padding: 5px;
+	padding: 15px;
 	/*color: #5e5e5e;*/
 	&:focus {
 		outline: none;
 	}
 }
 .editor-title {
-	font-size: 1.5em;
-	font-family: "Roboto-Bold";
+	font-size: 1.75em;
+	font-family: "Arimo-Bold";
+	max-height: 80px;
 }
 .editor-wrapper {
 	margin-top: 30px;

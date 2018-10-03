@@ -1,11 +1,11 @@
 *[class^='RichTextEditor_'], .quill, .container {
-  font-family: "Roboto-Regular" !important;
+  font-family: "Arimo-Regular" !important;
 }
 .editor-wrapper {
   .ql-bubble .ql-editor, .ql-snow .ql-editor {
     padding: 15px;
     h1, h2, h3 {
-      font-family: "Roboto-Bold" !important;
+      font-family: "Arimo-Bold" !important;
     }
     h1 {
       font-size: 1.75em;
@@ -15,16 +15,19 @@
     }
   }
   .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor.ql-blank::before  {
-    font-family: "Roboto-Regular" !important;
+    font-family: "Arimo-Regular" !important;
     font-size: 1.1875em;
   }
-  .ql-snow .ql-editor pre.ql-syntax {
+  .ql-snow .ql-editor pre.ql-syntax, .ql-bubble .ql-editor pre.ql-syntax {
     background-color: rgba(0,0,0,.05);
     color: #293033;
   }
+  .ql-toolbar.ql-snow {
+    padding: 8px 15px;
+  }
   .ql-container {
     font-size: 1em;
-    font-family: "Roboto-Regular" !important;
+    font-family: "Arimo-Regular" !important;
   }
   .publish-wrapper {
     margin-top: 20px;
@@ -72,11 +75,11 @@
     background: #ebebeb;
     margin-left: 10px;
   }
-  .ql-snow .ql-tooltip a {
+  .ql-snow .ql-tooltip a, .ql-bubble .ql-tooltip a {
     line-height: 1em;
   }
 
-  .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
+  .ql-snow .ql-tooltip.ql-editing a.ql-action::after, .ql-bubble .ql-tooltip.ql-editing a.ql-action::after {
     margin: 0;
     padding: 0;
   }
@@ -84,7 +87,7 @@
     width: 480px;
     height: 250px;
   }
-  .ql-snow .ql-editor blockquote {
+  .ql-snow .ql-editor blockquote, .ql-bubble .ql-editor blockquote {
     border-left: 3px solid #302f2f;
   }
 }
