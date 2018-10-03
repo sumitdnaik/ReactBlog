@@ -16,6 +16,7 @@ export default function Session(state = initialState, action) {
                 isFetching: true,
                 userObj:null,
             });
+            break;
 
         case LOGIN_FAILURE:
             return Object.assign({}, state, {
@@ -23,14 +24,17 @@ export default function Session(state = initialState, action) {
                 userObj:null,
                 errorMessage: action.errorMessage
             });
+            break;
 
         case LOGIN_SUCCESS:
         return { ...state, isFetching: false, userObj: action.userData.userData };
+        break;
 
         case LOGOUT:
             return Object.assign({},state,{
                 userObj: null,
             });
+            break;
 
         default:
             return state;

@@ -1,8 +1,11 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import Select from 'react-select';
 import './style.scss';
+import publish from './actionCreators';
 import API from 'constants/APIs';
+import StoryCategories from "constants/storyCategories";
 import Button from 'components/elements/button';
 //import './quill.bubble.css'; //Bubble Theme
 
@@ -25,43 +28,49 @@ const editorModules = {
     matchVisual: true,
   }
 }
-/*
- * Quill editor formats
- * See https://quilljs.com/docs/formats/
- */
+
 const editorFormats = [
   'header',
   'bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block',
   'list', 'bullet',
   'link', 'image', 'video'
-]
+];
+
+const categories = StoryCategories.map((item) => {
+  return({
+    label:item.category,
+    options: item.topics.map((topic) => ({label: topic, value: topic}))
+  });
+});
 
 class CreateArticle extends Component {
     constructor(props) {
       super(props);
-      this.state = { text: '', title: '' };
+      this.state = {
+        text: '',
+        title: '',
+        category: null
+      };
       this.reactQuillRef = null;
       this.handleChange = this.handleChange.bind(this);
       this.titleChange = this.titleChange.bind(this);
       this.titleKeyDown = this.titleKeyDown.bind(this);
+      this.categoryChange = this.categoryChange.bind(this);
+      this.publish = this.publish.bind(this);
     }
 
     handleChange(value) {
       this.setState({ text: value });
     }
 
-    buttonClick(){
-      let content = this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;");
-      console.log(this.props.userData);
+    publish(){
+      let story = {
+        title: this.state.title,
+        content: this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;")
+      };
       let user = this.props.userData.email;
-      axios({
-          method: 'POST',
-          url: API.postLogin.createStory,
-          data: { content, user }
-        })
-        .then(function (response) {
-          console.log(response);
-        });
+      this.props.publishStory({story, user});
+
     }
 
     titleChange(e){
@@ -76,6 +85,10 @@ class CreateArticle extends Component {
         e.preventDefault();
         this.reactQuillRef.getEditor().focus();
       }
+    }
+
+    categoryChange(category) {
+      this.setState({ category });
     }
 
     render() {
@@ -100,16 +113,29 @@ class CreateArticle extends Component {
             theme={'snow'}
           />
           <div className="publish-wrapper">
-            <Button type="button" onClick={this.buttonClick.bind(this)}>Publish</Button>
+            <Select
+              options={categories}
+              onChange={this.categoryChange}
+              value={this.state.category}
+              className="category-dropdown"
+              />
+            <Button type="button" onClick={this.publish}>Publish</Button>
           </div>
         </div>
       );
     }
+};
+
+const mapStateToComponent = (state) => {
+  console.log(state);
+  return({
+    userData: state.user.userObj.userData,
+    createStory: state.createStory
+  });
 }
 
-function mapStateToComponent(state){
-  return {
-      userData: state.user.userObj
-   }
-}
-export default connect(mapStateToComponent)(CreateArticle);
+const mapDispatchToProps = (dispatch) => ({
+  publishStory: (payload) => dispatch(publish(payload))
+})
+
+export default connect(mapStateToComponent, mapDispatchToProps)(CreateArticle);

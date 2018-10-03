@@ -16,7 +16,7 @@
   }
   .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor.ql-blank::before  {
     font-family: "Arimo-Regular" !important;
-    font-size: 1.1875em;
+    font-size: 1.25em;
   }
   .ql-snow .ql-editor pre.ql-syntax, .ql-bubble .ql-editor pre.ql-syntax {
     background-color: rgba(0,0,0,.05);
@@ -30,7 +30,7 @@
     font-family: "Arimo-Regular" !important;
   }
   .publish-wrapper {
-    margin-top: 20px;
+    margin-top: 25px;
   }
   .ql-snow .ql-tooltip {
       background-color: #fff;
@@ -89,5 +89,9 @@
   }
   .ql-snow .ql-editor blockquote, .ql-bubble .ql-editor blockquote {
     border-left: 3px solid #302f2f;
+  }
+  .category-dropdown {
+    width: 300px;
+    margin-bottom: 20px;
   }
 }
