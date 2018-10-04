@@ -7,6 +7,7 @@ import publish from './actionCreators';
 import API from 'constants/APIs';
 import StoryCategories from "constants/storyCategories";
 import Button from 'components/elements/button';
+import Loader from 'components/elements/loader';
 //import './quill.bubble.css'; //Bubble Theme
 
 import ReactQuill from 'react-quill';
@@ -128,6 +129,7 @@ class CreateArticle extends Component {
               />
           </div>
           <Button type="button" onClick={this.publish}>Publish</Button>
+          {this.props.createStory.publishInProgress && <Loader/>}
         </div>
       );
     }

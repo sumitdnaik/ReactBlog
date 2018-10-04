@@ -4,7 +4,8 @@ const APIs = {
       signUp: 'http://127.0.0.1:8000/api/signup'
     },
     postLogin: {
-        createStory: 'http://127.0.0.1:8000/api/createStory'
+        createStory: 'http://127.0.0.1:8000/api/createStory',
+        getHomeStories: 'http://127.0.0.1:8000/api/getHomeStories'
     }
 }
 
