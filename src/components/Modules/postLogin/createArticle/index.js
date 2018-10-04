@@ -17,8 +17,7 @@ const editorModules = {
     [{'header': '2'}],
     ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
     [
-      {'list': 'ordered'}, {'list': 'bullet'}//,
-      //{'indent': '-1'}, {'indent': '+1'}
+      {'list': 'ordered'}, {'list': 'bullet'}
     ],
     ['link', 'video'], //['link', 'image', 'video'],
     ['clean']
@@ -39,7 +38,7 @@ const editorFormats = [
 const categories = StoryCategories.map((item) => {
   return({
     label:item.category,
-    options: item.topics.map((topic) => ({label: topic, value: topic}))
+    options: item.topics.map((topic) => ({label: topic, value: topic, group: item.category}))
   });
 });
 
@@ -64,13 +63,19 @@ class CreateArticle extends Component {
     }
 
     publish(){
+      let summary = this.reactQuillRef.getEditor().getText();
+      summary = summary.substr(0,100) + '...';
       let story = {
         title: this.state.title,
-        content: this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;")
+        content: this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;"),
+        summary,
+        category: {
+          group: this.state.category.group,
+          topic: this.state.category.label
+        }
       };
       let user = this.props.userData.email;
       this.props.publishStory({story, user});
-
     }
 
     titleChange(e){
@@ -112,21 +117,23 @@ class CreateArticle extends Component {
             formats={editorFormats}
             theme={'snow'}
           />
-          <div className="publish-wrapper">
+          <div className="category-wrapper">
+            <label htmlFor="category">Select a category for this story: </label>
             <Select
+              name="category"
               options={categories}
               onChange={this.categoryChange}
               value={this.state.category}
               className="category-dropdown"
               />
-            <Button type="button" onClick={this.publish}>Publish</Button>
           </div>
+          <Button type="button" onClick={this.publish}>Publish</Button>
         </div>
       );
     }
 };
 
-const mapStateToComponent = (state) => {
+const mapStateToProps = (state) => {
   console.log(state);
   return({
     userData: state.user.userObj.userData,
@@ -138,4 +145,4 @@ const mapDispatchToProps = (dispatch) => ({
   publishStory: (payload) => dispatch(publish(payload))
 })
 
-export default connect(mapStateToComponent, mapDispatchToProps)(CreateArticle);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateArticle);

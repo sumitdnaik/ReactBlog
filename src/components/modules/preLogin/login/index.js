@@ -7,6 +7,7 @@ import Session from 'services/session';
 import Form from 'components/elements/formWrapper';
 import Input from 'components/elements/input';
 import Button from 'components/elements/button';
+import Loader from 'components/elements/loader';
 import './style.scss';
 
 class Login extends Component{
@@ -62,10 +63,7 @@ class Login extends Component{
                         <span>{this.props.errorMessage}</span>
                     </div>
                 }
-                { this.props.isFetching &&
-                        <div>loading data please wait</div>
-                }
-
+                { this.props.isFetching && <Loader/> }
                 <div className="submit">
                   <div className="submit-btn">
                     <Button onClick={this.submit.bind(this)} type="submit">Login</Button>
