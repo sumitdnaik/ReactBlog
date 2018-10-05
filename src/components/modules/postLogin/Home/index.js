@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import axios from 'axios';
-import API from 'constants/APIs';
+import APIUrls from 'constants/APIUrls';
 
 class Home extends Component{
     constructor(props){
@@ -14,7 +14,7 @@ class Home extends Component{
     getStories(){
       axios({
           method: 'POST',
-          url: API.postLogin.getHomeStories
+          url: APIUrls.getHomeStories
         })
         .then(function (response) {
           console.log(response.data);

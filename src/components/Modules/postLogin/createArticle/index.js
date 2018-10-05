@@ -1,10 +1,8 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Select from 'react-select';
 import './style.scss';
 import publish from './actionCreators';
-import API from 'constants/APIs';
 import StoryCategories from "constants/storyCategories";
 import Button from 'components/elements/button';
 import Loader from 'components/elements/loader';
@@ -75,7 +73,10 @@ class CreateArticle extends Component {
           topic: this.state.category.label
         }
       };
-      let user = this.props.userData.email;
+      let user = {
+        name: this.props.userData.name,
+        email: this.props.userData.email
+      };
       this.props.publishStory({story, user});
     }
 
@@ -136,7 +137,6 @@ class CreateArticle extends Component {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return({
     userData: state.user.userObj.userData,
     createStory: state.createStory
@@ -145,6 +145,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   publishStory: (payload) => dispatch(publish(payload))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateArticle);

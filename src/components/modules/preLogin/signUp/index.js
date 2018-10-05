@@ -1,12 +1,13 @@
 import React , { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
-import API from 'constants/APIs';
+import APIUrls from 'constants/APIUrls';
 
 import Form from 'components/elements/formWrapper';
 import Input from 'components/elements/input';
 import Button from 'components/elements/button';
-
+import Loader from 'components/elements/loader';
+import signUp from './actionCreators';
 import './style.scss';
 
 class SignUp extends Component {
@@ -28,22 +29,7 @@ class SignUp extends Component {
         email: this.state.email,
         password: this.state.password
       };
-      let that = this;
-      fetch(API.preLogin.signUp, {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postObj)
-      }).then(function(response){
-        response.json().then(function(data){
-          console.log(data);
-          that.setState({
-            serverMsg: data.message
-          })
-        });
-      });
+      this.props.signUp(postObj);
     }
 
     getValue(e){
@@ -57,7 +43,6 @@ class SignUp extends Component {
         return(
           <Form>
             <div className="loginContainer">
-                <h3>{this.state.serverMsg}</h3>
                 <div>
                     <Input
                         type="text"
@@ -98,6 +83,7 @@ class SignUp extends Component {
                   </div>
                   <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
                 </div>
+                {this.props.signUpData.isSignUpInProgress && <Loader/>}
             </div>
 
           </Form>
@@ -105,4 +91,16 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return({
+    signUpData: state.signUpData
+  });
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return({
+    signUp: (payload) => dispatch(signUp(payload))
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

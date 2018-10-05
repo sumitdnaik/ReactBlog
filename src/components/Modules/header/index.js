@@ -11,7 +11,7 @@ function Header(props) {
         <div className="header-wrapper">
           <div className="width-container">
             <div className="logo">
-              <a href="javascript: void(0)">{constants.logo}</a>
+              <Link to="/">{constants.logo}</Link>
             </div>
             {
               (!props.isAuthenticated) ?

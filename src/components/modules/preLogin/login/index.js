@@ -26,7 +26,7 @@ class Login extends Component{
           email: this.state.email,
           password: this.state.password
         };
-        Session.login(JSON.stringify(postObj));
+        Session.login(postObj);
     }
 
     getValue(e){

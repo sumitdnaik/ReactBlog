@@ -1,43 +1,15 @@
 import axios from 'axios';
-import * as actions from './actions';
-import API from 'constants/APIs';
-
-export function publishRequest(){
-  return({
-    type: actions.PUBLISH_REQUEST
-  });
-}
-
-export function publishSuccess(data){
-  return({
-    type: actions.PUBLISH_SUCCESS,
-    data
-  });
-}
-
-export function publishError(data){
-  return({
-    type: actions.PUBLISH_ERROR,
-    data
-  });
-}
-
+import { PUBLISH_REQUEST, PUBLISH_SUCCESS, PUBLISH_ERROR } from './actions';
+import APIUrls from 'constants/APIUrls';
 
 export default function publish(storyObj) {
-    return (dispatch) => {
-        dispatch(publishRequest());
-
-        return axios({
-            method: 'POST',
-            url: API.postLogin.createStory,
-            data: { story: storyObj.story, user: storyObj.user }
-          })
-          .then(function (response) {
-            dispatch(publishSuccess(response.data));
-          })
-          .catch((errorRes) => {
-            dispatch(publishError(errorRes.data));
-            return Promise.reject(errorRes.data);
-          });
-    }
-}
+  return {
+    types: [PUBLISH_REQUEST, PUBLISH_SUCCESS, PUBLISH_ERROR],
+    callAPI: () =>  axios({
+                      method: 'POST',
+                      url: APIUrls.createStory,
+                      data: { story: storyObj.story, user: storyObj.user }
+                    }),
+    payload: {}
+  }
+};

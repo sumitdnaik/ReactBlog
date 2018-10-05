@@ -15,14 +15,14 @@ export default function Session(state = initialState, action) {
       break;
 
     case PUBLISH_SUCCESS:
-    console.log(action.response.data.message);
+    console.log("Published Successfully");
       return({
         ...state, publishInProgress: false
       });
 
     case PUBLISH_ERROR:
       return({
-        ...state, publishInProgress: false, errorMessage: action.response.data.message
+        ...state, publishInProgress: false, errorMessage: action.data.error
       });
 
     default:

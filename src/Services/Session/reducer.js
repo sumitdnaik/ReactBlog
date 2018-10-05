@@ -19,20 +19,21 @@ export default function Session(state = initialState, action) {
             break;
 
         case LOGIN_FAILURE:
+        console.log(action);
             return Object.assign({}, state, {
                 isFetching: false,
                 userObj:null,
-                errorMessage: action.errorMessage
+                errorMessage: action.response.data.message
             });
             break;
 
         case LOGIN_SUCCESS:
-        return { ...state, isFetching: false, userObj: action.userData.userData };
+        return { ...state, isFetching: false, userObj: action.response.data.userData };
         break;
 
         case LOGOUT:
-            return Object.assign({},state,{
-                userObj: null,
+            return Object.assign( {}, state, {
+                userObj: null
             });
             break;
 
