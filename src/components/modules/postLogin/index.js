@@ -5,7 +5,7 @@ import { BrowserRouter as Router , Route , Link , Switch} from 'react-router-dom
 import '../../../styles/global.scss';
 import Session from '../../../services/session';
 
-import Home from './Home';
+import Home from './home';
 import Article from './Article';
 import CreateArticle from './createArticle';
 import Header from '../header';

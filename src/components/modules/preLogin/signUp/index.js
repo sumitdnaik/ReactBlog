@@ -93,7 +93,7 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
   return({
-    signUpData: state.signUpData
+    signUpData: state.signUp
   });
 }
 

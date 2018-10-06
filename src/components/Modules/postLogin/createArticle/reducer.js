@@ -6,7 +6,7 @@ const initialState = {
   errorMessage: null
 };
 
-export default function Session(state = initialState, action) {
+export default function Publish(state = initialState, action) {
   switch (action.type) {
     case PUBLISH_REQUEST:
       return (
@@ -15,7 +15,6 @@ export default function Session(state = initialState, action) {
       break;
 
     case PUBLISH_SUCCESS:
-    console.log(action.response.data.message);
       return({
         ...state, publishInProgress: false
       });

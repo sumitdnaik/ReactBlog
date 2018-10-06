@@ -1,15 +1,18 @@
 import { createStore , combineReducers , applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import callAPIMiddleware from 'services/middlewares/callAPIMiddleware';
-import user from './services/session/reducer';
-import createStory from 'components/modules/postLogin/createArticle/reducer';
-import signUpData from 'components/modules/preLogin/signUp/reducer';
+import userReducer from './services/session/reducer';
+import createStoryReducer from 'components/modules/postLogin/createArticle/reducer';
+import signUpReducer from 'components/modules/preLogin/signUp/reducer';
+import homeReducer from 'components/modules/postLogin/home/reducer';
 
 const rootReducer = combineReducers({
-  user,
-  createStory,
-  signUpData
+  user: userReducer,
+  createStory: createStoryReducer,
+  signUp: signUpReducer,
+  home: homeReducer
 });
+
 const middlewares = [thunk, callAPIMiddleware];
 const store = createStore(
     rootReducer,

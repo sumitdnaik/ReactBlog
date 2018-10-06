@@ -1,5 +1,5 @@
 
-import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_ERROR } from './actions';
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE } from './actions';
 
 const initialState = {
   isSignUpInProgress: false,
@@ -19,7 +19,7 @@ export default function signUpData(state = initialState, action) {
         ...state, isSignUpInProgress: false
       });
 
-    case SIGNUP_ERROR:
+    case SIGNUP_FAILURE:
       return({
         ...state, isSignUpInProgress: false, errorMessage: action.response.data.message
       });

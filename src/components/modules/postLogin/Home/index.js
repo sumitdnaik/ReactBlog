@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
-import axios from 'axios';
-import APIUrls from 'constants/APIUrls';
+import { connect } from 'react-redux';
+import GetStories from './actionCreators';
 
 class Home extends Component{
     constructor(props){
@@ -8,20 +8,11 @@ class Home extends Component{
     }
 
     componentDidMount(){
-      this.getStories();
-    }
-
-    getStories(){
-      axios({
-          method: 'POST',
-          url: APIUrls.getHomeStories
-        })
-        .then(function (response) {
-          console.log(response.data);
-        });
+      this.props.getStories();
     }
 
     render(){
+      console.log(this.props.homeData);
         return(
             <div>
                 Post Login Home
@@ -30,4 +21,16 @@ class Home extends Component{
     }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return({
+    homeData: state.home
+  });
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return({
+    getStories: () => dispatch(GetStories())
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
