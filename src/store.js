@@ -4,9 +4,7 @@ import callAPIMiddleware from 'services/middlewares/callAPIMiddleware';
 import user from './services/session/reducer';
 import createStory from 'components/modules/postLogin/createArticle/reducer';
 import signUpData from 'components/modules/preLogin/signUp/reducer';
-// const reducers = Object.assign(
-//     Session
-// );
+
 const rootReducer = combineReducers({
   user,
   createStory,

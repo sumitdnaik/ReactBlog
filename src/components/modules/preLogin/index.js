@@ -8,7 +8,7 @@ import Login from './login';
 import Header from '../header';
 import SignUp from './signUp';
 
-class ProLogin extends Component {
+class PreLogin extends Component {
 
   constructor(props){
     super(props);
@@ -18,7 +18,7 @@ class ProLogin extends Component {
 
 
     render() {
-      const headerHeight = 68;
+      const headerHeight = 60;
         return (
           <Router>
             <div>
@@ -36,4 +36,4 @@ class ProLogin extends Component {
     }
 }
 
-export default ProLogin;
+export default PreLogin;
