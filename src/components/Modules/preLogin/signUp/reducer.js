@@ -1,30 +1,9 @@
-
+import simpleAPIReducerUtil from 'services/utilities/simpleAPIReducerUtil';
 import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE } from './actions';
+const actionTypes = [ SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE ];
+const reducer = simpleAPIReducerUtil({
+  actionTypes,
+  isGetData: false
+});
 
-const initialState = {
-  isSignUpInProgress: false,
-  errorMessage: null
-};
-
-export default function signUpData(state = initialState, action) {
-  switch (action.type) {
-    case SIGNUP_REQUEST:
-      return (
-        { ...state, isSignUpInProgress: true }
-      );
-      break;
-
-    case SIGNUP_SUCCESS:
-      return({
-        ...state, isSignUpInProgress: false
-      });
-
-    case SIGNUP_FAILURE:
-      return({
-        ...state, isSignUpInProgress: false, errorMessage: action.response.data.message
-      });
-
-    default:
-      return state;
-  }
-}
+export default reducer;

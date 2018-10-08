@@ -74,18 +74,15 @@ class SignUp extends Component {
                         getValue={this.getValue}
                         required={true}
                     />
-
                 </div>
-
                 <div className="submit">
                   <div className="submitBtn">
                     <Button type="submit" onClick={this.signUp}>Sign Up</Button>
                   </div>
                   <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
                 </div>
-                {this.props.signUpData.isSignUpInProgress && <Loader/>}
+                {this.props.signUpData.inProgress && <Loader/>}
             </div>
-
           </Form>
         );
     }

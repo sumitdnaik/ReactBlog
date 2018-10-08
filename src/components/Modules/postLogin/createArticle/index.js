@@ -130,7 +130,7 @@ class CreateArticle extends Component {
               />
           </div>
           <Button type="button" onClick={this.publish}>Publish</Button>
-          {this.props.createStory.publishInProgress && <Loader/>}
+          {this.props.createStory.inProgress && <Loader/>}
         </div>
       );
     }

@@ -69,7 +69,7 @@ export default function callAPIMiddleware({ dispatch, getState }) {
         dispatch(
           Object.assign({}, payload, {
             response: error,
-            type: failureTypes
+            type: failureType
           })
         )
       }
