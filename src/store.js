@@ -2,7 +2,7 @@ import { createStore , combineReducers , applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import callAPIMiddleware from 'services/middlewares/callAPIMiddleware';
 import userReducer from './services/session/reducer';
-import createStoryReducer from 'components/modules/postLogin/createArticle/reducer';
+import createStoryReducer from 'components/modules/postLogin/writeAStory/reducer';
 import signUpReducer from 'components/modules/preLogin/signUp/reducer';
 import homeReducer from 'components/modules/postLogin/home/reducer';
 

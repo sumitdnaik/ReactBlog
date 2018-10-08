@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router , Route , Link , Switch} from 'react-router-dom';
-
+import { Router , Route , Link , Switch} from 'react-router-dom';
+import history from 'services/utilities/historyUtil';
 import '../../../styles/global.scss';
 import Session from '../../../services/session';
 
 import Home from './home';
-import Article from './Article';
-import CreateArticle from './createArticle';
+import WriteAStory from './writeAStory';
 import Header from '../header';
+import ReadAStory from './readAStory';
 
 class PostLogin extends Component{
       constructor(props){
@@ -23,15 +23,15 @@ class PostLogin extends Component{
     render(){
         const headerHeight = 68;
         return(
-            <Router>
+            <Router history={history}>
             <div>
               <Header signOut={this.signOut.bind(this)}/>
               <h1 className="sr-only">ReactBlog: Awesome reads, great articles</h1>
               <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
                 <Switch>
                   <Route exact path="/" component={Home} ></Route>
-                  <Route exact path="/article" component={Article}></Route>
-                  <Route exact path="/createArticle" component={CreateArticle}></Route>
+                  <Route exact path="/writeAStory" component={WriteAStory}></Route>
+                  <Route path="/story/:storyId" component={ReadAStory}/>
                 </Switch>
               </div>
             </div>

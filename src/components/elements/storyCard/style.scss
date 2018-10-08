@@ -39,3 +39,11 @@
     margin-top: 10px;
   }
 }
+.story-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #293033;
+  &:hover {
+    text-decoration: none;
+  }
+}

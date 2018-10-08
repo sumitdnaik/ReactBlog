@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import GetStories from './actionCreators';
+import getStories from './actionCreators';
+import { currentStoryUser } from './actionCreators';
 import StoryCard from 'components/elements/storyCard';
 import './style.scss';
 class Home extends Component{
@@ -42,7 +43,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return({
-    getStories: () => dispatch(GetStories())
+    getStories: () => dispatch(getStories())
   });
 }
 

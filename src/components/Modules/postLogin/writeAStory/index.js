@@ -41,7 +41,7 @@ const categories = StoryCategories.map((item) => {
   });
 });
 
-class CreateArticle extends Component {
+class WriteAStory extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -147,4 +147,4 @@ const mapDispatchToProps = (dispatch) => ({
   publishStory: (payload) => dispatch(publish(payload))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateArticle);
+export default connect(mapStateToProps, mapDispatchToProps)(WriteAStory);

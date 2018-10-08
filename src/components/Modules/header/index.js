@@ -20,7 +20,7 @@ function Header(props) {
                   <Link to="/signUp">Sign Up</Link>
                 </div> :
                 <div className="right-wrapper">
-                  <Link to="/createArticle">Write a story</Link>
+                  <Link to="/writeAStory">Write a story</Link>
                   {props.signOut &&
                   <a href="javascript:void(0)" onClick={props.signOut}>
                     Sign Out
