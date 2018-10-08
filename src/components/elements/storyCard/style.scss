@@ -1,0 +1,41 @@
+.story-card-wrap {
+  width: 25%;
+  padding: 10px;
+}
+.story-card {
+  // border-radius: 5px;
+  // border: 1px solid #dbdbdb;
+  // border-top: 0;
+  // border-top-left-radius: 0;
+  // border-top-right-radius: 0;
+  padding: 10px;
+}
+.story-img-wrap {
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    max-height: 170px;
+  }
+}
+.story-heading {
+  display: inline-block;
+  font-family: "Arimo-Bold";
+  font-size: 1.1875em;
+  line-height: 1em;
+  padding-bottom: 10px;
+}
+.story-summary {
+  color: rgba(0,0,0,0.7);
+  overflow: hidden;
+  max-height: 40px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.story-footer {
+  p {
+    margin-top: 10px;
+  }
+}

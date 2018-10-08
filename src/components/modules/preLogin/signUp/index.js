@@ -47,7 +47,7 @@ class SignUp extends Component {
                     <Input
                         type="text"
                         placeholder='Your Full Name'
-                        validate={/^[A-Za-z]+$/}
+                        validate={/^[A-Za-z\s]+$/}
                         validationMessage='Only alphabets are allowed'
                         name='name'
                         getValue={this.getValue}
