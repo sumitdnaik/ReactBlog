@@ -1,5 +1,5 @@
 
-export default function simpleAPIReducerUtil({actionTypes, isGetData = false, getDataType = {}, dataSelector = ""}){
+export default function simpleAPIReducerUtil({actionTypes, isGetData = false, getDataType = {}, dataSelector = "data"}){
   const initialState = {
     inProgress: false,
     errorMessage: ""
@@ -7,6 +7,7 @@ export default function simpleAPIReducerUtil({actionTypes, isGetData = false, ge
   if(isGetData) initialState.data = getDataType;
   return function(state = initialState, action) {
     const [requestType, successType, failureType] = actionTypes;
+
     switch(action.type) {
 
       case requestType:

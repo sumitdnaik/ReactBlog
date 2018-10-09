@@ -28,12 +28,12 @@ export default function callAPIMiddleware({ dispatch, getState }) {
     //   return;
     // }
     const [requestType, successType, failureType] = types;
+    
     dispatch(
       Object.assign({}, payload, {
         type: requestType
       })
     );
-
     return callAPI().then(
       response => {
         if(conditionedDispatch) {

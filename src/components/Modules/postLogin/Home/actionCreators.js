@@ -12,10 +12,3 @@ export default function GetStories(storyObj) {
     payload: {}
   }
 };
-
-export function currentStoryUser(email){
-  return {
-    type: 'CURRENT_STORY_USER',
-    data: email
-  }
-}

@@ -1,8 +1,8 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import getStories from './actionCreators';
-import { currentStoryUser } from './actionCreators';
 import StoryCard from 'components/elements/storyCard';
+import Loader from 'components/elements/loader';
 import './style.scss';
 class Home extends Component{
     constructor(props){
@@ -16,10 +16,10 @@ class Home extends Component{
     render(){
         return(
             <div className="home-wrapper">
+              {this.props.homeData.inProgress && <Loader/>}
               {
                 this.props.homeData.data.length > 0 ?
                 this.props.homeData.data.map((item, index) => {
-                  console.log(item);
                   return(
                     <StoryCard
                       key={index}
@@ -27,8 +27,7 @@ class Home extends Component{
                     />
                   )
                 })
-                : "We don't have any stories to display right now."
-
+                : <p className="no-stories-msg">"We don't have any stories to display right now."</p>
               }
             </div>
         )

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router , Route , Link , Switch} from 'react-router-dom';
 import history from 'services/utilities/historyUtil';
-import '../../../styles/global.scss';
-import Session from '../../../services/session';
+import 'styles/global.scss';
+import Session from 'services/session';
 
+import Header from '../header';
 import Home from './home';
 import WriteAStory from './writeAStory';
-import Header from '../header';
 import ReadAStory from './readAStory';
 
 class PostLogin extends Component{
@@ -29,9 +29,9 @@ class PostLogin extends Component{
               <h1 className="sr-only">ReactBlog: Awesome reads, great articles</h1>
               <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
                 <Switch>
-                  <Route exact path="/" component={Home} ></Route>
+                  <Route exact path="/" component={Home}></Route>
                   <Route exact path="/writeAStory" component={WriteAStory}></Route>
-                  <Route path="/story/:storyId" component={ReadAStory}/>
+                  <Route exact path="/story/:storyId" component={ReadAStory}/>
                 </Switch>
               </div>
             </div>

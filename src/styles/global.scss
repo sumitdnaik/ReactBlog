@@ -73,6 +73,7 @@ body, input, textarea {
   font-family: "Arimo-Regular";
   font-size: 100%;
 	color: #293033;
+	line-height: 1.2;
 }
 
 .clearfix {
@@ -155,9 +156,6 @@ h2 {
 	font-size: 1.75em;
 	font-family: "Arimo-Bold";
 	max-height: 80px;
-}
-.editor-wrapper {
-	margin-top: 30px;
 }
 .medium-editor-element {
 	outline: none;
