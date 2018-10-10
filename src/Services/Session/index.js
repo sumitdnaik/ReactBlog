@@ -1,6 +1,6 @@
 import store from '../../store.js';
-
 import { login, logout } from "./actions";
+import history from 'services/utilities/historyUtil';
 
 class Session {
     static login(authenticationObj) {
@@ -11,10 +11,11 @@ class Session {
     }
 
     static logout() {
-        store.dispatch(logout())
-            .then(() => {
-                location.reload(true);
-            });
+        store.dispatch(logout());
+        history.push("/"); 
+            //.then(() => {
+                //location.reload(true);
+            //});
     }
 
 }

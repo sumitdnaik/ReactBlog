@@ -16,7 +16,7 @@ class Home extends Component{
     render(){
         return(
             <div className="home-wrapper">
-              {this.props.homeData.inProgress && <Loader/>}
+              {this.props.homeData.inProgress && this.props.homeData.data.length != 0 && <Loader/>}
               {
                 this.props.homeData.data.length > 0 ?
                 this.props.homeData.data.map((item, index) => {

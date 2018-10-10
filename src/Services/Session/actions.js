@@ -8,9 +8,9 @@ export const LOGOUT = "LOGOUT";
 
 export function logout(){
     localStorage.clear();
-    return{
+    return({
         type: LOGOUT
-    }
+    })
 }
 
 export function login(authenticationObj) {

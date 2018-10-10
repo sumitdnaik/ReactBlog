@@ -13,7 +13,7 @@ import 'react-quill/dist/quill.snow.css';
 
 const editorModules = {
   toolbar: [
-    [{'header': '2'}],
+    [{'header': [3, false]}],
     ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
     [
       {'list': 'ordered'}, {'list': 'bullet'}
@@ -66,7 +66,7 @@ class WriteAStory extends Component {
       summary = summary.substr(0,100) + '...';
       let story = {
         title: this.state.title,
-        content: this.state.text.replace(/\"/g, "&quot;").replace(/\'/g, "&apos;"),
+        content: this.state.text.replace(/\"/g, "").replace(/\'/g, ""),
         summary,
         category: {
           group: this.state.category.group,
@@ -77,7 +77,9 @@ class WriteAStory extends Component {
         name: this.props.userData.name,
         email: this.props.userData.email
       };
-      this.props.publishStory({story, user});
+      this.props.publishStory({story, user}).then(() => {
+        this.props.history.push(`/story/${this.props.createStory.data.storyId}`);
+      });
     }
 
     titleChange(e){

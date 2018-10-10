@@ -27,14 +27,17 @@ class ReadAStory extends Component {
         }
       }
       let storyData = _.isEmpty(this.props.readStoryData.data) ? obj : this.props.readStoryData.data.storyData;
-      console.log({...this.props.readStoryData.data});
       let storyHTML = this.createMarkup(storyData.story.content);
+      console.log(storyData);
         return(
-          <div className="editor-wrapper">
-            {this.props.readStoryData.inProgress && <Loader/>}
-            <div className="ql-snow">
-              <div className="ql-editor">
-                <div key={storyData._id} dangerouslySetInnerHTML={storyHTML} />
+          <div className="read-story-wrapper">
+            <div className="editor-wrapper">
+              {this.props.readStoryData.inProgress && <Loader/>}
+              <div className="ql-snow">
+                <div className="ql-editor">
+                  <h2 className="editor-text editor-title">{storyData.story.title}</h2>
+                  <div key={storyData._id} dangerouslySetInnerHTML={storyHTML} />
+                </div>
               </div>
             </div>
           </div>
