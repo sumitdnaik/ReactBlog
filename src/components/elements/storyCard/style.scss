@@ -5,9 +5,9 @@
 .inner-card {
   height: 100%;
   width: 100%;
-  background: #fdfff7;
+  background: #f4f5f0;
   border-radius: 5px;
-  border: 1px solid #42699b;
+  // border: 1px solid #42699b;
 }
 .story-card {
   // border-radius: 5px;
@@ -40,14 +40,16 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: break-word;
+  word-break: break-all;
 }
 .story-link {
   display: inline-block;
   text-decoration: none;
   color: #293033;
-  &:hover {
+  outline: none;
+  &:hover,&:focus {
     text-decoration: none;
+    outline: none;
   }
 }
 .created-at {

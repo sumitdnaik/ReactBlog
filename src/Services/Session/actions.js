@@ -23,7 +23,7 @@ export function login(authenticationObj) {
                     }),
     onSuccess: (response) => {
       if(response.data.loggedIn){
-          localStorage.setItem('session', JSON.stringify(response.data));
+          localStorage.setItem('session', JSON.stringify(response.data.userData));
           return true;
       }
       else {

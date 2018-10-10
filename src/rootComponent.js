@@ -14,6 +14,7 @@ class RootComponent extends Component {
   }
     render() {
       const Session = this.props.userObj;
+      console.log(this.props.userObj);
       const loggedIn = Session ? true : false;
         return (
           <div>

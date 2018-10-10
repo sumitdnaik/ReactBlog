@@ -139,8 +139,9 @@ class WriteAStory extends Component {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return({
-    userData: state.user.userObj.userData,
+    userData: state.user.userObj,
     createStory: state.createStory
   });
 }

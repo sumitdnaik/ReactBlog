@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import ReadStory from './actionCreators';
 import Loader from 'components/elements/loader';
 import _ from 'lodash';
+import Months from 'constants/months';
+
 import './style.scss';
 import 'react-quill/dist/quill.snow.css';
 import '../writeAStory/style.scss';
+
 class ReadAStory extends Component {
     constructor(props){
         super(props);
@@ -21,18 +24,28 @@ class ReadAStory extends Component {
 
     render(){
       console.log(this.props.readStoryData);
-      let obj = {
+      let storyObj = {
+        createdAt: new Date().toUTCString(),
         story: {
           content: ""
         }
       }
-      let storyData = _.isEmpty(this.props.readStoryData.data) ? obj : this.props.readStoryData.data.storyData;
+      let userObj = {
+        name: ""
+      }
+      console.log(this.props.readStoryData.data);
+      let storyData = _.isEmpty(this.props.readStoryData.data) ? storyObj : this.props.readStoryData.data.storyData;
+      let userData = _.isEmpty(this.props.readStoryData.data) ? userObj : this.props.readStoryData.data.userData;
       let storyHTML = this.createMarkup(storyData.story.content);
-      console.log(storyData);
+      let createdAtDate = new Date(storyData.createdAt);
         return(
           <div className="read-story-wrapper">
+            {this.props.readStoryData.inProgress && <Loader/>}
             <div className="editor-wrapper">
-              {this.props.readStoryData.inProgress && <Loader/>}
+              <div className="story-user-info">
+                <p>{userData.name}</p>
+                <p>{createdAtDate.getDate() + " " + Months[createdAtDate.getMonth().toString()].substr(0,3) + ". " + createdAtDate.getFullYear()}</p>
+              </div>
               <div className="ql-snow">
                 <div className="ql-editor">
                   <h2 className="editor-text editor-title">{storyData.story.title}</h2>

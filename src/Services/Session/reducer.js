@@ -1,9 +1,10 @@
 
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE ,LOGOUT } from './actions';
 
+let userData = JSON.parse(localStorage.getItem('session'));
 const initialState = {
     isFetching: false,
-    userObj: JSON.parse(localStorage.getItem('session')),
+    userObj: userData ? userData : null,
     errorMessage: null
 };
 

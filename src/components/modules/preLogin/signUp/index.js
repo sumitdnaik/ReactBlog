@@ -29,7 +29,13 @@ class SignUp extends Component {
         email: this.state.email,
         password: this.state.password
       };
-      this.props.signUp(postObj);
+      this.props.signUp(postObj).then(()=>{
+        localStorage.setItem('session', JSON.stringify({
+          name: this.state.name,
+          email: this.state.email
+        }));
+        this.props.history.push("/");
+      });
     }
 
     getValue(e){
