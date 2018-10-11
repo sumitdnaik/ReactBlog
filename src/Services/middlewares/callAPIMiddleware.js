@@ -28,7 +28,25 @@ export default function callAPIMiddleware({ dispatch, getState }) {
     //   return;
     // }
     const [requestType, successType, failureType] = types;
-    
+
+    function dispatchSuccess(response){
+      return dispatch(
+        Object.assign({}, payload, {
+          response,
+          type: successType
+        })
+      );
+    }
+
+    function dispatchFailure(response){
+      return dispatch(
+        Object.assign({}, payload, {
+          response,
+          type: failureType
+        })
+      );
+    }
+
     dispatch(
       Object.assign({}, payload, {
         type: requestType
@@ -38,40 +56,24 @@ export default function callAPIMiddleware({ dispatch, getState }) {
       response => {
         if(conditionedDispatch) {
           if(onSuccess(response)){
-            dispatch(
-              Object.assign({}, payload, {
-                response,
-                type: successType
-              })
-            );
+            dispatchSuccess(response);
           }
           else {
-            dispatch(
-              Object.assign({}, payload, {
-                response,
-                type: failureType
-              })
-            );
+            dispatchFailure(response);
           }
         }
         else {
+          if(response.data.status){
             onSuccess(response);
-            dispatch(
-              Object.assign({}, payload, {
-                response,
-                type: successType
-              })
-            );
+            dispatchSuccess(response);
+          } else {
+            dispatchFailure(response);
+          }
         }
       },
       error => {
         onError(error);
-        dispatch(
-          Object.assign({}, payload, {
-            response: error,
-            type: failureType
-          })
-        )
+        dispatchFailure(error);
       }
     )
   }

@@ -1,5 +1,5 @@
 
-export default function simpleAPIReducerUtil({actionTypes, isGetData = false, getDataType = {}, dataSelector = "data"}){
+export default function simpleAPIReducerUtil({actionTypes, isGetData = false, getDataType = {}, dataSelector = ""}){
   const initialState = {
     inProgress: false,
     errorMessage: ""
@@ -19,10 +19,10 @@ export default function simpleAPIReducerUtil({actionTypes, isGetData = false, ge
       case successType:
         let data = action.response.data;
         if(isGetData){
-          if(dataSelector.indexOf(".") == -1){
+          if(dataSelector.length > 0 && dataSelector.indexOf(".") == -1){
             data = data[dataSelector];
           }
-          else {
+          else if(dataSelector.length > 0) {
             let selectors = dataSelector.split(".");
             for(let i=0; i<selectors.length; i++){
               data = data[selectors[i]];
@@ -40,6 +40,7 @@ export default function simpleAPIReducerUtil({actionTypes, isGetData = false, ge
         break;
 
       case failureType:
+      console.log(action.response);
         return({
           ...state, inProgress: false, errorMessage: action.response.data.message
         });

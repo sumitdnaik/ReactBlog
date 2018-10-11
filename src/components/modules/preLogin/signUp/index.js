@@ -23,19 +23,24 @@ class SignUp extends Component {
         };
     }
 
+    static getDerivedStateFromProps(props, state) {
+      if(props.signUpData.data && props.signUpData.data.username) {
+        localStorage.setItem('session', JSON.stringify({
+          name: state.name,
+          email: state.email
+        }));
+        props.history.push("/");
+      }
+      return null;
+    }
+
     signUp(){
       let postObj = {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password
       };
-      this.props.signUp(postObj).then(()=>{
-        localStorage.setItem('session', JSON.stringify({
-          name: this.state.name,
-          email: this.state.email
-        }));
-        this.props.history.push("/");
-      });
+      this.props.signUp(postObj);
     }
 
     getValue(e){
@@ -45,10 +50,10 @@ class SignUp extends Component {
     }
 
     render(){
-
         return(
           <Form>
             <div className="loginContainer">
+                {this.props.signUpData.errorMessage && <p className="error-message">{this.props.signUpData.errorMessage}</p>}
                 <div>
                     <Input
                         type="text"
