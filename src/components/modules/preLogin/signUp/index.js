@@ -14,12 +14,15 @@ class SignUp extends Component {
     constructor(props){
         super(props);
         this.signUp = this.signUp.bind(this);
-        this.getValue = this.getValue.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.state = {
-          name: "",
-          email: "",
-          password: "",
-          serverMsg: ""
+          inputs: {
+            name: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
+          },
+          error: null
         };
     }
 
@@ -35,21 +38,44 @@ class SignUp extends Component {
     }
 
     signUp(){
-      let postObj = {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
-      };
-      this.props.signUp(postObj);
+      let allInps = { ...this.state.inputs };
+      let isValid = true;
+      for (const key of Object.keys(allInps)) {
+          if(allInps[key].length == 0){
+            isValid = false;
+            break;
+          }
+      }
+      if(this.state.inputs.password != this.state.inputs.confirmPassword){
+        this.setState({
+          error: "Password and Confirm Password do not match."
+        });
+      }
+      else if(isValid){
+        let postObj = {
+          name: this.state.inputs.name,
+          email: this.state.inputs.email,
+          password: this.state.inputs.confirmPassword
+        };
+        this.props.signUp(postObj);
+      }
+      else {
+        this.setState({
+          error: "Fields cannot be empty."
+        });
+      }
     }
 
-    getValue(e){
+    onChange(e){
+      let inputs = { ...this.state.inputs };
+      inputs[e.target.name] = e.target.value;
       this.setState({
-        [e.target.name]: e.target.value
+        inputs: inputs
       });
     }
 
     render(){
+      let errorMsg = this.props.signUpData.errorMessage || this.state.error;
         return(
           <Form>
             <div className="loginContainer">
@@ -61,7 +87,7 @@ class SignUp extends Component {
                         validate={/^[A-Za-z\s]+$/}
                         validationMessage='Only alphabets are allowed'
                         name='name'
-                        getValue={this.getValue}
+                        onChange={this.onChange}
                         required={true}
                     />
                     <Input
@@ -70,19 +96,21 @@ class SignUp extends Component {
                         validate={/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/}
                         validationMessage='Please enter a valid email'
                         name='email'
-                        getValue={this.getValue}
+                        onChange={this.onChange}
                         required={true}
                     />
                     <Input
                         type="password"
+                        name='password'
                         placeholder='Password'
-                        required='true'
+                        required={true}
+                        onChange={this.onChange}
                     />
                     <Input
                         type="password"
+                        name='confirmPassword'
                         placeholder='Confirm Password'
-                        name='password'
-                        getValue={this.getValue}
+                        onChange={this.onChange}
                         required={true}
                     />
                 </div>

@@ -17,25 +17,39 @@ class Login extends Component{
             email : '',
             password:'',
             emailValidationMessage:'Please enter valid email',
-            emailValidator:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
-        }
+            emailValidator:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
+            error: null
+        };
+        this.onChange = this.onChange.bind(this);
+        this.submit = this.submit.bind(this)
     }
 
     submit(){
+      if(this.state.email.length > 0 && this.state.password.length > 0){
         let postObj = {
           email: this.state.email,
           password: this.state.password
         };
+        this.setState({
+          error: null
+        });
         Session.login(postObj);
+      }
+      else {
+        this.setState({
+          error: "Email and/or password can't be empty"
+        });
+      }
     }
 
-    getValue(e){
+    onChange(e){
       this.setState({
         [e.target.name]: e.target.value
       });
     }
 
     render(){
+      let errorMsg = this.props.errorMessage || this.state.error;
         return(
           <Form>
             <div className="login-container">
@@ -45,28 +59,28 @@ class Login extends Component{
                         validate={this.state.emailValidator}
                         validationMessage={this.state.emailValidationMessage}
                         placeholder='Email'
-                        getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         name='email'
                         required={true}
                     />
                     <Input
                         type="password"
                         placeholder='Password'
-                        getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         name='password'
                         required = {true}
                     />
                 </div>
                 {
-                  this.props.errorMessage &&
+                  errorMsg &&
                   <div className="loginError">
-                        <span>{this.props.errorMessage}</span>
+                        <span>{errorMsg}</span>
                     </div>
                 }
                 { this.props.isFetching && <Loader/> }
                 <div className="submit">
                   <div className="submit-btn">
-                    <Button onClick={this.submit.bind(this)} type="submit">Login</Button>
+                    <Button onClick={this.submit} type="submit">Login</Button>
                   </div>
                   <span>No account? </span><Link to="/SignUp">Create one</Link><span>.</span>
                 </div>

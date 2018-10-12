@@ -40,9 +40,10 @@ export default function simpleAPIReducerUtil({actionTypes, isGetData = false, ge
         break;
 
       case failureType:
-      console.log(action.response);
         return({
-          ...state, inProgress: false, errorMessage: action.response.data.message
+          ...state,
+          inProgress: false,
+          errorMessage: action.response.data ? action.response.data.message : "Oops! Unable to reach servers. Please try again."
         });
         break;
 

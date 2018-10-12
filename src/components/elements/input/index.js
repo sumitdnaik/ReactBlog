@@ -14,13 +14,8 @@ constructor(props) {
          errorMessage:'',
          showError: false
       }
+      this.onChangeInput = this.onChangeInput.bind(this);
    }
-    setValue(e){
-        this.setState({
-            inputValue: e.target.value,
-            showError: false
-        });
-    }
 
     /* on blur or submit, check input validity */
     checkValidity(e){
@@ -38,6 +33,10 @@ constructor(props) {
         this.props.getValue ? this.props.getValue(e) : "";
         this.setState(stateObj);
     };
+
+    onChangeInput(e){
+      this.props.onChange(e);
+    }
 
     showError(){
         this.setState({
@@ -65,6 +64,7 @@ constructor(props) {
                       onBlur={this.checkValidity.bind(this)}
                       ref={(value) => this.node = value}
                       onFocus={this.showError.bind(this)}
+                      onChange={(e) => this.onChangeInput(e)}
                   />
               </div>
               <Tooltip

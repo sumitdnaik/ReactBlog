@@ -22,7 +22,7 @@ export default function Session(state = initialState, action) {
       return Object.assign({}, state, {
           isFetching: false,
           userObj:null,
-          errorMessage: action.response.data.message
+          errorMessage: action.response.data ? action.response.data.message : "Oops! Unable to reach servers. Please try again."
       });
       break;
 
