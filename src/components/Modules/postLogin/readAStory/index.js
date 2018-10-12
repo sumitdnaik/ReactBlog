@@ -44,7 +44,7 @@ class ReadAStory extends Component {
             <div className="editor-wrapper">
               <div className="story-user-info">
                 <p>{userData.name}</p>
-                <p>{createdAtDate.getDate() + " " + Months[createdAtDate.getMonth().toString()].substr(0,3) + ". " + createdAtDate.getFullYear()}</p>
+                <p className="story-date">{createdAtDate.getDate() + " " + Months[createdAtDate.getMonth().toString()].substr(0,3) + ". " + createdAtDate.getFullYear()}</p>
               </div>
               <div className="ql-snow">
                 <div className="ql-editor">

@@ -15,11 +15,13 @@ constructor(props) {
          showError: false
       }
       this.onChangeInput = this.onChangeInput.bind(this);
+      this.checkValidity = this.checkValidity.bind(this);
+      this.showError = this.showError.bind(this);
    }
 
     /* on blur or submit, check input validity */
     checkValidity(e){
-      let stateObj = {};
+      let stateObj = { ...this.state };
         if(e.target.value == undefined || e.target.value == "" || e.target.value.length == 0){
             stateObj.errorMessage = 'This is required field';
             stateObj.isValid = false;
@@ -36,6 +38,7 @@ constructor(props) {
 
     onChangeInput(e){
       this.props.onChange(e);
+      this.checkValidity(e);
     }
 
     showError(){
@@ -61,9 +64,9 @@ constructor(props) {
                   <input
                       {...otherProps}
                       className={classList.join(' ')}
-                      onBlur={this.checkValidity.bind(this)}
+                      onBlur={(e) => this.checkValidity(e)}
                       ref={(value) => this.node = value}
-                      onFocus={this.showError.bind(this)}
+                      onFocus={this.showError}
                       onChange={(e) => this.onChangeInput(e)}
                   />
               </div>

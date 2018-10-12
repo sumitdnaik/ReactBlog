@@ -67,12 +67,12 @@ table {
 $primary-blue: #42699b;
 
 body {
-	color: #293033;
+	color: rgba(0, 0, 0, 0.85);
 }
 body, input, textarea {
   font-family: "Arimo-Regular";
   font-size: 100%;
-	color: #293033;
+	color: rgba(0, 0, 0, 0.85);
 	line-height: 1.2;
 }
 

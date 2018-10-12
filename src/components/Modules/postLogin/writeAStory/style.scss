@@ -4,17 +4,14 @@
 .editor-wrapper {
     width: 760px;
     padding: 20px 10px 0 10px;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
   .ql-bubble .ql-editor, .ql-snow .ql-editor {
     padding: 15px;
     h1, h2, h3 {
       font-family: "Arimo-Bold" !important;
     }
-    h1 {
-      font-size: 1.75em;
-    }
     h2 {
-      font-size: 1.5em;
+      font-size: 1.75em;
     }
     h3 {
       font-size: 1.5em;
@@ -22,11 +19,20 @@
   }
   .ql-editor p, .ql-editor ol, .ql-editor ul, .ql-editor pre, .ql-editor blockquote, .ql-editor.ql-blank::before  {
     font-family: "Arimo-Regular" !important;
-    font-size: 1.25em;
+    font-size: 1.3125em;
   }
   .ql-snow .ql-editor pre.ql-syntax, .ql-bubble .ql-editor pre.ql-syntax {
     background-color: rgba(0,0,0,.05);
     color: #293033;
+  }
+  .ql-editor li:not(.ql-direction-rtl)::before {
+    margin-right: 15px;
+  }
+  .ql-editor ol, .ql-editor ul {
+    margin-top: 15px;
+  }
+  .ql-editor ol li, .ql-editor ul li {
+    padding-bottom: 15px;
   }
   .ql-toolbar.ql-snow {
     padding: 8px 15px;
@@ -92,9 +98,6 @@
   }
   .ql-snow .ql-editor blockquote, .ql-bubble .ql-editor blockquote {
     border-left: 3px solid #302f2f;
-  }
-  .ql-editor ol li, .ql-editor ul li {
-    padding-bottom: 5px;
   }
   .category-wrapper {
     padding: 30px 15px;

@@ -1,6 +1,6 @@
 .read-story-wrapper {
   .editor-wrapper .ql-snow .ql-editor h2 {
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   }
   .editor-wrapper .ql-snow .ql-editor {
     padding: 0;
@@ -8,6 +8,11 @@
 }
 .story-user-info {
   padding: 10px;
-  background: #dbdbdb;
   margin-bottom: 20px;
+  border: 1px solid #42699b;
+  border-radius: 5px;
+  .story-date {
+    margin-top: 5px;
+    font-size: 0.875em;
+  }
 }
