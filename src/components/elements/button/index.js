@@ -12,8 +12,6 @@ function Button(props) {
 
         }
         else if(type == 'button') {
-
-            
             element = <button type="button" className="btn" {...otherProps}>{props.children}</button>;
         }
         else if(type == 'submit') {

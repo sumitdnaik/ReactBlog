@@ -4,8 +4,25 @@ import { connect } from 'react-redux';
 import constants from 'constants/global';
 import Button from 'components/elements/button';
 import './style.scss';
+import { debug } from 'util';
 
-function Header(props) {
+class Header extends Component{
+  constructor(props){
+    super(props);
+    
+    this.state = {
+      isUserSettingOpen : false
+    }
+  }
+
+  toggleUserSettings(){
+    this.setState({
+      isUserSettingOpen : !this.state.isUserSettingOpen
+    })
+  }
+
+  render(){
+    const headerHeight = 60;
     return(
       <header role='banner'>
         <div className="header-wrapper">
@@ -14,30 +31,45 @@ function Header(props) {
               <Link to="/">{constants.logo}</Link>
             </div>
             {
-              (!props.isAuthenticated) ?
+              (!this.props.currentUser) ?    
                 <div className="right-wrapper">
                   <Link to="/">Login</Link>
                   <Link to="/signUp">Sign Up</Link>
                 </div> :
                 <div className="right-wrapper">
                   <Link to="/writeAStory">Write a story</Link>
-                  {props.signOut &&
-                  <a href="javascript:void(0)" onClick={props.signOut}>
-                    Sign Out
+                  {this.props.signOut &&
+                  <a href="javascript:void(0)" onClick={this.toggleUserSettings.bind(this)}>
+                    {this.props.currentUser.name}
+                    <i className="down"></i>
                   </a>
                   }
                 </div>
+            }
+            {this.state.isUserSettingOpen &&
+              <div className="userSettings">
+                <ul >
+                  <li><Link to="/changePassword">Change Password</Link></li>
+                  <li><Link to="/userProfile">User Profile</Link></li>
+                  <li onClick={this.props.signOut}>
+                    <a href="javascript:void(0)" >
+                    Log Out
+                    </a>
+                  </li>
+                </ul>
+              </div>
             }
             <div className="clearfix"></div>
           </div>
         </div>
       </header>
     );
+  }
 }
 
 function mapStateToComponent(state){
   return {
-      isAuthenticated: state.user.userObj
+      currentUser: state.user.userObj
    }
 }
 export default connect(mapStateToComponent)(Header);

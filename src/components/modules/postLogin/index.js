@@ -9,6 +9,7 @@ import Header from '../header';
 import Home from './home';
 import WriteAStory from './writeAStory';
 import ReadAStory from './readAStory';
+import UserProfile from './userProfile'
 
 class PostLogin extends Component{
       constructor(props){
@@ -32,6 +33,7 @@ class PostLogin extends Component{
                   <Route exact path="/" component={Home}></Route>
                   <Route exact path="/writeAStory" component={WriteAStory}></Route>
                   <Route exact path="/story/:storyId" component={ReadAStory}/>
+                  <Route exact path="/userProfile" component={UserProfile}/>
                 </Switch>
               </div>
             </div>

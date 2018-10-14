@@ -57,6 +57,7 @@ class SignUp extends Component {
           email: this.state.inputs.email,
           password: this.state.inputs.confirmPassword
         };
+        debugger;
         this.props.signUp(postObj);
       }
       else {
@@ -128,6 +129,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
+  debugger;
   return({
     signUpData: state.signUp
   });

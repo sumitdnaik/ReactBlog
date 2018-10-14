@@ -1,0 +1,39 @@
+.user-profile{
+    width : 70%;
+    margin: 10% 10% 0 10%;
+    li{
+        width : 40%;
+        float:left;
+        margin-left:10%;
+    }
+}
+
+.countryList{
+   input{
+       margin :0 0 5% 0;
+       width: 80%;
+   }
+
+   i{
+    border : solid;
+    border-width: 0 3px 3px 0;
+    display : inline-block;
+    padding : 4px;
+    margin-bottom: 2px;
+    position: relative;
+    right: 25px;
+  }
+
+   .down-arrow{
+    margin-left: 5px;
+    transform: rotate(45deg);
+    -webkit-transform: (45deg);
+  }
+
+}
+.submit{
+    text-align: center;
+    .submit-btn {
+      margin-bottom: 20px;
+    }
+}
