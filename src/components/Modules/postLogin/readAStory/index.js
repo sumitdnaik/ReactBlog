@@ -23,19 +23,17 @@ class ReadAStory extends Component {
     }
 
     render(){
-      console.log(this.props.readStoryData);
       let storyObj = {
         createdAt: new Date().toUTCString(),
         story: {
           content: ""
+        },
+        createdBy: {
+          name: ""
         }
       }
-      let userObj = {
-        name: ""
-      }
-      console.log(this.props.readStoryData.data);
       let storyData = _.isEmpty(this.props.readStoryData.data) ? storyObj : this.props.readStoryData.data.storyData;
-      let userData = _.isEmpty(this.props.readStoryData.data) ? userObj : this.props.readStoryData.data.userData;
+      //let userData = _.isEmpty(this.props.readStoryData.data) ? userObj : this.props.readStoryData.data.userData;
       let storyHTML = this.createMarkup(storyData.story.content);
       let createdAtDate = new Date(storyData.createdAt);
         return(
@@ -43,7 +41,7 @@ class ReadAStory extends Component {
             {this.props.readStoryData.inProgress && <Loader/>}
             <div className="editor-wrapper">
               <div className="story-user-info">
-                <p>{userData.name}</p>
+                <p>{storyData.createdBy.name}</p>
                 <p className="story-date">{createdAtDate.getDate() + " " + Months[createdAtDate.getMonth().toString()].substr(0,3) + ". " + createdAtDate.getFullYear()}</p>
               </div>
               <div className="ql-snow">

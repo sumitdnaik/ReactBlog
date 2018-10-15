@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 import Input from '../../../elements/input';
 import Button from '../../../elements/button';
@@ -95,7 +95,7 @@ class UserProfile extends Component {
 
 
     render() {
-            return ( 
+            return (
             <form className = "user-profile" >
                     <ul >
                     <li>
@@ -103,8 +103,8 @@ class UserProfile extends Component {
                         placeholder = 'First Name'
                         //getValue={this.getValue.bind(this)}
                         name = 'firstName'
-                        required = {true} /> 
-                    </li > 
+                        required = {true} />
+                    </li >
                     <li>
                         <Input type = "text"
                         placeholder = 'Last Name'
@@ -112,8 +112,8 @@ class UserProfile extends Component {
                         name = 'lastName'
                         required = {
                             true
-                        }/> 
-                    </li > 
+                        }/>
+                    </li >
                     <li >
                         <Input type = "text"
                         // placeholder='Country'
@@ -121,26 +121,26 @@ class UserProfile extends Component {
                         value = {this.state.userInfo.country}
                         name = 'country'
                         required = {true}
-                        /> 
+                        />
                     {
                     this.state.CountryFocus &&
                     <div class = "countryList" >
 
-                        {/* <Dropdown 
+                        {/* <Dropdown
                             setSelectedName = {this.setSelectedCountry.bind(this)}
                             items = {this.state.countryList}
                         />  */}
                     </div>
 
-                } 
-                </li> 
+                }
+                </li>
                 <li>
                     <Input type = "text"
                         placeholder = 'State'
                         //getValue={this.getValue.bind(this)}
                         name = 'state'
                         required = {true}
-                    /> 
+                    />
                     { this.state.userInfo.country &&
                         <div className = "countryList" >
 
@@ -148,10 +148,10 @@ class UserProfile extends Component {
                             setSelectedName = {this.setSelectedState.bind(this)}
                             items = {this.state.countryList}
                             />  */}
-                        </div >
+                        </div>
 
-                    } 
-                </li> 
+                    }
+                </li>
                 <li>
                     <Input type = "tel"
                         placeholder = 'Mobile No'
@@ -160,10 +160,10 @@ class UserProfile extends Component {
                         required = {
                             true
                         }
-                    /> 
+                    />
                 </li>
-                
-            </ul> 
+
+            </ul>
             <div className="clearfix"></div>
             <div className="submit">
                 <div className="submit-btn">
@@ -171,7 +171,7 @@ class UserProfile extends Component {
                     <Button onClick={this.submit} type="submit">Save</Button>
                 </div>
             </div>
-           
+
         </form >
         )
     }
@@ -183,11 +183,11 @@ const mapStateToProps = (state) => {
       saveProfileData: state.data
     });
   }
-  
+
   const mapDispatchToProps = (dispatch) => {
     return({
       signUp: (payload) => dispatch(signUp(payload))
     });
   }
-  
+
   export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
