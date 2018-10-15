@@ -68,9 +68,8 @@
   }
 
   .userSettings{
-    width:15%;
-    position:fixed;
-    right:6%;
+    position: absolute;
+    right:0;
     top:60px;
     background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
   //   animation: mymove 5s;

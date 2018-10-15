@@ -21,6 +21,12 @@ class Header extends Component{
     })
   }
 
+  removeUserSettings(){
+    this.setState({
+      isUserSettingOpen : false
+    })
+  }
+
   render(){
     const headerHeight = 60;
     return(
@@ -47,7 +53,7 @@ class Header extends Component{
                 </div>
             }
             {this.state.isUserSettingOpen &&
-              <div className="userSettings">
+              <div onClick={this.toggleUserSettings.bind(this)} className="userSettings">
                 <ul >
                   <li><Link to="/changePassword">Change Password</Link></li>
                   <li><Link to="/userProfile">User Profile</Link></li>

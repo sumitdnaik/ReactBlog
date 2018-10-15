@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'; 
 
 import Input from '../../../elements/input';
 import Button from '../../../elements/button';
@@ -120,8 +121,6 @@ class UserProfile extends Component {
                         value = {this.state.userInfo.country}
                         name = 'country'
                         required = {true}
-                        getOnFocus = { this.getOnFocus.bind(this)}
-                        getOnBlur = {this.getOnBlur.bind(this)}
                         /> 
                     {
                     this.state.CountryFocus &&
@@ -143,7 +142,7 @@ class UserProfile extends Component {
                         required = {true}
                     /> 
                     { this.state.userInfo.country &&
-                        <div class = "countryList" >
+                        <div className = "countryList" >
 
                             {/* <Dropdown
                             setSelectedName = {this.setSelectedState.bind(this)}
@@ -162,15 +161,17 @@ class UserProfile extends Component {
                             true
                         }
                     /> 
-                </li >
-                        
+                </li>
+                
             </ul> 
             <div className="clearfix"></div>
             <div className="submit">
                 <div className="submit-btn">
+                    <Link to="/">Cancel</Link>
                     <Button onClick={this.submit} type="submit">Save</Button>
                 </div>
             </div>
+           
         </form >
         )
     }
