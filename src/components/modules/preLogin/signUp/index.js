@@ -57,12 +57,11 @@ class SignUp extends Component {
           email: this.state.inputs.email,
           password: this.state.inputs.confirmPassword
         };
-        debugger;
         this.props.signUp(postObj);
       }
       else {
         this.setState({
-          error: "Fields cannot be empty."
+          error: "Field/s cannot be empty."
         });
       }
     }
@@ -94,7 +93,7 @@ class SignUp extends Component {
                     <Input
                         type="text"
                         placeholder='Your Email'
-                        validate={/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/}
+                        validate={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
                         validationMessage='Please enter a valid email'
                         name='email'
                         onChange={this.onChange}
@@ -129,7 +128,6 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  debugger;
   return({
     signUpData: state.signUp
   });
