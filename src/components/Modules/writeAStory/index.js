@@ -102,37 +102,39 @@ class WriteAStory extends Component {
 
     render() {
       return(
-        <div className="editor-wrapper">
-          <h2 className="page-heading">Write a story</h2>
-          <textarea
-            className="editor-text editor-title"
-            placeholder="Title here..."
-            onChange={this.titleChange}
-            value={this.state.title}
-            onKeyDown={(e) => this.titleKeyDown(e)}>
-          </textarea>
+        <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+          <div className="editor-wrapper">
+            <h2 className="page-heading">Write a story</h2>
+            <textarea
+              className="editor-text editor-title"
+              placeholder="Title here..."
+              onChange={this.titleChange}
+              value={this.state.title}
+              onKeyDown={(e) => this.titleKeyDown(e)}>
+            </textarea>
 
-          <ReactQuill
-            value={this.state.text}
-            onChange={this.handleChange}
-            ref={(el) => { this.reactQuillRef = el }}
-            placeholder="Write your story here..."
-            modules={editorModules}
-            formats={editorFormats}
-            theme={'snow'}
-          />
-          <div className="category-wrapper">
-            <label htmlFor="category">Select a category for this story: </label>
-            <Select
-              name="category"
-              options={categories}
-              onChange={this.categoryChange}
-              value={this.state.category}
-              className="category-dropdown"
-              />
+            <ReactQuill
+              value={this.state.text}
+              onChange={this.handleChange}
+              ref={(el) => { this.reactQuillRef = el }}
+              placeholder="Write your story here..."
+              modules={editorModules}
+              formats={editorFormats}
+              theme={'snow'}
+            />
+            <div className="category-wrapper">
+              <label htmlFor="category">Select a category for this story: </label>
+              <Select
+                name="category"
+                options={categories}
+                onChange={this.categoryChange}
+                value={this.state.category}
+                className="category-dropdown"
+                />
+            </div>
+            <Button type="button" onClick={this.publish}>Publish</Button>
+            {this.props.createStory.inProgress && <Loader/>}
           </div>
-          <Button type="button" onClick={this.publish}>Publish</Button>
-          {this.props.createStory.inProgress && <Loader/>}
         </div>
       );
     }

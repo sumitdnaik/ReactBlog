@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Input from '../../../elements/input';
-import Button from '../../../elements/button';
+import Input from 'components/elements/input';
+import Button from 'components/elements/button';
 //import Dropdown from '../../../elements/dropDown';
 import {
     Countries,
@@ -95,16 +95,17 @@ class UserProfile extends Component {
 
 
     render() {
-            return (
-            <form className = "user-profile" >
-                    <ul >
+      return (
+          <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+            <form className = "user-profile">
+                  <ul>
                     <li>
                         <Input type = "text"
                         placeholder = 'First Name'
                         //getValue={this.getValue.bind(this)}
                         name = 'firstName'
                         required = {true} />
-                    </li >
+                    </li>
                     <li>
                         <Input type = "text"
                         placeholder = 'Last Name'
@@ -113,7 +114,7 @@ class UserProfile extends Component {
                         required = {
                             true
                         }/>
-                    </li >
+                    </li>
                     <li >
                         <Input type = "text"
                         // placeholder='Country'
@@ -172,7 +173,8 @@ class UserProfile extends Component {
                 </div>
             </div>
 
-        </form >
+        </form>
+      </div>
         )
     }
 }

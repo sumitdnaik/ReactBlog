@@ -15,6 +15,7 @@ class Home extends Component{
 
     render(){
         return(
+          <div className="width-container">
             <div className="home-wrapper">
               {this.props.homeData.inProgress && this.props.homeData.data.length != 0 && <Loader/>}
               {
@@ -30,6 +31,7 @@ class Home extends Component{
                 : <p className="no-stories-msg">"We don't have any stories to display right now."</p>
               }
             </div>
+          </div>
         )
     }
 }

@@ -12,7 +12,7 @@ class Session {
 
     static logout() {
         store.dispatch(logout());
-        history.push("/"); 
+        history.push("/");
             //.then(() => {
                 //location.reload(true);
             //});

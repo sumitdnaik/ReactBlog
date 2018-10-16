@@ -30,7 +30,8 @@ class SignUp extends Component {
       if(props.signUpData.data && props.signUpData.data.username) {
         localStorage.setItem('session', JSON.stringify({
           name: state.name,
-          email: state.email
+          email: state.email,
+          isLoggedIn: true
         }));
         props.history.push("/");
       }
@@ -75,54 +76,57 @@ class SignUp extends Component {
     }
 
     render(){
+      let headerHeight = 68;
       let errorMsg = this.props.signUpData.errorMessage || this.state.error;
         return(
-          <Form>
-            <div className="loginContainer">
-                {this.props.signUpData.errorMessage && <p className="error-message">{this.props.signUpData.errorMessage}</p>}
-                <div>
-                    <Input
-                        type="text"
-                        placeholder='Your Full Name'
-                        validate={/^[A-Za-z\s]+$/}
-                        validationMessage='Only alphabets are allowed'
-                        name='name'
-                        onChange={this.onChange}
-                        required={true}
-                    />
-                    <Input
-                        type="text"
-                        placeholder='Your Email'
-                        validate={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
-                        validationMessage='Please enter a valid email'
-                        name='email'
-                        onChange={this.onChange}
-                        required={true}
-                    />
-                    <Input
-                        type="password"
-                        name='password'
-                        placeholder='Password'
-                        required={true}
-                        onChange={this.onChange}
-                    />
-                    <Input
-                        type="password"
-                        name='confirmPassword'
-                        placeholder='Confirm Password'
-                        onChange={this.onChange}
-                        required={true}
-                    />
-                </div>
-                <div className="submit">
-                  <div className="submitBtn">
-                    <Button type="submit" onClick={this.signUp}>Sign Up</Button>
+          <div className="pre-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+            <Form>
+              <div className="loginContainer">
+                  {this.props.signUpData.errorMessage && <p className="error-message">{this.props.signUpData.errorMessage}</p>}
+                  <div>
+                      <Input
+                          type="text"
+                          placeholder='Your Full Name'
+                          validate={/^[A-Za-z\s]+$/}
+                          validationMessage='Only alphabets are allowed'
+                          name='name'
+                          onChange={this.onChange}
+                          required={true}
+                      />
+                      <Input
+                          type="text"
+                          placeholder='Your Email'
+                          validate={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
+                          validationMessage='Please enter a valid email'
+                          name='email'
+                          onChange={this.onChange}
+                          required={true}
+                      />
+                      <Input
+                          type="password"
+                          name='password'
+                          placeholder='Password'
+                          required={true}
+                          onChange={this.onChange}
+                      />
+                      <Input
+                          type="password"
+                          name='confirmPassword'
+                          placeholder='Confirm Password'
+                          onChange={this.onChange}
+                          required={true}
+                      />
                   </div>
-                  <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
-                </div>
-                {this.props.signUpData.inProgress && <Loader/>}
-            </div>
-          </Form>
+                  <div className="submit">
+                    <div className="submitBtn">
+                      <Button type="submit" onClick={this.signUp}>Sign Up</Button>
+                    </div>
+                    <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
+                  </div>
+                  {this.props.signUpData.inProgress && <Loader/>}
+              </div>
+            </Form>
+          </div>
         );
     }
 }

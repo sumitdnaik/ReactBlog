@@ -9,7 +9,7 @@ import { debug } from 'util';
 class Header extends Component{
   constructor(props){
     super(props);
-    
+
     this.state = {
       isUserSettingOpen : false
     }
@@ -28,7 +28,7 @@ class Header extends Component{
   }
 
   render(){
-    const headerHeight = 60;
+    const headerHeight = 68;
     return(
       <header role='banner'>
         <div className="header-wrapper">
@@ -37,9 +37,9 @@ class Header extends Component{
               <Link to="/">{constants.logo}</Link>
             </div>
             {
-              (!this.props.currentUser) ?    
+              (!this.props.currentUser) ?
                 <div className="right-wrapper">
-                  <Link to="/">Login</Link>
+                  <Link to="/login">Login</Link>
                   <Link to="/signUp">Sign Up</Link>
                 </div> :
                 <div className="right-wrapper">

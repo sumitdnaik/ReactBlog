@@ -7,7 +7,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = "LOGOUT";
 
 export function logout(){
-    localStorage.clear();
+    localStorage.setItem('session', null);
     return({
         type: LOGOUT
     })
@@ -23,7 +23,7 @@ export function login(authenticationObj) {
                     }),
     onSuccess: (response) => {
       if(response.data.loggedIn){
-          localStorage.setItem('session', JSON.stringify(response.data.userData));
+          localStorage.setItem('session', JSON.stringify({...response.data.userData, isLoggedIn: true}));
           return true;
       }
       else {

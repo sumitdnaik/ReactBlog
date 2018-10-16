@@ -49,43 +49,46 @@ class Login extends Component{
     }
 
     render(){
+      let headerHeight = 68;
       let errorMsg = this.props.errorMessage || this.state.error;
         return(
-          <Form>
-            <div className="login-container">
-                <div className="input-field">
-                    <Input
-                        type="text"
-                        validate={this.state.emailValidator}
-                        validationMessage={this.state.emailValidationMessage}
-                        placeholder='Email'
-                        onChange={this.onChange}
-                        name='email'
-                        required={true}
-                    />
-                    <Input
-                        type="password"
-                        placeholder='Password'
-                        onChange={this.onChange}
-                        name='password'
-                        required = {true}
-                    />
-                </div>
-                {
-                  errorMsg &&
-                  <div className="loginError">
-                        <span>{errorMsg}</span>
-                    </div>
-                }
-                { this.props.isFetching && <Loader/> }
-                <div className="submit">
-                  <div className="submit-btn">
-                    <Button onClick={this.submit} type="submit">Login</Button>
+          <div className="pre-login" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
+            <Form>
+              <div className="login-container">
+                  <div className="input-field">
+                      <Input
+                          type="text"
+                          validate={this.state.emailValidator}
+                          validationMessage={this.state.emailValidationMessage}
+                          placeholder='Email'
+                          onChange={this.onChange}
+                          name='email'
+                          required={true}
+                      />
+                      <Input
+                          type="password"
+                          placeholder='Password'
+                          onChange={this.onChange}
+                          name='password'
+                          required = {true}
+                      />
                   </div>
-                  <span>No account? </span><Link to="/SignUp">Create one</Link><span>.</span>
-                </div>
-            </div>
-          </Form>
+                  {
+                    errorMsg &&
+                    <div className="loginError">
+                          <span>{errorMsg}</span>
+                      </div>
+                  }
+                  { this.props.isFetching && <Loader/> }
+                  <div className="submit">
+                    <div className="submit-btn">
+                      <Button onClick={this.submit} type="submit">Login</Button>
+                    </div>
+                    <span>No account? </span><Link to="/SignUp">Create one</Link><span>.</span>
+                  </div>
+              </div>
+            </Form>
+          </div>
         )
     }
 }
