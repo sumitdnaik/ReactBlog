@@ -29,8 +29,8 @@ class SignUp extends Component {
     static getDerivedStateFromProps(props, state) {
       if(props.signUpData.data && props.signUpData.data.username) {
         localStorage.setItem('session', JSON.stringify({
-          name: state.name,
-          email: state.email,
+          name: state.inputs.name,
+          email: state.inputs.email,
           isLoggedIn: true
         }));
         props.history.push("/");

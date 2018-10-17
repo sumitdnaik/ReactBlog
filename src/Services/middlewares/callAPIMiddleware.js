@@ -64,16 +64,16 @@ export default function callAPIMiddleware({ dispatch, getState }) {
         }
         else {
           if(response.data.status){
-            onSuccess(response);
             dispatchSuccess(response);
+            onSuccess(response);
           } else {
             dispatchFailure(response);
           }
         }
       },
       error => {
-        onError(error);
         dispatchFailure(error);
+        onError(error);
       }
     )
   }

@@ -10,6 +10,9 @@ export default function signUp(signUpObj) {
                       url: APIUrls.signUp,
                       data: signUpObj
                     }),
-    payload: {}
+    payload: {},
+    onSuccess: (response) => {
+      localStorage.setItem('token', response.data.token);
+    }
   }
 };

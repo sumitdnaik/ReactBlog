@@ -77,9 +77,10 @@ class WriteAStory extends Component {
         name: this.props.userData.name,
         email: this.props.userData.email
       };
-      this.props.publishStory({story, user}).then(() => {
-        this.props.history.push(`/story/${this.props.createStory.data.storyId}`);
-      });
+      this.props.publishStory({story, user});
+      // .then(() => {
+      //   this.props.history.push(`/story/${this.props.createStory.data.storyId}`);
+      // });
     }
 
     titleChange(e){
@@ -101,6 +102,7 @@ class WriteAStory extends Component {
     }
 
     render() {
+      const headerHeight = 68;
       return(
         <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
           <div className="editor-wrapper">

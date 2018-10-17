@@ -1,5 +1,6 @@
 import axios from 'axios';
 import APIUrls from "constants/APIUrls";
+import history from 'services/utilities/historyUtil';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -8,6 +9,7 @@ export const LOGOUT = "LOGOUT";
 
 export function logout(){
     localStorage.setItem('session', null);
+    localStorage.removeItem('token');
     return({
         type: LOGOUT
     })
@@ -24,6 +26,7 @@ export function login(authenticationObj) {
     onSuccess: (response) => {
       if(response.data.loggedIn){
           localStorage.setItem('session', JSON.stringify({...response.data.userData, isLoggedIn: true}));
+          history.push("/");
           return true;
       }
       else {

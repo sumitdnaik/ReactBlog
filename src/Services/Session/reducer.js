@@ -27,6 +27,7 @@ export default function Session(state = initialState, action) {
       break;
 
     case LOGIN_SUCCESS:
+      localStorage.setItem('token', action.response.data.token);
       return { ...state, isFetching: false, userObj: action.response.data.userData };
       break;
 
