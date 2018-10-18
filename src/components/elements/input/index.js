@@ -23,7 +23,7 @@ constructor(props) {
     checkValidity(e){
       let stateObj = { ...this.state };
         if(e.target.value == undefined || e.target.value == "" || e.target.value.length == 0){
-            stateObj.errorMessage = 'This is required field';
+            stateObj.errorMessage = 'This is a required field.';
             stateObj.isValid = false;
         } else if(this.props.validate) {
             stateObj.isValid = this.props.validate.test(e.target.value);

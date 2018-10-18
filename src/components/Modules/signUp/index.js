@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router , Route , Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import APIUrls from 'constants/APIUrls';
 
 import Form from 'components/elements/formWrapper';
@@ -88,7 +88,7 @@ class SignUp extends Component {
                           type="text"
                           placeholder='Your Full Name'
                           validate={/^[A-Za-z\s]+$/}
-                          validationMessage='Only alphabets are allowed'
+                          validationMessage='Only alphabets are allowed.'
                           name='name'
                           onChange={this.onChange}
                           required={true}
@@ -97,7 +97,7 @@ class SignUp extends Component {
                           type="text"
                           placeholder='Your Email'
                           validate={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
-                          validationMessage='Please enter a valid email'
+                          validationMessage='Please enter a valid email.'
                           name='email'
                           onChange={this.onChange}
                           required={true}
@@ -121,7 +121,7 @@ class SignUp extends Component {
                     <div className="submitBtn">
                       <Button type="submit" onClick={this.signUp}>Sign Up</Button>
                     </div>
-                    <span>Already have an account? </span><Link to="/">Log In</Link><span>.</span>
+                    <span>Already have an account? </span><Link to="/login">Log In</Link><span>.</span>
                   </div>
                   {this.props.signUpData.inProgress && <Loader/>}
               </div>

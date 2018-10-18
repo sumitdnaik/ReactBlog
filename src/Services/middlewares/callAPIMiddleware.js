@@ -31,26 +31,29 @@ export default function callAPIMiddleware({ dispatch, getState }) {
 
     function dispatchSuccess(response){
       return dispatch(
-        Object.assign({}, payload, {
+        {
+          type: successType,
           response,
-          type: successType
-        })
+          payload
+        }
       );
     }
 
     function dispatchFailure(response){
       return dispatch(
-        Object.assign({}, payload, {
+        {
+          type: failureType,
           response,
-          type: failureType
-        })
+          payload
+        }
       );
     }
 
     dispatch(
-      Object.assign({}, payload, {
-        type: requestType
-      })
+      {
+        type: requestType,
+        payload
+      }
     );
     return callAPI().then(
       response => {

@@ -67,21 +67,20 @@
     }
   }
 
-  .userSettings{
+  .user-settings{
     position: absolute;
     right:0;
-    top:60px;
-    background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
+    top: 39px;
+    background: #eeeeee;//linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
+    padding: 10px;
   //   animation: mymove 5s;
   //   @keyframes mymove {
   //     from {height: 0px;}
   //     to {height: 200px;}
   // }
-    li{
+    li {
       text-align: left;
-      padding-left: 10px;
-      margin:10px;
-      text-transform: uppercase;
+      padding: 5px;
     }
   }
 

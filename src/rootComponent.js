@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Router , Route , Link , Switch} from 'react-router-dom';
+import { Router , Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
 import './styles/global.scss';
 

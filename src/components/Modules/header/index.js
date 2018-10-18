@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import constants from 'constants/global';
 import Button from 'components/elements/button';
 import './style.scss';
-import { debug } from 'util';
 
 class Header extends Component{
   constructor(props){
@@ -21,11 +20,11 @@ class Header extends Component{
     })
   }
 
-  removeUserSettings(){
-    this.setState({
-      isUserSettingOpen : false
-    })
-  }
+  // removeUserSettings(){
+  //   this.setState({
+  //     isUserSettingOpen : false
+  //   })
+  // }
 
   render(){
     const headerHeight = 68;
@@ -53,7 +52,7 @@ class Header extends Component{
                 </div>
             }
             {this.state.isUserSettingOpen &&
-              <div onClick={this.toggleUserSettings.bind(this)} className="userSettings">
+              <div onClick={this.toggleUserSettings.bind(this)} className="user-settings">
                 <ul >
                   <li><Link to="/changePassword">Change Password</Link></li>
                   <li><Link to="/userProfile">User Profile</Link></li>

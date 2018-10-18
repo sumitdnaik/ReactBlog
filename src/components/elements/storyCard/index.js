@@ -37,7 +37,7 @@ class StoryCard extends Component {
               {/* </a> */}
               <div className="story-footer">
                 <p className="created-by">by {createdBy.name}</p>
-                <p className="created-at">{createdAt.getDate() + " " + Months[createdAt.getMonth().toString()].substr(0,3) + ". " + createdAt.getFullYear()}</p>
+                <p className="created-at">{createdAt.getDate() + " " + Months[createdAt.getMonth().toString()].substr(0,3) + ".\'" + createdAt.getFullYear().toString().substr(-2,2)}</p>
               </div>
             </div>
           </div>
