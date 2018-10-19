@@ -65,14 +65,22 @@
         -webkit-transform: rotate(45deg);
       }
     }
+    .fa-caret-down, .fa-caret-up {
+      font-size: 21px;
+      margin-left: 5px;
+    }
   }
 
   .user-settings{
     position: absolute;
     right:0;
-    top: 39px;
+    top: 41px;
     background: #eeeeee;//linear-gradient(to bottom, #ffffff 0%,#e5e5e5 72%,#e5e5e5 86%);
     padding: 10px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 1px solid #dbdbdb;
   //   animation: mymove 5s;
   //   @keyframes mymove {
   //     from {height: 0px;}
@@ -84,4 +92,7 @@
     }
   }
 
+}
+.logout-msg {
+  padding-bottom: 10px; 
 }

@@ -3,40 +3,42 @@ import Button from '../button';
 
 import "./style.scss";
 
-class Modal extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            modal: false
-        }
-    //    this.toggle = this.toggle.bind(this);
-    }
+function Modal(props) {
 
-    // toggle() {
-    //     this.setState({
-    //         modal:!this.state.modal
-    //     })
-    // }
-    render(){
-        return(
-            <div className="modal">
-                <div className="modal-content">
-                    <Button type="link" className="close">&times;</Button>
-                    <div className="modal-content__header">
-                        <label>React Blog Modal</label>
-                    </div>
-                    <div className="modal-content__body">
-                        A modal. A small box that pops up to tell you something important. How hard can it be? Wellllll.
-                        Medium hard, I'd say. There's quite a few considerations and a few tricky things to get just right.
-                        Let us count the ways.
-                    </div>
-                    <div className="modal-content__footer">
-                        <Button type="button">Close</Button>
-                    </div>
+      if(!props.isOpen){
+        return null;
+      }
+
+      return(
+        <div className="modal">
+            <div className="modal-content">
+
+                <Button type="link" className="close" onClick={props.handleClose}>&times;</Button>
+
+                { props.header ?
+                  <div className="modal-content__header">
+                      {
+                        typeof props.header === "string" ? <h2>{props.header}</h2> :
+                        props.header
+                      }
+                  </div>
+                  : null
+                }
+
+                <div className="modal-content__body">
+                    {props.body}
                 </div>
+
+                { props.footer ?
+                  <div className="modal-content__footer">
+                      <Button type="button" onClick={props.handleClose}>Close</Button>
+                  </div>
+                : null
+                }
+
             </div>
+        </div>
         );
-    }
 }
 
 export default Modal;

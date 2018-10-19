@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import constants from 'constants/global';
 import Button from 'components/elements/button';
+import Modal from 'components/elements/modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './style.scss';
 
 class Header extends Component{
@@ -10,14 +12,30 @@ class Header extends Component{
     super(props);
 
     this.state = {
-      isUserSettingOpen : false
+      isUserSettingOpen : false,
+      modalOpen: false
     }
+    this.closeModal = this.closeModal.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
   }
 
   toggleUserSettings(){
     this.setState({
       isUserSettingOpen : !this.state.isUserSettingOpen
     })
+  }
+
+  closeModal(){
+    this.setState({
+      modalOpen : false
+    });
+  }
+
+  logoutUser(){
+    this.setState({
+      modalOpen: true
+    });
+    this.props.signOut();
   }
 
   // removeUserSettings(){
@@ -46,7 +64,7 @@ class Header extends Component{
                   {this.props.signOut &&
                   <a href="javascript:void(0)" onClick={this.toggleUserSettings.bind(this)}>
                     {this.props.currentUser.name}
-                    <i className="down"></i>
+                    <FontAwesomeIcon icon={this.state.isUserSettingOpen ? "caret-up" : "caret-down"}  />
                   </a>
                   }
                 </div>
@@ -54,9 +72,9 @@ class Header extends Component{
             {this.state.isUserSettingOpen &&
               <div onClick={this.toggleUserSettings.bind(this)} className="user-settings">
                 <ul >
-                  <li><Link to="/changePassword">Change Password</Link></li>
+                  <li><Link to="/settings">Settings</Link></li>
                   <li><Link to="/userProfile">User Profile</Link></li>
-                  <li onClick={this.props.signOut}>
+                  <li onClick={this.logoutUser}>
                     <a href="javascript:void(0)" >
                     Log Out
                     </a>
@@ -65,6 +83,18 @@ class Header extends Component{
               </div>
             }
             <div className="clearfix"></div>
+            <Modal
+              isOpen={this.state.modalOpen}
+              header="Logged Out!"
+              body={
+                <div>
+                  <p className="logout-msg">You have been logged out of WorthReads.</p>
+                  <p><Link to="/login" onClick={this.closeModal}>Login Again?</Link></p>
+                </div>
+              }
+              handleClose={this.closeModal}
+              footer={true}
+             />
           </div>
         </div>
       </header>

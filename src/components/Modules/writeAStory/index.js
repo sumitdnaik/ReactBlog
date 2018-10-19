@@ -66,7 +66,7 @@ class WriteAStory extends Component {
       summary = summary.substr(0,100) + '...';
       let story = {
         title: this.state.title,
-        content: this.state.text.replace(/\"/g, "").replace(/\'/g, ""),
+        content: this.state.text.replace(/\"/g, "\"").replace(/\'/g, "\'"),
         summary,
         category: {
           group: this.state.category.group,
