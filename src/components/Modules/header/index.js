@@ -76,7 +76,7 @@ class Header extends Component{
                   <li><Link to="/userProfile">User Profile</Link></li>
                   <li onClick={this.logoutUser}>
                     <a href="javascript:void(0)" >
-                    Log Out
+                      Log Out
                     </a>
                   </li>
                 </ul>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import saveProfile from './actionCreators';
+
 
 import Input from 'components/elements/input';
 import Button from 'components/elements/button';
@@ -10,6 +12,7 @@ import {
     States
 } from './CountryStateData';
 import './style.scss'
+import { debug } from 'util';
 class UserProfile extends Component {
     constructor(props) {
         super(props);
@@ -22,36 +25,28 @@ class UserProfile extends Component {
                 lastName: '',
                 country: 'India',
                 state: '',
-                mobile: ''
+                mobile: '',
+                email : this.props.currentUser.email
+
             }
         }
         this.onChange = this.onChange.bind(this);
         this.submit = this.submit.bind(this);
     }
     onChange(e){
-        this.setState({
-          [e.target.name]: e.target.value
-        });
+        var userInfo = {...this.state.userInfo}
+        userInfo[e.target.name] = e.target.value;
+        this.setState({userInfo});
     }
 
     submit(){
-        //   let postObj = {
-        //     firstName: this.state.firstName,
-        //     lastName: this.state.lastName,
-        //     country: this.state.country,
-        //     state: this.state.state,
-        //     mobile: this.state.mobile
-        //   };
-        //   this.setState({
-        //     error: null
-        //   });
-        //   Session.login(postObj);
-        // }
-        // else {
-        //   this.setState({
-        //     error: "Email and/or password can't be empty"
-        //   });
-      }
+          let postObj = this.state.userInfo;
+          this.setState({
+            error: null
+          });
+          this.props.saveProfile(postObj);
+        }
+        
 
     getOnFocus() {
         this.setState({
@@ -95,53 +90,59 @@ class UserProfile extends Component {
 
 
     render() {
-      return (
-          <div className="width-container" style={{minHeight: (window.innerHeight - headerHeight)+"px"}}>
-            <form className = "user-profile">
-                  <ul>
+            return ( 
+            <form className = "user-profile" >
+                    <ul>
+                    <li>
+                        <Input type = "text"
+                        value = {this.props.currentUser.email}
+                        disabled = {true}
+                        name = 'firstName'
+                        required = {true} /> 
+                    </li > 
+                   
                     <li>
                         <Input type = "text"
                         placeholder = 'First Name'
-                        //getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         name = 'firstName'
-                        required = {true} />
-                    </li>
+                        required = {true} /> 
+                    </li > 
                     <li>
                         <Input type = "text"
                         placeholder = 'Last Name'
-                        //getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         name = 'lastName'
                         required = {
                             true
-                        }/>
-                    </li>
+                        }/> 
+                    </li > 
                     <li >
                         <Input type = "text"
-                        // placeholder='Country'
-                        //getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         value = {this.state.userInfo.country}
                         name = 'country'
                         required = {true}
-                        />
+                        /> 
                     {
                     this.state.CountryFocus &&
                     <div class = "countryList" >
 
-                        {/* <Dropdown
+                        {/* <Dropdown 
                             setSelectedName = {this.setSelectedCountry.bind(this)}
                             items = {this.state.countryList}
                         />  */}
                     </div>
 
-                }
-                </li>
+                } 
+                </li> 
                 <li>
                     <Input type = "text"
                         placeholder = 'State'
-                        //getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         name = 'state'
                         required = {true}
-                    />
+                    /> 
                     { this.state.userInfo.country &&
                         <div className = "countryList" >
 
@@ -149,22 +150,22 @@ class UserProfile extends Component {
                             setSelectedName = {this.setSelectedState.bind(this)}
                             items = {this.state.countryList}
                             />  */}
-                        </div>
+                        </div >
 
-                    }
-                </li>
+                    } 
+                </li> 
                 <li>
                     <Input type = "tel"
                         placeholder = 'Mobile No'
-                        //getValue={this.getValue.bind(this)}
+                        onChange={this.onChange}
                         name = 'mobile'
                         required = {
                             true
                         }
-                    />
+                    /> 
                 </li>
-
-            </ul>
+                
+            </ul> 
             <div className="clearfix"></div>
             <div className="submit">
                 <div className="submit-btn">
@@ -172,9 +173,8 @@ class UserProfile extends Component {
                     <Button onClick={this.submit} type="submit">Save</Button>
                 </div>
             </div>
-
-        </form>
-      </div>
+           
+        </form >
         )
     }
 }
@@ -182,14 +182,14 @@ class UserProfile extends Component {
 
 const mapStateToProps = (state) => {
     return({
-      saveProfileData: state.data
+        currentUser: state.user.userObj
     });
   }
-
+  
   const mapDispatchToProps = (dispatch) => {
     return({
-      signUp: (payload) => dispatch(signUp(payload))
+      saveProfile: (payload) => dispatch(saveProfile(payload))
     });
   }
-
+  
   export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
