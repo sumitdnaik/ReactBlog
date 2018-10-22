@@ -21,10 +21,11 @@ class UserProfile extends Component {
             CountryFocus: false,
             StateFocus: false,
             userInfo: {
-                name: '',
-                country: 'India',
+                name: this.props.currentUser.name,
+                country: '',
                 state: '',
                 mobile: '',
+                profession : '',
                 email : this.props.currentUser.email
 
             }
@@ -93,23 +94,53 @@ class UserProfile extends Component {
             <form className = "user-profile" >
                     <ul>
                     <li>
-                        <Input type = "text"
-                        value = {this.props.currentUser.email}
-                        disabled = {true}
-                        name = 'email'
-                        required = {true} /> 
+                        <span>User Email</span>
+                        <div className="input-value">
+                            <Input type = "text"
+                                value = {this.state.userInfo.email}
+                                disabled = {true}
+                                name = 'email'
+                                required = {true} 
+                            /> 
+                        </div>
                     </li > 
                    
                     <li>
-                        <Input type = "text"
-                        placeholder = 'Full Name'
-                        onChange={this.onChange}
-                        name = 'name'
-                        required = {true} /> 
+                        <span>User Name</span>
+                        <div className="input-value">
+                            <Input type = "text"
+                            placeholder = 'Full Name'
+                            onChange={this.onChange}
+                            name = 'name'
+                            value = {this.state.userInfo.name}
+                            required = {true} /> 
+                        </div>
+                    </li > 
+
+                     <li>
+                        <span>Profession</span>
+                        <div className="input-value">
+                            <Input type = "text"
+                            placeholder = 'profession'
+                            onChange={this.onChange}
+                            name = 'profession'
+                            required = {true} /> 
+                        </div>
+                    </li > 
+
+                    <li>
+                        <span>About Yourself</span>
+                        <div className="input-value">
+                            <textarea rows="4" cols="58">
+                            </textarea>
+                        </div>
                     </li > 
 
                     <li >
+                    <span>Country</span>
+                    <div className="input-value">
                         <Input type = "text"
+                        placeholder = "Country"
                         onChange={this.onChange}
                         value = {this.state.userInfo.country}
                         name = 'country'
@@ -126,8 +157,11 @@ class UserProfile extends Component {
                     </div>
 
                 } 
+                </div>
                 </li> 
                 <li>
+                <span>State</span>
+                    <div className="input-value">
                     <Input type = "text"
                         placeholder = 'State'
                         onChange={this.onChange}
@@ -144,16 +178,18 @@ class UserProfile extends Component {
                         </div >
 
                     } 
+                    </div>
                 </li> 
                 <li>
+                <span>Mobile</span>
+                    <div className="input-value">
                     <Input type = "tel"
                         placeholder = 'Mobile No'
                         onChange={this.onChange}
                         name = 'mobile'
-                        required = {
-                            true
-                        }
+                        required = {true}
                     /> 
+                    </div>
                 </li>
                 
             </ul> 
