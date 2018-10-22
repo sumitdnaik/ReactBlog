@@ -21,8 +21,7 @@ class UserProfile extends Component {
             CountryFocus: false,
             StateFocus: false,
             userInfo: {
-                firstName: '',
-                lastName: '',
+                name: '',
                 country: 'India',
                 state: '',
                 mobile: '',
@@ -97,26 +96,18 @@ class UserProfile extends Component {
                         <Input type = "text"
                         value = {this.props.currentUser.email}
                         disabled = {true}
-                        name = 'firstName'
+                        name = 'email'
                         required = {true} /> 
                     </li > 
                    
                     <li>
                         <Input type = "text"
-                        placeholder = 'First Name'
+                        placeholder = 'Full Name'
                         onChange={this.onChange}
-                        name = 'firstName'
+                        name = 'name'
                         required = {true} /> 
                     </li > 
-                    <li>
-                        <Input type = "text"
-                        placeholder = 'Last Name'
-                        onChange={this.onChange}
-                        name = 'lastName'
-                        required = {
-                            true
-                        }/> 
-                    </li > 
+
                     <li >
                         <Input type = "text"
                         onChange={this.onChange}
