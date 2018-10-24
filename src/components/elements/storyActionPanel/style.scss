@@ -1,0 +1,10 @@
+.floating-panel {
+  width: 200px;
+  position: fixed;
+  top: 50%;
+  left: 8%;
+  .likes-count {
+    padding: 10px 6px;
+    color: #42699b;
+  }
+}

@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import RootComponent from './rootComponent';
-import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
-library.add(faCaretDown, faCaretUp);
+import { faCaretDown, faCaretUp, faHeart } from '@fortawesome/free-solid-svg-icons';
+library.add(faCaretDown, faCaretUp, faHeart);
 
 class App extends Component {
 
