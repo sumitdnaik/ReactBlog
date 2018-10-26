@@ -3,8 +3,18 @@
   position: fixed;
   top: 50%;
   left: 8%;
+  .like-link {
+    outline: none;
+  }
   .likes-count {
     padding: 10px 6px;
     color: #42699b;
+  }
+  .fa-heart {
+    path {
+      -webkit-transition: fill .4s ease;
+      -moz-transition: fill .4s ease;
+      transition: fill .4s ease;
+    }
   }
 }

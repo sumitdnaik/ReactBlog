@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { ReadStory, UpvoteStory } from './actionCreators';
+import { ReadStory, UpvoteStory, ResetUpvote } from './actionCreators';
 import Loader from 'components/elements/loader';
 import StoryActionPanel from 'components/elements/storyActionPanel';
 import _ from 'lodash';
@@ -16,13 +16,30 @@ class ReadAStory extends Component {
     constructor(props){
         super(props);
         this.state = {
-          modalOpen: false
+          modalOpen: false,
+          upvoteCount: ""
         }
         this.onUpvoteClick = this.onUpvoteClick.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount(){
+      this.props.resetUpvote();
       this.props.getStory({storyId: this.props.match.params.storyId});
+
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+      if(prevProps.readStoryData.story.inProgress !== this.props.readStoryData.story.inProgress && !this.props.readStoryData.story.inProgress) {
+        this.setState({
+          upvoteCount: this.props.readStoryData.story.data.storyData.upvotes
+        });
+      }
+      if(prevProps.readStoryData.upvote.success != this.props.readStoryData.upvote.success) {
+        this.setState({
+          upvoteCount: this.state.upvoteCount + 1
+        });
+      }
     }
 
     createMarkup(htmlString) {
@@ -30,14 +47,19 @@ class ReadAStory extends Component {
     }
 
     onUpvoteClick(){
-      if(JSON.parse(localStorage.getItem("session"))){
-        var userId = JSON.parse(localStorage.getItem("session")).email;
-        this.props.upvoteStory(this.props.match.params.storyId, userId);
+      if(JSON.parse(localStorage.getItem("session"))) {
+        if(!this.props.readStoryData.story.data.storyData.hasUserUpvoted) this.props.upvoteStory(this.props.match.params.storyId); //, userId);
       } else {
         this.setState({
           modalOpen: true
         });
       }
+    }
+
+    closeModal(){
+      this.setState({
+        modalOpen: false
+      });
     }
 
     render(){
@@ -48,10 +70,10 @@ class ReadAStory extends Component {
         },
         createdBy: {
           name: ""
-        }
+        },
+        hasUserUpvoted: false
       }
       let storyData = _.isEmpty(this.props.readStoryData.story.data) ? storyObj : this.props.readStoryData.story.data.storyData;
-      //let userData = _.isEmpty(this.props.readStoryData.data) ? userObj : this.props.readStoryData.data.userData;
       let storyHTML = this.createMarkup(storyData.story.content);
       let createdAtDate = new Date(storyData.createdAt);
         return(
@@ -75,15 +97,17 @@ class ReadAStory extends Component {
             </div>
             <StoryActionPanel
               onUpvoteClick={this.onUpvoteClick}
-              count={storyData.upvotes}
+              count={this.state.upvoteCount}
+              upvoted={storyData.hasUserUpvoted || this.props.readStoryData.upvote.success }
             />
 
             <Modal
               isOpen={this.state.modalOpen}
-              header="Logged Out!"
+              header="Log In to WorthReads."
               body={
                 <div>
                   <p className="logout-msg">Please <Link to="/login" onClick={this.closeModal}>Log In</Link> to continue.</p>
+                  <p>Don't have an account on WorthReads? <Link to="/signUp" onClick={this.closeModal}>Sign up</Link> here..</p>
                 </div>
               }
               handleClose={this.closeModal}
@@ -104,7 +128,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     getStory: (storyObj) => dispatch(ReadStory(storyObj)),
-    upvoteStory: (storyId, userId) => dispatch(UpvoteStory(storyId, userId))
+    upvoteStory: (storyId, userId) => dispatch(UpvoteStory(storyId, userId)),
+    resetUpvote: () => dispatch(ResetUpvote())
+
   })
 }
 

@@ -4,7 +4,8 @@ import {
   READ_STORY_FAILURE,
   UPVOTE_STORY_REQUEST,
   UPVOTE_STORY_SUCCESS,
-  UPVOTE_STORY_FAILURE
+  UPVOTE_STORY_FAILURE,
+  UPVOTE_STORY_RESET
 } from './actions';
 import _ from 'lodash';
 
@@ -48,17 +49,19 @@ export default function(state = initialState, action) {
     //   break;
 
     case UPVOTE_STORY_SUCCESS:
-      newState.upvote.inProgress = false;
       newState.upvote.success = true;
         return({ ...newState });
       break;
 
     case UPVOTE_STORY_FAILURE:
-      newState.inProgress = false;
-      newState.errorMessage = action.response.data ? action.response.data.message : "Oops! Unable to reach servers. Please try again.";
+      newState.upvote.errorMessage = action.response.data ? action.response.data.message : "Oops! Unable to reach servers. Please try again.";
       return({ ...newState });
       break;
 
+    case UPVOTE_STORY_RESET:
+      newState.upvote.success = false;
+      return({...newState});
+      
     default:
       return state;
   }

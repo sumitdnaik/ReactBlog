@@ -9,7 +9,7 @@ function StoryActionPanel(props){
           <a href="javascript:void(0)" className="like-link" onClick={props.onUpvoteClick} title="Upvote">
             <FontAwesomeIcon
               icon={'heart'}
-              color={"#fff"}
+              color={props.upvoted ? "#a01515" : "#fff"}
               size="3x"
               stroke="black"
               strokeWidth="8"

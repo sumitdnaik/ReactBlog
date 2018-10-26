@@ -84,7 +84,7 @@ class Login extends Component{
                     <div className="submit-btn">
                       <Button onClick={this.submit} type="submit">Login</Button>
                     </div>
-                    <span>No account? </span><Link to="/SignUp">Create one</Link><span>.</span>
+                    <span>No account? </span><Link to="/signUp">Create one</Link><span>.</span>
                   </div>
               </div>
             </Form>
