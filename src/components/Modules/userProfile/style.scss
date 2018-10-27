@@ -12,9 +12,13 @@
         }
         .input-value{
             flex-grow: 2
-
         }
+        textarea{
+            width:100%
+        }
+
     }
+
 }
 
 .countryList{
@@ -41,8 +45,14 @@
 
 }
 .submit{
-    text-align: center;
+    text-align: center; 
     .submit-btn {
       margin-bottom: 20px;
+      display:flex;
+      justify-content: center;
+          a{
+              margin-right:20px;
+              padding-top:10px;
+      }
     }
 }

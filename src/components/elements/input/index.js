@@ -52,7 +52,7 @@ constructor(props) {
 
         //Default class
         classList.push('input');
-
+        this.props.disabled ? classList.push('disabled'):'';
         /* if invalid, add appropriate status */
         if(!this.state.isValid) classList.push('input-error');
 

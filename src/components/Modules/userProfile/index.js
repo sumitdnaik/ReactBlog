@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'; 
-import saveProfile from './actionCreators';
+import getProfile , {saveProfile} from './actionCreators';
 
 
 import Input from 'components/elements/input';
@@ -33,6 +33,11 @@ class UserProfile extends Component {
         this.onChange = this.onChange.bind(this);
         this.submit = this.submit.bind(this);
     }
+
+    componentDidMount(){
+        getProfile(this.props.currentUser.email);
+    }
+
     onChange(e){
         var userInfo = {...this.state.userInfo}
         userInfo[e.target.name] = e.target.value;
@@ -208,6 +213,7 @@ class UserProfile extends Component {
 
 
 const mapStateToProps = (state) => {
+    debugger;
     return({
         currentUser: state.user.userObj
     });
@@ -215,7 +221,8 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return({
-      saveProfile: (payload) => dispatch(saveProfile(payload))
+      saveProfile: (payload) => dispatch(saveProfile(payload)),
+      getProfile : (payload) => dispatch(getProfile(payload))
     });
   }
   
