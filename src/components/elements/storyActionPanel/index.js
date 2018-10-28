@@ -6,7 +6,7 @@ function StoryActionPanel(props){
       return(
         <div className="floating-panel">
           <p className="likes-count">{props.count}</p>
-          <a href="javascript:void(0)" className="like-link" onClick={props.onUpvoteClick} title="Upvote">
+          <a href="javascript:void(0)" className="like-link" onClick={props.onUpvoteClick} title={props.upvoted ? "Already upvoted" : "Upvote"}>
             <FontAwesomeIcon
               icon={'heart'}
               color={props.upvoted ? "#a01515" : "#fff"}

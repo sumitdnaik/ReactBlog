@@ -10,7 +10,9 @@ export default function publish(storyObj) {
                       method: 'POST',
                       url: APIUrls.createStory,
                       data: { story: storyObj.story, user: storyObj.user },
-                      headers: {'x-access-token': localStorage.getItem('token')},
+                      headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('token') ? localStorage.getItem('token') : null}`
+                      }
                     }),
     payload: {},
     onSuccess: (response) => {

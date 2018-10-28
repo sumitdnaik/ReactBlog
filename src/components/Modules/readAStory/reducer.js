@@ -43,11 +43,6 @@ export default function(state = initialState, action) {
       return({ ...newState });
       break;
 
-    // case UPVOTE_STORY_REQUEST:
-    //   newState.upvote.inProgress = true;
-    //   return({ ...newState });
-    //   break;
-
     case UPVOTE_STORY_SUCCESS:
       newState.upvote.success = true;
         return({ ...newState });
@@ -61,7 +56,7 @@ export default function(state = initialState, action) {
     case UPVOTE_STORY_RESET:
       newState.upvote.success = false;
       return({...newState});
-      
+
     default:
       return state;
   }

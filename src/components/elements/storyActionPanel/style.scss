@@ -2,7 +2,8 @@
   width: 200px;
   position: fixed;
   top: 50%;
-  left: 8%;
+  left: 4%;
+  text-align: center;
   .like-link {
     outline: none;
   }
@@ -12,9 +13,9 @@
   }
   .fa-heart {
     path {
-      -webkit-transition: fill .4s ease;
-      -moz-transition: fill .4s ease;
-      transition: fill .4s ease;
+      -webkit-transition: fill .6s linear;
+      -moz-transition: fill .6s linear;
+      transition: fill .6s linear;
     }
   }
 }

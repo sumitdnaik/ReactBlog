@@ -9,7 +9,9 @@ export function ReadStory(storyObj) {
                       method: 'POST',
                       url: APIUrls.readStory,
                       data: { storyId: storyObj.storyId },
-                      headers: {'x-access-token': localStorage.getItem('token') ? localStorage.getItem('token') : null},
+                      headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('token') ? localStorage.getItem('token') : null}`
+                      }
                     })
   }
 };
@@ -21,7 +23,9 @@ export function UpvoteStory(storyId) {
                       method: 'POST',
                       url: APIUrls.upvoteStory,
                       data: { storyId },
-                      headers: {'x-access-token': localStorage.getItem('token') ? localStorage.getItem('token') : null},
+                      headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('token') ? localStorage.getItem('token') : null}`
+                      }
                     })
   }
 };
