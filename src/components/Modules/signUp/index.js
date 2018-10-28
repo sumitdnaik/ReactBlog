@@ -90,6 +90,7 @@ class SignUp extends Component {
                           validate={/^[A-Za-z\s]+$/}
                           validationMessage="Only alphabets are allowed."
                           name="name"
+                          id="signup-name"
                           onChange={this.onChange}
                           required={true}
                           autocomplete="off"
@@ -100,6 +101,7 @@ class SignUp extends Component {
                           validate={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
                           validationMessage="Please enter a valid email."
                           name="email"
+                          id="signup-email"
                           onChange={this.onChange}
                           required={true}
                           autocomplete={"off"}
@@ -108,6 +110,7 @@ class SignUp extends Component {
                           type="password"
                           name="password"
                           label="Password"
+                          id="signup-password"
                           required={true}
                           onChange={this.onChange}
                           autocomplete={"off"}
@@ -116,6 +119,7 @@ class SignUp extends Component {
                           type="password"
                           name="confirmPassword"
                           label="Confirm Password"
+                          id="signup-confirm-password"
                           onChange={this.onChange}
                           required={true}
                           autocomplete={"off"}

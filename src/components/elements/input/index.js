@@ -18,7 +18,6 @@ class Input extends Component {
     }
     this.onChangeInput = this.onChangeInput.bind(this);
     this.checkValidity = this.checkValidity.bind(this);
-    this.onLabelClick = this.onLabelClick.bind(this);
     this.showError = this.showError.bind(this);
    }
 
@@ -57,24 +56,18 @@ class Input extends Component {
     });
   }
 
-  onLabelClick(){
-    if(this.state.focused == false){
-      this.node.focus();
-    }
-  }
-
     render(){
         let classList = ['input'], wrapperClassList = ['input-wrapper'];
         if(this.props.disabled) classList.push('disabled');
         if(this.state.focused) wrapperClassList.push('focused');
         if(!this.state.isValid) classList.push('input-error');
 
-        let { validate, validationMessage, label, value, ...otherProps } = this.props;
+        let { validate, validationMessage, label, value, id, ...otherProps } = this.props;
 
         return(
             <div>
               <div className={wrapperClassList.join(" ")}>
-              {label ? <label onClick={this.onLabelClick}>{label}</label> : null}
+              {label ? <label for={id}>{label}</label> : null}
                   <input
                       {...otherProps}
                       className={classList.join(' ')}
@@ -83,6 +76,7 @@ class Input extends Component {
                       onFocus={this.showError}
                       onChange={(e) => this.onChangeInput(e)}
                       value={value}
+                      id={id}
                   />
               </div>
               <Tooltip

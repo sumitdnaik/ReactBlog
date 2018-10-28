@@ -65,6 +65,7 @@ class Login extends Component{
                           onChange={this.onChange}
                           name="email"
                           required={true}
+                          id="login-email"
                       />
                       <Input
                           type="password"
@@ -73,6 +74,7 @@ class Login extends Component{
                           onChange={this.onChange}
                           name="password"
                           required = {true}
+                          id="login-password"
                       />
                   </div>
                   {
