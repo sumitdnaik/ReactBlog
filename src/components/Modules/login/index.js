@@ -58,18 +58,20 @@ class Login extends Component{
                   <div className="input-field">
                       <Input
                           type="text"
+                          value={this.state.email}
                           validate={this.state.emailValidator}
                           validationMessage={this.state.emailValidationMessage}
-                          placeholder='Email'
+                          label="Email"
                           onChange={this.onChange}
-                          name='email'
+                          name="email"
                           required={true}
                       />
                       <Input
                           type="password"
-                          placeholder='Password'
+                          value={this.state.password}
+                          label="Password"
                           onChange={this.onChange}
-                          name='password'
+                          name="password"
                           required = {true}
                       />
                   </div>

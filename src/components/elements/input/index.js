@@ -2,65 +2,79 @@ import React , { Component } from 'react';
 import Tooltip from '../tooltip';
 import './style.scss';
 
-class Input extends Component{
-constructor(props) {
-      super(props);
+class Input extends Component {
 
-      this.node = null;
+  constructor(props) {
+    super(props);
 
-      this.state = {
-         inputValue:'',
-         isValid : true,
-         errorMessage:'',
-         showError: false
-      }
-      this.onChangeInput = this.onChangeInput.bind(this);
-      this.checkValidity = this.checkValidity.bind(this);
-      this.showError = this.showError.bind(this);
+    this.node = null;
+
+    this.state = {
+       inputValue:'',
+       isValid : true,
+       errorMessage:'',
+       showError: false,
+       focused: false
+    }
+    this.onChangeInput = this.onChangeInput.bind(this);
+    this.checkValidity = this.checkValidity.bind(this);
+    this.onLabelClick = this.onLabelClick.bind(this);
+    this.showError = this.showError.bind(this);
    }
 
     /* on blur or submit, check input validity */
-    checkValidity(e){
-      let stateObj = { ...this.state };
-        if(e.target.value == undefined || e.target.value == "" || e.target.value.length == 0){
-            stateObj.errorMessage = 'This is a required field.';
-            stateObj.isValid = false;
-        } else if(this.props.validate) {
-            stateObj.isValid = this.props.validate.test(e.target.value);
-            stateObj.errorMessage = this.props.validationMessage;
-        } else {
-          stateObj.isValid = true;
-        }
-        stateObj.showError = false;
-        this.props.getValue ? this.props.getValue(e) : "";
-        this.setState(stateObj);
-    };
-
-    onChangeInput(e){
-      this.props.onChange(e);
-      this.checkValidity(e);
+  checkValidity(e){
+    let stateObj = { ...this.state };
+    if(e.target.value == undefined || e.target.value == "" || e.target.value.length == 0){
+      stateObj.errorMessage = 'This is a required field.';
+      stateObj.isValid = false;
+    } else if(this.props.validate) {
+      stateObj.isValid = this.props.validate.test(e.target.value);
+      stateObj.errorMessage = this.props.validationMessage;
+    } else {
+      stateObj.isValid = true;
     }
-
-    showError(){
-        this.setState({
-            showError: !this.state.isValid
-        });
+    stateObj.showError = false;
+    if(e.target.value.length == 0) {
+      stateObj.focused = false;
     }
+    else {
+      stateObj.focused = true;
+    }
+    this.props.getValue ? this.props.getValue(e) : "";
+    this.setState(stateObj);
+  };
+
+  onChangeInput(e){
+    this.props.onChange(e);
+    this.checkValidity(e);
+  }
+
+  showError(){
+    this.setState({
+        showError: !this.state.isValid,
+        focused: true
+    });
+  }
+
+  onLabelClick(){
+    if(this.state.focused == false){
+      this.node.focus();
+    }
+  }
 
     render(){
-        const classList : Array<string> = [];
-
-        //Default class
-        classList.push('input');
-        this.props.disabled ? classList.push('disabled'):'';
-        /* if invalid, add appropriate status */
+        let classList = ['input'], wrapperClassList = ['input-wrapper'];
+        if(this.props.disabled) classList.push('disabled');
+        if(this.state.focused) wrapperClassList.push('focused');
         if(!this.state.isValid) classList.push('input-error');
 
-        let { validate, validationMessage, getValue, ...otherProps } = this.props;
+        let { validate, validationMessage, label, value, ...otherProps } = this.props;
 
         return(
             <div>
-              <div className="input-wrapper">
+              <div className={wrapperClassList.join(" ")}>
+              {label ? <label onClick={this.onLabelClick}>{label}</label> : null}
                   <input
                       {...otherProps}
                       className={classList.join(' ')}
@@ -68,6 +82,7 @@ constructor(props) {
                       ref={(value) => this.node = value}
                       onFocus={this.showError}
                       onChange={(e) => this.onChangeInput(e)}
+                      value={value}
                   />
               </div>
               <Tooltip

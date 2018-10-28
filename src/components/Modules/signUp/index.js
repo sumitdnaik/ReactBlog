@@ -62,7 +62,7 @@ class SignUp extends Component {
       }
       else {
         this.setState({
-          error: "Field/s cannot be empty."
+          error: "Field/s should not be empty."
         });
       }
     }
@@ -86,35 +86,39 @@ class SignUp extends Component {
                   <div>
                       <Input
                           type="text"
-                          placeholder='Your Full Name'
+                          label="Full Name"
                           validate={/^[A-Za-z\s]+$/}
-                          validationMessage='Only alphabets are allowed.'
-                          name='name'
+                          validationMessage="Only alphabets are allowed."
+                          name="name"
                           onChange={this.onChange}
                           required={true}
+                          autocomplete="off"
                       />
                       <Input
                           type="text"
-                          placeholder='Your Email'
+                          label="Email"
                           validate={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
-                          validationMessage='Please enter a valid email.'
-                          name='email'
+                          validationMessage="Please enter a valid email."
+                          name="email"
                           onChange={this.onChange}
                           required={true}
+                          autocomplete={"off"}
                       />
                       <Input
                           type="password"
-                          name='password'
-                          placeholder='Password'
+                          name="password"
+                          label="Password"
                           required={true}
                           onChange={this.onChange}
+                          autocomplete={"off"}
                       />
                       <Input
                           type="password"
-                          name='confirmPassword'
-                          placeholder='Confirm Password'
+                          name="confirmPassword"
+                          label="Confirm Password"
                           onChange={this.onChange}
                           required={true}
+                          autocomplete={"off"}
                       />
                   </div>
                   <div className="submit">

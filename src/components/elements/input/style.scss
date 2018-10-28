@@ -2,7 +2,26 @@
 $errorBorder : 2px solid #be4b49;
 
 .input-wrapper {
-  padding: 10px 0 20px 0;
+  padding: 20px 0;
+  position: relative;
+
+  label {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    transition: all 0.3s ease-in;
+    color: #63686b;
+  }
+
+  &.focused {
+    label {
+      top: -2px;
+      left: 2px;
+      color: #1f4054;
+      font-weight: bold;
+    }
+  }
+
   .input {
     height: 40px;
     border:1px solid lightgrey;
