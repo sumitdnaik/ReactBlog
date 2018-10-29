@@ -1,10 +1,21 @@
+// @flow
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import getStories from './actionCreators';
 import StoryCard from 'components/elements/storyCard';
 import Loader from 'components/elements/loader';
 import './style.scss';
-class Home extends Component{
+
+type Props = {
+  homeData: {
+    inProgress: Boolean,
+    data: Array<Object>,
+    errorMessage: String
+  },
+  getStories: Function
+}
+
+class Home extends Component<Props>{
     constructor(props){
         super(props);
     }
