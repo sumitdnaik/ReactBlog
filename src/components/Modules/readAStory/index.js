@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ReadStory, UpvoteStory, ResetUpvote } from './actionCreators';
 import Loader from 'components/elements/loader';
 import StoryActionPanel from 'components/elements/storyActionPanel';
+import StoryComment from 'components/elements/StoryComment';
 import _ from 'lodash';
 import Months from 'constants/months';
 import Modal from 'components/elements/modal';
@@ -20,6 +21,7 @@ class ReadAStory extends Component {
           upvoteCount: ""
         }
         this.onUpvoteClick = this.onUpvoteClick.bind(this);
+        this.onCommentClick = this.onCommentClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
 
@@ -50,6 +52,16 @@ class ReadAStory extends Component {
       if(JSON.parse(localStorage.getItem("session"))) {
         if(!this.props.readStoryData.story.data.storyData.hasUserUpvoted) this.props.upvoteStory(this.props.match.params.storyId); //, userId);
       } else {
+        this.setState({
+          modalOpen: true
+        });
+      }
+    }
+    onCommentClick(){
+      if(JSON.parse(localStorage.getItem("session"))){
+        
+      }
+      else {
         this.setState({
           modalOpen: true
         });
@@ -100,6 +112,7 @@ class ReadAStory extends Component {
               count={this.state.upvoteCount}
               upvoted={storyData.hasUserUpvoted || this.props.readStoryData.upvote.success }
             />
+            <StoryComment onCommentClick={this.onCommentClick} writeComment="Write a response..."/>
 
             <Modal
               isOpen={this.state.modalOpen}
