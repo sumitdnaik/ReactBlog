@@ -1,0 +1,13 @@
+.comment-on-story { 
+    position:fixed;
+    bottom:5%;
+    left:24%;
+    width: 760px;
+    padding: 0 10px;
+    textarea {
+        width:100%;
+        border-radius:5px;
+        border:1px solid #dbdbdb;
+        padding: 10px;
+    }
+}
