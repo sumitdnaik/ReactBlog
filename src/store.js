@@ -7,6 +7,7 @@ import createStoryReducer from 'components/modules/writeAStory/reducer';
 import signUpReducer from 'components/modules/signUp/reducer';
 import homeReducer from 'components/modules/home/reducer';
 import ReadStoryReducer from 'components/modules/readAStory/reducer';
+import userProfileReducer from 'components/modules/userProfile/reducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   signUp: signUpReducer,
   home: homeReducer,
   readStory: ReadStoryReducer,
+  userProfile : userProfileReducer
 });
 
 const middlewares = [thunk, callAPIMiddleware];

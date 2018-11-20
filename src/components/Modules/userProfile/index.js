@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'; 
-import getProfile , {saveProfile} from './actionCreators';
+import {saveProfile , getProfile}   from './actionCreators';
 
 
 import Input from 'components/elements/input';
@@ -35,7 +35,13 @@ class UserProfile extends Component {
     }
 
     componentDidMount(){
-        getProfile(this.props.currentUser.email);
+        this.props.getProfile({'email':this.props.currentUser.email});
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            userInfo : nextProps.currentUser
+        })
     }
 
     onChange(e){
@@ -49,6 +55,8 @@ class UserProfile extends Component {
           this.setState({
             error: null
           });
+          postObj.userProfileObj = {};
+          delete postObj._id;
           this.props.saveProfile(postObj);
         }
         
@@ -129,6 +137,7 @@ class UserProfile extends Component {
                             placeholder = 'profession'
                             onChange={this.onChange}
                             name = 'profession'
+                            value = {this.state.userInfo.profession}
                             required = {true} /> 
                         </div>
                     </li > 
@@ -171,6 +180,7 @@ class UserProfile extends Component {
                         placeholder = 'State'
                         onChange={this.onChange}
                         name = 'state'
+                        value = {this.state.userInfo.state}
                         required = {true}
                     /> 
                     { this.state.userInfo.country &&
@@ -192,6 +202,7 @@ class UserProfile extends Component {
                         placeholder = 'Mobile No'
                         onChange={this.onChange}
                         name = 'mobile'
+                        value = {this.state.userInfo.mobile}
                         required = {true}
                     /> 
                     </div>
@@ -213,9 +224,8 @@ class UserProfile extends Component {
 
 
 const mapStateToProps = (state) => {
-    debugger;
     return({
-        currentUser: state.user.userObj
+        currentUser: (state.userProfile.profile && state.userProfile.profile.data.length) ? state.userProfile.profile.data[0] : state.user.userObj
     });
   }
   

@@ -3,6 +3,7 @@ import { READ_STORY_REQUEST, READ_STORY_SUCCESS, READ_STORY_FAILURE, UPVOTE_STOR
 import APIUrls from 'constants/APIUrls';
 
 export function ReadStory(storyObj) {
+  debugger;
   return {
     types: [READ_STORY_REQUEST, READ_STORY_SUCCESS, READ_STORY_FAILURE],
     callAPI: () =>  axios({

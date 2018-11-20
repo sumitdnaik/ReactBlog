@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SAVE_REQUEST, SAVE_SUCCESS, SAVE_FAILURE } from './actions';
+import { SAVE_REQUEST, SAVE_SUCCESS, SAVE_FAILURE,GET_REQUEST ,GET_SUCCESS,GET_FAILURE } from './actions';
 import APIUrls from 'constants/APIUrls';
 
 export function saveProfile(saveProfileObj) {
@@ -15,10 +15,9 @@ export function saveProfile(saveProfileObj) {
   }
 };
 
-export default function getProfile(getProfileObj) {
-  debugger
+export function getProfile(getProfileObj) {
   return {
-    types: [SAVE_REQUEST, SAVE_SUCCESS, SAVE_FAILURE],
+    types: [GET_REQUEST, GET_SUCCESS, GET_FAILURE],
     callAPI: () =>  axios({
                       method: 'POST',
                       url: APIUrls.getProfile,
