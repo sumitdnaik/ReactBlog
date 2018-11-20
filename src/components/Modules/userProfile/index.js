@@ -55,8 +55,6 @@ class UserProfile extends Component {
           this.setState({
             error: null
           });
-          postObj.userProfileObj = {};
-          delete postObj._id;
           this.props.saveProfile(postObj);
         }
         
