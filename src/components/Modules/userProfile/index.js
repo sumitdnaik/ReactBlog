@@ -27,7 +27,14 @@ class UserProfile extends Component {
                 mobile: '',
                 profession : '',
                 email : this.props.currentUser.email
-
+            },
+            editDisabledName : true,
+            editDisabled : {
+                name : true,
+                profession : true,
+                country : true,
+                state : true,
+                mobile : true
             }
         }
         this.onChange = this.onChange.bind(this);
@@ -124,9 +131,13 @@ class UserProfile extends Component {
                             placeholder = 'Full Name'
                             onChange={this.onChange}
                             name = 'name'
+                            disabled = {this.state.editDisabledName}
                             value = {this.state.userInfo.name}
                             required = {true} /> 
                         </div>
+                        { this.state.editDisabledName &&
+                        <i onClick = { () => { this.setState({editDisabledName : false})}} className="fa fa-edit"></i>
+                        }
                     </li > 
 
                      <li>
