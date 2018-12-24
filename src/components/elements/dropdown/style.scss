@@ -1,0 +1,40 @@
+.container{
+
+input{
+    width: 100%;
+    position: sticky;
+    top:0;
+}
+
+.custom-dropdown{
+    display: flex;
+    align-items: center;
+    div{
+        flex-grow: 1;
+    }
+    i{
+        position: relative;
+        right:25px;
+    }
+}
+
+    ul{
+
+        height: 150px;
+        overflow:auto;
+
+        li:nth-child(odd){
+            background-color: lightgray;
+        }
+
+        li{
+           margin:3px 0 0 0;
+        }
+
+        li:hover{
+            cursor: pointer;
+            font-size: 25px;
+            color:rgb(85, 141, 148);
+        }
+    }
+}

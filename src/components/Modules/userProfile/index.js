@@ -6,7 +6,7 @@ import {saveProfile , getProfile}   from './actionCreators';
 
 import Input from 'components/elements/input';
 import Button from 'components/elements/button';
-//import Dropdown from '../../../elements/dropDown';
+import Dropdown from 'components/elements/dropdown';
 import {
     Countries,
     States
@@ -18,8 +18,7 @@ class UserProfile extends Component {
         super(props);
         this.state = {
             countryList: Countries,
-            CountryFocus: false,
-            StateFocus: false,
+            stateList: States,
             userInfo: {
                 name: this.props.currentUser.name,
                 country: '',
@@ -63,15 +62,9 @@ class UserProfile extends Component {
             error: null
           });
           delete postObj._id;
+          delete postObj.countryList;
           this.props.saveProfile(postObj);
         }
-        
-
-    getOnFocus() {
-        this.setState({
-            CountryFocus: true
-        })
-    }
 
     getOnBlur() {
         this.setState({
@@ -84,25 +77,20 @@ class UserProfile extends Component {
         let selectedCountry = country.target.textContent;
         this.setState(prevState => ({
             userInfo: {
-                ...prevState,
+                ...prevState.userInfo,
                 country: selectedCountry
-            },
-            countryList: Countries,
-            stateList: States,
-            CountryFocus: false
+            }
 
         }))
     }
 
     setSelectedState(country) {
-        let selectedCountry = country.target.textContent;
+        let selectedState = country.target.textContent;
         this.setState(prevState => ({
             userInfo: {
-                ...prevState,
-                country: selectedCountry
-            },
-            countryList: Countries,
-            CountryFocus: false
+                ...prevState.userInfo,
+                state: selectedState
+            }
 
         }))
     }
@@ -136,7 +124,7 @@ class UserProfile extends Component {
                             required = {true} /> 
                         </div>
                         { this.state.editDisabledName &&
-                        <i onClick = { () => { this.setState({editDisabledName : false})}} className="fa fa-edit"></i>
+                        <i onClick = { () => { this.setState({editDisabledName : false})}} className="fa fa-edit icon"></i>
                         }
                     </li > 
 
@@ -161,49 +149,24 @@ class UserProfile extends Component {
                     </li > 
 
                     <li >
-                    <span>Country</span>
-                    <div className="input-value">
-                        <Input type = "text"
-                        placeholder = "Country"
-                        onChange={this.onChange}
-                        value = {this.state.userInfo.country}
-                        name = 'country'
-                        required = {true}
-                        /> 
-                    {
-                    this.state.CountryFocus &&
-                    <div class = "countryList" >
-
-                        {/* <Dropdown 
-                            setSelectedName = {this.setSelectedCountry.bind(this)}
-                            items = {this.state.countryList}
-                        />  */}
-                    </div>
-
-                } 
-                </div>
+                        <span>Country</span>
+                        <div className="input-value dropdown">
+                        <Dropdown
+                        setSelectedValue = {this.setSelectedCountry.bind(this)}
+                        dropdownValues = {this.state.countryList}
+                        selectedValue = {this.state.userInfo.country}
+                        />
+                        </div>
                 </li> 
                 <li>
-                <span>State</span>
-                    <div className="input-value">
-                    <Input type = "text"
-                        placeholder = 'State'
-                        onChange={this.onChange}
-                        name = 'state'
-                        value = {this.state.userInfo.state}
-                        required = {true}
-                    /> 
-                    { this.state.userInfo.country &&
-                        <div className = "countryList" >
-
-                            {/* <Dropdown
-                            setSelectedName = {this.setSelectedState.bind(this)}
-                            items = {this.state.countryList}
-                            />  */}
-                        </div >
-
-                    } 
-                    </div>
+                        <span>Country</span>
+                        <div className="input-value dropdown">
+                        <Dropdown
+                        setSelectedValue = {this.setSelectedState.bind(this)}
+                        dropdownValues = {this.state.stateList}
+                        selectedValue = {this.state.userInfo.state}
+                        />
+                        </div>
                 </li> 
                 <li>
                 <span>Mobile</span>

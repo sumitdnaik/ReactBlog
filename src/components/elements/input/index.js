@@ -54,6 +54,7 @@ class Input extends Component {
         showError: !this.state.isValid,
         focused: true
     });
+    this.props.onFocus ? this.props.onFocus():'';
   }
 
     render(){
