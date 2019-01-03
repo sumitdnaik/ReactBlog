@@ -48,6 +48,7 @@ class Home extends Component<Props>{
 }
 
 const mapStateToProps = (state) => {
+  debugger;
   return({
     homeData: state.home
   });

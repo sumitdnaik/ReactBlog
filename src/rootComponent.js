@@ -32,7 +32,9 @@ class RootComponent extends Component {
         <div>
             <Router history={history}>
               <div>
+                <div className="header">
                 <Header signOut={this.signOut}/>
+                </div>
                 <h1 className="sr-only">WorthReads: A place to read and write awesome stories</h1>
                   <Switch>
                       <Route exact path="/" component={Home}/>
